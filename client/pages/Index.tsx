@@ -68,6 +68,7 @@ const categories = [
   { name: "Furniture", icon: Armchair, count: 634, color: "bg-green-100 text-green-700" },
   { name: "Transportation", icon: Car, count: 156, color: "bg-orange-100 text-orange-700" },
   { name: "Gaming", icon: Gamepad2, count: 423, color: "bg-red-100 text-red-700" },
+  { name: "Miscellaneous", icon: Package, count: 287, color: "bg-yellow-100 text-yellow-700" },
 ];
 
 export default function Index() {
