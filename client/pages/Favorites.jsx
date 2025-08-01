@@ -79,6 +79,8 @@ const allItems = {
 
 export default function Favorites() {
   const { favorites, toggleFavorite, isFavorite } = useFavorites();
+  const [shareDialogOpen, setShareDialogOpen] = useState(false);
+  const [itemToShare, setItemToShare] = useState(null);
 
   const favoriteItems = favorites.map((id) => allItems[id]).filter(Boolean); // Remove any undefined items
 
