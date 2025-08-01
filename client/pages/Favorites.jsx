@@ -10,6 +10,8 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useFavorites } from "../contexts/FavoritesContext";
+import { ShareDialog } from "@/components/ShareDialog";
+import { useState } from "react";
 
 // Mock data that matches the category pages and ItemDetails
 const allItems = {
