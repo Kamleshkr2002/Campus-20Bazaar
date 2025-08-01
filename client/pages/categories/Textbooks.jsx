@@ -125,7 +125,10 @@ export default function Textbooks() {
       </div>
 
       {/* Results */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className={viewMode === "grid"
+        ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        : "space-y-4"
+      }>
         {filteredBooks.map((book) => (
           <Card key={book.id} className="hover:shadow-lg transition-shadow">
             <Link to={`/item/${book.id}`}>
