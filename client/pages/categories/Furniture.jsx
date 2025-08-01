@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { Search, Filter, Grid, List, Armchair, DollarSign, User, MapPin, Home, Package } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Search, Filter, Grid, List, Armchair, DollarSign, User, MapPin, Home, Package, Heart } from "lucide-react";
+import { useFavorites } from "../../contexts/FavoritesContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -52,6 +54,7 @@ export default function Furniture() {
   const [searchQuery, setSearchQuery] = useState("");
   const [viewMode, setViewMode] = useState("grid");
   const [sortBy, setSortBy] = useState("price-low");
+  const { isFavorite, toggleFavorite } = useFavorites();
 
   const filteredFurniture = mockFurniture.filter(item =>
     item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -124,14 +127,16 @@ export default function Furniture() {
       {/* Results */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredFurniture.map((item) => (
-          <Card key={item.id} className="hover:shadow-lg transition-shadow cursor-pointer">
-            <CardHeader className="pb-3">
-              <div className="aspect-[4/3] bg-gradient-to-br from-green-50 to-green-100 rounded-md mb-3 flex items-center justify-center">
-                <Armchair className="w-12 h-12 text-green-400" />
-              </div>
-              <CardTitle className="text-lg line-clamp-2">{item.title}</CardTitle>
-              <CardDescription>{item.category} • {item.size}</CardDescription>
-            </CardHeader>
+          <Card key={item.id} className="hover:shadow-lg transition-shadow">
+            <Link to={`/item/${item.id}`}>
+              <CardHeader className="pb-3">
+                <div className="aspect-[4/3] bg-gradient-to-br from-green-50 to-green-100 rounded-md mb-3 flex items-center justify-center">
+                  <Armchair className="w-12 h-12 text-green-400" />
+                </div>
+                <CardTitle className="text-lg line-clamp-2">{item.title}</CardTitle>
+                <CardDescription>{item.category} • {item.size}</CardDescription>
+              </CardHeader>
+            </Link>
             <CardContent className="pt-0">
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
@@ -139,9 +144,23 @@ export default function Furniture() {
                     <span className="text-2xl font-bold text-green-600">${item.price}</span>
                     <span className="text-sm text-muted-foreground line-through">${item.originalPrice}</span>
                   </div>
-                  <Badge variant="secondary">{item.condition}</Badge>
+                  <div className="flex items-center gap-2">
+                    <Badge variant="secondary">{item.condition}</Badge>
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      className="h-8 w-8"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        toggleFavorite(item.id);
+                      }}
+                    >
+                      <Heart className={`w-4 h-4 ${isFavorite(item.id) ? 'fill-red-500 text-red-500' : ''}`} />
+                    </Button>
+                  </div>
                 </div>
-                
+
                 <div className="space-y-1 text-sm text-muted-foreground">
                   <div className="flex items-center gap-1">
                     <Package className="w-3 h-3" />
@@ -157,8 +176,8 @@ export default function Furniture() {
                   </div>
                 </div>
 
-                <Button className="w-full mt-4">
-                  View Details
+                <Button className="w-full mt-4" asChild>
+                  <Link to={`/item/${item.id}`}>View Details</Link>
                 </Button>
               </div>
             </CardContent>
