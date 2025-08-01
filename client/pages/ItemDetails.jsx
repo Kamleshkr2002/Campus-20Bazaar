@@ -116,6 +116,108 @@ const mockItems = {
     pickupOptions: ["Pickup required", "Help with disassembly"],
     paymentMethods: ["Cash", "Venmo", "PayPal"],
     tags: ["furniture", "bed", "ikea", "queen", "bedroom"]
+  },
+  4: {
+    id: 4,
+    title: "iPad Pro 11-inch",
+    price: 450,
+    originalPrice: 799,
+    condition: "Good",
+    category: "Electronics",
+    description: "iPad Pro with Apple Pencil support. Great for digital notes and creative work. Includes original charger and protective case.",
+    specifications: {
+      "Display": "11-inch Liquid Retina",
+      "Storage": "128GB",
+      "Connectivity": "WiFi + Cellular",
+      "Processor": "M1 Chip",
+      "Color": "Space Gray",
+      "Year": "2022"
+    },
+    images: ["/placeholder.svg", "/placeholder.svg"],
+    seller: {
+      name: "Lisa Wang",
+      avatar: "/placeholder.svg",
+      rating: 4.7,
+      reviews: 18,
+      responseTime: "Usually responds within 2 hours",
+      memberSince: "November 2023",
+      verified: true
+    },
+    location: "North Campus, Dorm B",
+    postedDate: "2024-01-14",
+    views: 128,
+    interested: 6,
+    pickupOptions: ["Campus pickup", "Meet at library"],
+    paymentMethods: ["Cash", "Venmo"],
+    tags: ["tablet", "apple", "ipad", "electronics", "student"]
+  },
+  5: {
+    id: 5,
+    title: "USB-C Hub 7-in-1",
+    price: 25,
+    originalPrice: 45,
+    condition: "Like New",
+    category: "Electronics",
+    description: "Multi-port USB-C hub with HDMI, USB 3.0, and SD card slots. Perfect for laptops and tablets.",
+    specifications: {
+      "Ports": "7 ports total",
+      "HDMI": "4K@30Hz support",
+      "USB": "3 x USB 3.0 ports",
+      "SD Card": "SD/microSD slots",
+      "Power": "100W pass-through",
+      "Compatibility": "MacBook, iPad Pro, PC"
+    },
+    images: ["/placeholder.svg"],
+    seller: {
+      name: "Tech Mike",
+      avatar: "/placeholder.svg",
+      rating: 4.9,
+      reviews: 25,
+      responseTime: "Usually responds within 1 hour",
+      memberSince: "August 2023",
+      verified: true
+    },
+    location: "Engineering Building",
+    postedDate: "2024-01-13",
+    views: 89,
+    interested: 4,
+    pickupOptions: ["Campus pickup", "Engineering building"],
+    paymentMethods: ["Cash", "Venmo", "PayPal"],
+    tags: ["usb", "hub", "adapter", "electronics", "laptop"]
+  },
+  6: {
+    id: 6,
+    title: "Adjustable Laptop Stand",
+    price: 35,
+    originalPrice: 60,
+    condition: "Excellent",
+    category: "Electronics",
+    description: "Ergonomic aluminum laptop stand. Adjustable height and angle for better posture during long study sessions.",
+    specifications: {
+      "Material": "Aluminum alloy",
+      "Compatibility": "11-17 inch laptops",
+      "Adjustable": "Height and angle",
+      "Weight": "1.2 lbs",
+      "Color": "Silver",
+      "Foldable": "Yes"
+    },
+    images: ["/placeholder.svg", "/placeholder.svg"],
+    seller: {
+      name: "Study Helper",
+      avatar: "/placeholder.svg",
+      rating: 4.8,
+      reviews: 12,
+      responseTime: "Usually responds within 3 hours",
+      memberSince: "September 2023",
+      verified: true
+    },
+    location: "Library Study Area",
+    postedDate: "2024-01-11",
+    views: 67,
+    interested: 3,
+    pickupOptions: ["Campus pickup", "Library meetup"],
+    paymentMethods: ["Cash", "Venmo"],
+    tags: ["laptop", "stand", "ergonomic", "study", "aluminum"]
   }
 };
 
