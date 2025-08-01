@@ -11,7 +11,9 @@ import {
   MapPin,
   Clock,
   ArrowRight,
+  Heart,
 } from "lucide-react";
+import { useFavorites } from "../contexts/FavoritesContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
@@ -114,6 +116,7 @@ const categories = [
 ];
 
 export default function Index() {
+  const { isFavorite, toggleFavorite } = useFavorites();
   return (
     <div className="min-h-screen flex flex-col">
       {/* Hero Section */}
@@ -139,9 +142,9 @@ export default function Index() {
                 <Input
                   type="text"
                   placeholder="Search for textbooks, laptops, furniture..."
-                  className="pl-12 pr-4 py-4 text-lg bg-white/80 backdrop-blur-sm border-0 shadow-lg focus-visible:ring-2 focus-visible:ring-primary"
+                  className="pl-12 pr-24 py-4 text-lg bg-white/80 backdrop-blur-sm border-0 shadow-lg focus-visible:ring-2 focus-visible:ring-primary"
                 />
-                <Button className="absolute right-2 top-2 bg-brand-purple hover:bg-brand-purple-dark">
+                <Button className="absolute right-1 top-1/2 transform -translate-y-1/2 bg-brand-purple hover:bg-brand-purple-dark">
                   Search
                 </Button>
               </div>
@@ -225,13 +228,16 @@ export default function Index() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {featuredItems.map((item) => (
-              <Link key={item.id} to={`/item/${item.id}`} className="group">
-                <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 group-hover:-translate-y-1">
+              <Card
+                key={item.id}
+                className="overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+              >
+                <Link to={`/item/${item.id}`}>
                   <div className="aspect-square bg-gradient-to-br from-gray-100 to-gray-200 relative overflow-hidden">
                     <img
                       src={item.image}
                       alt={item.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                     />
                     <div className="absolute top-3 left-3">
                       <Badge
@@ -248,48 +254,64 @@ export default function Index() {
                         </Badge>
                       </div>
                     )}
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      className="absolute bottom-3 right-3 h-8 w-8 bg-white/90 backdrop-blur-sm hover:bg-white"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        toggleFavorite(item.id);
+                      }}
+                    >
+                      <Heart
+                        className={`w-4 h-4 ${isFavorite(item.id) ? "fill-red-500 text-red-500" : ""}`}
+                      />
+                    </Button>
                   </div>
+                </Link>
 
-                  <CardContent className="p-4">
-                    <h3 className="font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+                <CardContent className="p-4">
+                  <Link to={`/item/${item.id}`}>
+                    <h3 className="font-semibold text-foreground mb-2 hover:text-primary transition-colors">
                       {item.title}
                     </h3>
+                  </Link>
 
-                    <div className="flex items-center justify-between mb-3">
-                      <div className="flex items-center space-x-2">
-                        <span className="text-2xl font-bold text-foreground">
-                          ${item.price}
-                        </span>
-                        <span className="text-sm text-muted-foreground line-through">
-                          ${item.originalPrice}
-                        </span>
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center space-x-2">
+                      <span className="text-2xl font-bold text-foreground">
+                        ${item.price}
+                      </span>
+                      <span className="text-sm text-muted-foreground line-through">
+                        ${item.originalPrice}
+                      </span>
+                    </div>
+                    <div className="flex items-center space-x-1">
+                      <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                      <span className="text-sm text-muted-foreground">
+                        {item.rating}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <div className="flex items-center text-sm text-muted-foreground">
+                      <span className="font-medium">{item.seller}</span>
+                    </div>
+                    <div className="flex items-center justify-between text-sm text-muted-foreground">
+                      <div className="flex items-center space-x-1">
+                        <MapPin className="w-3 h-3" />
+                        <span>{item.location}</span>
                       </div>
                       <div className="flex items-center space-x-1">
-                        <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                        <span className="text-sm text-muted-foreground">
-                          {item.rating}
-                        </span>
+                        <Clock className="w-3 h-3" />
+                        <span>{item.timeAgo}</span>
                       </div>
                     </div>
-
-                    <div className="space-y-2">
-                      <div className="flex items-center text-sm text-muted-foreground">
-                        <span className="font-medium">{item.seller}</span>
-                      </div>
-                      <div className="flex items-center justify-between text-sm text-muted-foreground">
-                        <div className="flex items-center space-x-1">
-                          <MapPin className="w-3 h-3" />
-                          <span>{item.location}</span>
-                        </div>
-                        <div className="flex items-center space-x-1">
-                          <Clock className="w-3 h-3" />
-                          <span>{item.timeAgo}</span>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </Link>
+                  </div>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>

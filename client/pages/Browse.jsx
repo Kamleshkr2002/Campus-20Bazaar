@@ -1,17 +1,33 @@
 import { useState } from "react";
-import { Search, Filter, Grid, List, Star, MapPin, Clock } from "lucide-react";
+import {
+  Search,
+  Filter,
+  Grid,
+  List,
+  Star,
+  MapPin,
+  Clock,
+  Heart,
+} from "lucide-react";
+import { useFavorites } from "../contexts/FavoritesContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Link } from "react-router-dom";
 
 // Mock data for items
 const items = [
   {
     id: 1,
-    title: "MacBook Pro 13\" M1",
+    title: 'MacBook Pro 13" M1',
     price: 899,
     originalPrice: 1299,
     image: "/placeholder.svg",
@@ -92,13 +108,18 @@ const items = [
 export default function Browse() {
   const [viewMode, setViewMode] = useState("grid");
   const [searchQuery, setSearchQuery] = useState("");
+  const { isFavorite, toggleFavorite } = useFavorites();
 
   return (
     <div className="container mx-auto px-4 py-8">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-foreground mb-2">Browse Items</h1>
-        <p className="text-muted-foreground">Discover great deals from fellow students</p>
+        <h1 className="text-3xl font-bold text-foreground mb-2">
+          Browse Items
+        </h1>
+        <p className="text-muted-foreground">
+          Discover great deals from fellow students
+        </p>
       </div>
 
       {/* Search and Filters */}
@@ -189,47 +210,77 @@ export default function Browse() {
       </div>
 
       {/* Items Grid */}
-      <div className={viewMode === "grid" 
-        ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" 
-        : "space-y-4"
-      }>
+      <div
+        className={
+          viewMode === "grid"
+            ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+            : "space-y-4"
+        }
+      >
         {items.map((item) => (
-          <Link key={item.id} to={`/item/${item.id}`} className="group">
+          <div key={item.id}>
             {viewMode === "grid" ? (
-              <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 group-hover:-translate-y-1">
-                <div className="aspect-square bg-gradient-to-br from-gray-100 to-gray-200 relative overflow-hidden">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute top-3 left-3">
-                    <Badge variant="secondary" className="bg-white/90 backdrop-blur-sm">
-                      {item.category}
-                    </Badge>
-                  </div>
-                  {item.isVerified && (
-                    <div className="absolute top-3 right-3">
-                      <Badge className="bg-green-500 hover:bg-green-500">
-                        ✓ Verified
+              <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <Link to={`/item/${item.id}`}>
+                  <div className="aspect-square bg-gradient-to-br from-gray-100 to-gray-200 relative overflow-hidden">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute top-3 left-3">
+                      <Badge
+                        variant="secondary"
+                        className="bg-white/90 backdrop-blur-sm"
+                      >
+                        {item.category}
                       </Badge>
                     </div>
-                  )}
-                </div>
-                
+                    {item.isVerified && (
+                      <div className="absolute top-3 right-3">
+                        <Badge className="bg-green-500 hover:bg-green-500">
+                          ✓ Verified
+                        </Badge>
+                      </div>
+                    )}
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      className="absolute bottom-3 right-3 h-8 w-8 bg-white/90 backdrop-blur-sm hover:bg-white"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        toggleFavorite(item.id);
+                      }}
+                    >
+                      <Heart
+                        className={`w-4 h-4 ${isFavorite(item.id) ? "fill-red-500 text-red-500" : ""}`}
+                      />
+                    </Button>
+                  </div>
+                </Link>
+
                 <CardContent className="p-4">
-                  <h3 className="font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
-                    {item.title}
-                  </h3>
-                  
+                  <Link to={`/item/${item.id}`}>
+                    <h3 className="font-semibold text-foreground mb-2 hover:text-primary transition-colors">
+                      {item.title}
+                    </h3>
+                  </Link>
+
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center space-x-2">
-                      <span className="text-xl font-bold text-foreground">${item.price}</span>
-                      <span className="text-sm text-muted-foreground line-through">${item.originalPrice}</span>
+                      <span className="text-xl font-bold text-foreground">
+                        ${item.price}
+                      </span>
+                      <span className="text-sm text-muted-foreground line-through">
+                        ${item.originalPrice}
+                      </span>
                     </div>
                     <div className="flex items-center space-x-1">
                       <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                      <span className="text-sm text-muted-foreground">{item.rating}</span>
+                      <span className="text-sm text-muted-foreground">
+                        {item.rating}
+                      </span>
                     </div>
                   </div>
 
@@ -254,21 +305,43 @@ export default function Browse() {
               <Card className="hover:shadow-md transition-shadow">
                 <CardContent className="p-4">
                   <div className="flex gap-4">
-                    <div className="w-24 h-24 bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg overflow-hidden flex-shrink-0">
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
+                    <Link to={`/item/${item.id}`} className="flex-shrink-0">
+                      <div className="w-24 h-24 bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg overflow-hidden">
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </Link>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-start justify-between mb-2">
-                        <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors truncate">
-                          {item.title}
-                        </h3>
+                        <Link to={`/item/${item.id}`}>
+                          <h3 className="font-semibold text-foreground hover:text-primary transition-colors truncate">
+                            {item.title}
+                          </h3>
+                        </Link>
                         <div className="flex items-center space-x-2 ml-4">
-                          <span className="text-xl font-bold text-foreground">${item.price}</span>
-                          <span className="text-sm text-muted-foreground line-through">${item.originalPrice}</span>
+                          <span className="text-xl font-bold text-foreground">
+                            ${item.price}
+                          </span>
+                          <span className="text-sm text-muted-foreground line-through">
+                            ${item.originalPrice}
+                          </span>
+                          <Button
+                            variant="outline"
+                            size="icon"
+                            className="h-8 w-8"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              toggleFavorite(item.id);
+                            }}
+                          >
+                            <Heart
+                              className={`w-4 h-4 ${isFavorite(item.id) ? "fill-red-500 text-red-500" : ""}`}
+                            />
+                          </Button>
                         </div>
                       </div>
                       <div className="flex items-center gap-4 text-sm text-muted-foreground mb-2">
@@ -299,7 +372,7 @@ export default function Browse() {
                 </CardContent>
               </Card>
             )}
-          </Link>
+          </div>
         ))}
       </div>
 
