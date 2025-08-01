@@ -139,8 +139,8 @@ export default function Index() {
                     <div className={`w-12 h-12 lg:w-16 lg:h-16 rounded-full ${category.color} flex items-center justify-center mx-auto mb-3 lg:mb-4 group-hover:scale-110 transition-transform`}>
                       <category.icon className="w-6 h-6 lg:w-8 lg:h-8" />
                     </div>
-                    <h3 className="font-semibold text-foreground mb-1">{category.name}</h3>
-                    <p className="text-sm text-muted-foreground">{category.count} items</p>
+                    <h3 className="text-sm lg:text-base font-semibold text-foreground mb-1">{category.name}</h3>
+                    <p className="text-xs lg:text-sm text-muted-foreground">{category.count} items</p>
                   </CardContent>
                 </Card>
               </Link>
