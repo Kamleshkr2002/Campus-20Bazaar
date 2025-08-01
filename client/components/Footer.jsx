@@ -37,9 +37,6 @@ export function Footer() {
               <Link to="/browse" className="block text-muted-foreground hover:text-primary transition-colors">
                 Browse Items
               </Link>
-              <Link to="/categories" className="block text-muted-foreground hover:text-primary transition-colors">
-                Categories
-              </Link>
               <Link to="/sell" className="block text-muted-foreground hover:text-primary transition-colors">
                 Sell Item
               </Link>
