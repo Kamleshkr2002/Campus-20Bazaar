@@ -13,6 +13,7 @@ import Browse from "./pages/Browse";
 import PlaceholderPage from "./pages/PlaceholderPage";
 import NotFound from "./pages/NotFound";
 import ItemDetails from "./pages/ItemDetails";
+import Favorites from "./pages/Favorites";
 import Textbooks from "./pages/categories/Textbooks";
 import Electronics from "./pages/categories/Electronics";
 import Furniture from "./pages/categories/Furniture";
