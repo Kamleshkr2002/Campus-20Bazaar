@@ -1,12 +1,36 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Search, Filter, Grid, List, Shirt, DollarSign, User, MapPin, Tag, Palette, Heart } from "lucide-react";
+import {
+  Search,
+  Filter,
+  Grid,
+  List,
+  Shirt,
+  DollarSign,
+  User,
+  MapPin,
+  Tag,
+  Palette,
+  Heart,
+} from "lucide-react";
 import { useFavorites } from "../../contexts/FavoritesContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const mockClothing = [
   {
@@ -20,7 +44,7 @@ const mockClothing = [
     location: "East Campus",
     size: "Medium",
     color: "Navy Blue",
-    image: "/placeholder.svg"
+    image: "/placeholder.svg",
   },
   {
     id: 2,
@@ -33,7 +57,7 @@ const mockClothing = [
     location: "North Campus",
     size: "32x32",
     color: "Dark Blue",
-    image: "/placeholder.svg"
+    image: "/placeholder.svg",
   },
   {
     id: 3,
@@ -46,8 +70,8 @@ const mockClothing = [
     location: "West Campus",
     size: "Large",
     color: "Black",
-    image: "/placeholder.svg"
-  }
+    image: "/placeholder.svg",
+  },
 ];
 
 export default function Clothing() {
@@ -56,10 +80,11 @@ export default function Clothing() {
   const [sortBy, setSortBy] = useState("price-low");
   const { isFavorite, toggleFavorite } = useFavorites();
 
-  const filteredClothing = mockClothing.filter(item =>
-    item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    item.brand.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    item.color.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredClothing = mockClothing.filter(
+    (item) =>
+      item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.brand.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.color.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
   return (
@@ -70,7 +95,9 @@ export default function Clothing() {
           <Shirt className="w-8 h-8 text-pink-600" />
           Clothing
         </h1>
-        <p className="text-muted-foreground">Find stylish and affordable clothing for every season</p>
+        <p className="text-muted-foreground">
+          Find stylish and affordable clothing for every season
+        </p>
       </div>
 
       {/* Search and Filters */}
@@ -125,10 +152,13 @@ export default function Clothing() {
       </div>
 
       {/* Results */}
-      <div className={viewMode === "grid"
-        ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        : "space-y-4"
-      }>
+      <div
+        className={
+          viewMode === "grid"
+            ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            : "space-y-4"
+        }
+      >
         {filteredClothing.map((item) => (
           <div key={item.id}>
             {viewMode === "grid" ? (
@@ -138,16 +168,24 @@ export default function Clothing() {
                     <div className="aspect-[3/4] bg-gradient-to-br from-pink-50 to-pink-100 rounded-md mb-3 flex items-center justify-center">
                       <Shirt className="w-12 h-12 text-pink-400" />
                     </div>
-                    <CardTitle className="text-lg line-clamp-2">{item.title}</CardTitle>
-                    <CardDescription>{item.brand} • Size {item.size}</CardDescription>
+                    <CardTitle className="text-lg line-clamp-2">
+                      {item.title}
+                    </CardTitle>
+                    <CardDescription>
+                      {item.brand} • Size {item.size}
+                    </CardDescription>
                   </CardHeader>
                 </Link>
                 <CardContent className="pt-0">
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <span className="text-2xl font-bold text-green-600">${item.price}</span>
-                        <span className="text-sm text-muted-foreground line-through">${item.originalPrice}</span>
+                        <span className="text-2xl font-bold text-green-600">
+                          ${item.price}
+                        </span>
+                        <span className="text-sm text-muted-foreground line-through">
+                          ${item.originalPrice}
+                        </span>
                       </div>
                       <div className="flex items-center gap-2">
                         <Badge variant="secondary">{item.condition}</Badge>
@@ -161,7 +199,9 @@ export default function Clothing() {
                             toggleFavorite(item.id);
                           }}
                         >
-                          <Heart className={`w-4 h-4 ${isFavorite(item.id) ? 'fill-red-500 text-red-500' : ''}`} />
+                          <Heart
+                            className={`w-4 h-4 ${isFavorite(item.id) ? "fill-red-500 text-red-500" : ""}`}
+                          />
                         </Button>
                       </div>
                     </div>
@@ -202,12 +242,18 @@ export default function Clothing() {
                           <h3 className="font-semibold text-foreground hover:text-primary transition-colors line-clamp-1">
                             {item.title}
                           </h3>
-                          <p className="text-sm text-muted-foreground">{item.brand} • Size {item.size}</p>
+                          <p className="text-sm text-muted-foreground">
+                            {item.brand} • Size {item.size}
+                          </p>
                         </Link>
                         <div className="flex items-center space-x-2 ml-4">
                           <div className="text-right">
-                            <span className="text-lg font-bold text-green-600">${item.price}</span>
-                            <span className="text-sm text-muted-foreground line-through ml-1">${item.originalPrice}</span>
+                            <span className="text-lg font-bold text-green-600">
+                              ${item.price}
+                            </span>
+                            <span className="text-sm text-muted-foreground line-through ml-1">
+                              ${item.originalPrice}
+                            </span>
                           </div>
                           <Button
                             variant="outline"
@@ -219,7 +265,9 @@ export default function Clothing() {
                               toggleFavorite(item.id);
                             }}
                           >
-                            <Heart className={`w-4 h-4 ${isFavorite(item.id) ? 'fill-red-500 text-red-500' : ''}`} />
+                            <Heart
+                              className={`w-4 h-4 ${isFavorite(item.id) ? "fill-red-500 text-red-500" : ""}`}
+                            />
                           </Button>
                         </div>
                       </div>
@@ -250,7 +298,9 @@ export default function Clothing() {
         <div className="text-center py-12">
           <Shirt className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
           <h3 className="text-lg font-medium mb-2">No clothing found</h3>
-          <p className="text-muted-foreground">Try adjusting your search or check back later for new listings.</p>
+          <p className="text-muted-foreground">
+            Try adjusting your search or check back later for new listings.
+          </p>
         </div>
       )}
     </div>

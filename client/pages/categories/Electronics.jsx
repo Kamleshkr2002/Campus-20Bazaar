@@ -1,12 +1,36 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Search, Filter, Grid, List, Laptop, DollarSign, User, MapPin, Battery, Wifi, Heart } from "lucide-react";
+import {
+  Search,
+  Filter,
+  Grid,
+  List,
+  Laptop,
+  DollarSign,
+  User,
+  MapPin,
+  Battery,
+  Wifi,
+  Heart,
+} from "lucide-react";
 import { useFavorites } from "../../contexts/FavoritesContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const mockElectronics = [
   {
@@ -20,7 +44,7 @@ const mockElectronics = [
     location: "East Campus",
     specs: "8GB RAM, 256GB SSD",
     year: "2023",
-    image: "/placeholder.svg"
+    image: "/placeholder.svg",
   },
   {
     id: 2,
@@ -33,7 +57,7 @@ const mockElectronics = [
     location: "North Campus",
     specs: "128GB, WiFi + Cellular",
     year: "2022",
-    image: "/placeholder.svg"
+    image: "/placeholder.svg",
   },
   {
     id: 3,
@@ -46,8 +70,8 @@ const mockElectronics = [
     location: "South Campus",
     specs: "RTX 3070, 16GB RAM, 1TB SSD",
     year: "2023",
-    image: "/placeholder.svg"
-  }
+    image: "/placeholder.svg",
+  },
 ];
 
 export default function Electronics() {
@@ -56,10 +80,11 @@ export default function Electronics() {
   const [sortBy, setSortBy] = useState("price-low");
   const { isFavorite, toggleFavorite } = useFavorites();
 
-  const filteredElectronics = mockElectronics.filter(item =>
-    item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    item.brand.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    item.specs.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredElectronics = mockElectronics.filter(
+    (item) =>
+      item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.brand.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.specs.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
   return (
@@ -70,7 +95,9 @@ export default function Electronics() {
           <Laptop className="w-8 h-8 text-purple-600" />
           Electronics
         </h1>
-        <p className="text-muted-foreground">Find laptops, tablets, phones, and tech accessories</p>
+        <p className="text-muted-foreground">
+          Find laptops, tablets, phones, and tech accessories
+        </p>
       </div>
 
       {/* Search and Filters */}
@@ -125,10 +152,13 @@ export default function Electronics() {
       </div>
 
       {/* Results */}
-      <div className={viewMode === "grid"
-        ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        : "space-y-4"
-      }>
+      <div
+        className={
+          viewMode === "grid"
+            ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            : "space-y-4"
+        }
+      >
         {filteredElectronics.map((item) => (
           <div key={item.id}>
             {viewMode === "grid" ? (
@@ -138,16 +168,24 @@ export default function Electronics() {
                     <div className="aspect-[4/3] bg-gradient-to-br from-purple-50 to-purple-100 rounded-md mb-3 flex items-center justify-center">
                       <Laptop className="w-12 h-12 text-purple-400" />
                     </div>
-                    <CardTitle className="text-lg line-clamp-2">{item.title}</CardTitle>
-                    <CardDescription>{item.brand} • {item.year}</CardDescription>
+                    <CardTitle className="text-lg line-clamp-2">
+                      {item.title}
+                    </CardTitle>
+                    <CardDescription>
+                      {item.brand} • {item.year}
+                    </CardDescription>
                   </CardHeader>
                 </Link>
                 <CardContent className="pt-0">
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <span className="text-2xl font-bold text-green-600">${item.price}</span>
-                        <span className="text-sm text-muted-foreground line-through">${item.originalPrice}</span>
+                        <span className="text-2xl font-bold text-green-600">
+                          ${item.price}
+                        </span>
+                        <span className="text-sm text-muted-foreground line-through">
+                          ${item.originalPrice}
+                        </span>
                       </div>
                       <div className="flex items-center gap-2">
                         <Badge variant="secondary">{item.condition}</Badge>
@@ -161,7 +199,9 @@ export default function Electronics() {
                             toggleFavorite(item.id);
                           }}
                         >
-                          <Heart className={`w-4 h-4 ${isFavorite(item.id) ? 'fill-red-500 text-red-500' : ''}`} />
+                          <Heart
+                            className={`w-4 h-4 ${isFavorite(item.id) ? "fill-red-500 text-red-500" : ""}`}
+                          />
                         </Button>
                       </div>
                     </div>
@@ -202,12 +242,18 @@ export default function Electronics() {
                           <h3 className="font-semibold text-foreground hover:text-primary transition-colors line-clamp-1">
                             {item.title}
                           </h3>
-                          <p className="text-sm text-muted-foreground">{item.brand} • {item.year}</p>
+                          <p className="text-sm text-muted-foreground">
+                            {item.brand} • {item.year}
+                          </p>
                         </Link>
                         <div className="flex items-center space-x-2 ml-4">
                           <div className="text-right">
-                            <span className="text-lg font-bold text-green-600">${item.price}</span>
-                            <span className="text-sm text-muted-foreground line-through ml-1">${item.originalPrice}</span>
+                            <span className="text-lg font-bold text-green-600">
+                              ${item.price}
+                            </span>
+                            <span className="text-sm text-muted-foreground line-through ml-1">
+                              ${item.originalPrice}
+                            </span>
                           </div>
                           <Button
                             variant="outline"
@@ -219,7 +265,9 @@ export default function Electronics() {
                               toggleFavorite(item.id);
                             }}
                           >
-                            <Heart className={`w-4 h-4 ${isFavorite(item.id) ? 'fill-red-500 text-red-500' : ''}`} />
+                            <Heart
+                              className={`w-4 h-4 ${isFavorite(item.id) ? "fill-red-500 text-red-500" : ""}`}
+                            />
                           </Button>
                         </div>
                       </div>
@@ -250,7 +298,9 @@ export default function Electronics() {
         <div className="text-center py-12">
           <Laptop className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
           <h3 className="text-lg font-medium mb-2">No electronics found</h3>
-          <p className="text-muted-foreground">Try adjusting your search or check back later for new listings.</p>
+          <p className="text-muted-foreground">
+            Try adjusting your search or check back later for new listings.
+          </p>
         </div>
       )}
     </div>

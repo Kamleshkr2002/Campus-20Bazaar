@@ -228,7 +228,10 @@ export default function Index() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {featuredItems.map((item) => (
-              <Card key={item.id} className="overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <Card
+                key={item.id}
+                className="overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+              >
                 <Link to={`/item/${item.id}`}>
                   <div className="aspect-square bg-gradient-to-br from-gray-100 to-gray-200 relative overflow-hidden">
                     <img
@@ -261,7 +264,9 @@ export default function Index() {
                         toggleFavorite(item.id);
                       }}
                     >
-                      <Heart className={`w-4 h-4 ${isFavorite(item.id) ? 'fill-red-500 text-red-500' : ''}`} />
+                      <Heart
+                        className={`w-4 h-4 ${isFavorite(item.id) ? "fill-red-500 text-red-500" : ""}`}
+                      />
                     </Button>
                   </div>
                 </Link>

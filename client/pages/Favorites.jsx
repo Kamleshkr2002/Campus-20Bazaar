@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
 import { Heart, Search, User, MapPin, Package } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useFavorites } from "../contexts/FavoritesContext";
 
@@ -17,19 +23,19 @@ const allItems = {
     seller: "Sarah M.",
     location: "North Campus",
     category: "Textbooks",
-    image: "/placeholder.svg"
+    image: "/placeholder.svg",
   },
   2: {
     id: 2,
     title: "Organic Chemistry",
-    author: "Paula Bruice", 
+    author: "Paula Bruice",
     price: 80,
     originalPrice: 200,
     condition: "Like New",
     seller: "Mike K.",
     location: "South Campus",
     category: "Textbooks",
-    image: "/placeholder.svg"
+    image: "/placeholder.svg",
   },
   3: {
     id: 3,
@@ -39,9 +45,9 @@ const allItems = {
     originalPrice: 85,
     condition: "Fair",
     seller: "Emma L.",
-    location: "West Campus", 
+    location: "West Campus",
     category: "Textbooks",
-    image: "/placeholder.svg"
+    image: "/placeholder.svg",
   },
   4: {
     id: 4,
@@ -53,7 +59,7 @@ const allItems = {
     seller: "Alex P.",
     location: "East Campus",
     category: "Electronics",
-    image: "/placeholder.svg"
+    image: "/placeholder.svg",
   },
   5: {
     id: 5,
@@ -65,31 +71,29 @@ const allItems = {
     seller: "Lisa W.",
     location: "North Campus",
     category: "Electronics",
-    image: "/placeholder.svg"
-  }
+    image: "/placeholder.svg",
+  },
 };
 
 export default function Favorites() {
   const { favorites, toggleFavorite, isFavorite } = useFavorites();
 
-  const favoriteItems = favorites
-    .map(id => allItems[id])
-    .filter(Boolean); // Remove any undefined items
+  const favoriteItems = favorites.map((id) => allItems[id]).filter(Boolean); // Remove any undefined items
 
   const getCategoryIcon = (category) => {
     switch (category) {
-      case 'Electronics':
-        return '💻';
-      case 'Textbooks':
-        return '📚';
-      case 'Furniture':
-        return '🪑';
-      case 'Clothing':
-        return '👕';
-      case 'Sports':
-        return '⚽';
+      case "Electronics":
+        return "💻";
+      case "Textbooks":
+        return "📚";
+      case "Furniture":
+        return "🪑";
+      case "Clothing":
+        return "👕";
+      case "Sports":
+        return "⚽";
       default:
-        return '📦';
+        return "📦";
     }
   };
 
@@ -101,14 +105,17 @@ export default function Favorites() {
             <Heart className="w-8 h-8 text-red-500" />
             My Favorites
           </h1>
-          <p className="text-muted-foreground">Keep track of items you're interested in purchasing</p>
+          <p className="text-muted-foreground">
+            Keep track of items you're interested in purchasing
+          </p>
         </div>
 
         <div className="text-center py-12">
           <Heart className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
           <h3 className="text-xl font-medium mb-2">No favorites yet</h3>
           <p className="text-muted-foreground mb-6">
-            Start browsing and add items to your favorites by clicking the heart icon
+            Start browsing and add items to your favorites by clicking the heart
+            icon
           </p>
           <Button asChild>
             <Link to="/browse">
@@ -130,7 +137,8 @@ export default function Favorites() {
           My Favorites
         </h1>
         <p className="text-muted-foreground">
-          You have {favoriteItems.length} item{favoriteItems.length !== 1 ? 's' : ''} in your favorites
+          You have {favoriteItems.length} item
+          {favoriteItems.length !== 1 ? "s" : ""} in your favorites
         </p>
       </div>
 
@@ -141,9 +149,13 @@ export default function Favorites() {
             <Link to={`/item/${item.id}`}>
               <CardHeader className="pb-3">
                 <div className="aspect-[4/3] bg-gradient-to-br from-gray-50 to-gray-100 rounded-md mb-3 flex items-center justify-center">
-                  <span className="text-4xl">{getCategoryIcon(item.category)}</span>
+                  <span className="text-4xl">
+                    {getCategoryIcon(item.category)}
+                  </span>
                 </div>
-                <CardTitle className="text-lg line-clamp-2">{item.title}</CardTitle>
+                <CardTitle className="text-lg line-clamp-2">
+                  {item.title}
+                </CardTitle>
                 <CardDescription className="flex items-center gap-2">
                   <Badge variant="outline">{item.category}</Badge>
                   {item.author && <span>by {item.author}</span>}
@@ -155,8 +167,12 @@ export default function Favorites() {
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <span className="text-2xl font-bold text-green-600">${item.price}</span>
-                    <span className="text-sm text-muted-foreground line-through">${item.originalPrice}</span>
+                    <span className="text-2xl font-bold text-green-600">
+                      ${item.price}
+                    </span>
+                    <span className="text-sm text-muted-foreground line-through">
+                      ${item.originalPrice}
+                    </span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Badge variant="secondary">{item.condition}</Badge>
@@ -170,11 +186,13 @@ export default function Favorites() {
                         toggleFavorite(item.id);
                       }}
                     >
-                      <Heart className={`w-4 h-4 ${isFavorite(item.id) ? 'fill-red-500 text-red-500' : ''}`} />
+                      <Heart
+                        className={`w-4 h-4 ${isFavorite(item.id) ? "fill-red-500 text-red-500" : ""}`}
+                      />
                     </Button>
                   </div>
                 </div>
-                
+
                 <div className="space-y-1 text-sm text-muted-foreground">
                   <div className="flex items-center gap-1">
                     <User className="w-3 h-3" />
@@ -206,14 +224,10 @@ export default function Favorites() {
             </Link>
           </Button>
           <Button variant="outline" asChild>
-            <Link to="/categories/textbooks">
-              📚 Textbooks
-            </Link>
+            <Link to="/categories/textbooks">📚 Textbooks</Link>
           </Button>
           <Button variant="outline" asChild>
-            <Link to="/categories/electronics">
-              💻 Electronics
-            </Link>
+            <Link to="/categories/electronics">💻 Electronics</Link>
           </Button>
         </div>
       </div>

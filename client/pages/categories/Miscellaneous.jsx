@@ -1,12 +1,36 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Search, Filter, Grid, List, Package, DollarSign, User, MapPin, Tag, Star, Heart } from "lucide-react";
+import {
+  Search,
+  Filter,
+  Grid,
+  List,
+  Package,
+  DollarSign,
+  User,
+  MapPin,
+  Tag,
+  Star,
+  Heart,
+} from "lucide-react";
 import { useFavorites } from "../../contexts/FavoritesContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const mockMiscellaneous = [
   {
@@ -19,7 +43,7 @@ const mockMiscellaneous = [
     seller: "Taylor H.",
     location: "Residence Hall A",
     description: "Compact refrigerator, 2.7 cu ft",
-    image: "/placeholder.svg"
+    image: "/placeholder.svg",
   },
   {
     id: 2,
@@ -31,7 +55,7 @@ const mockMiscellaneous = [
     seller: "Amy R.",
     location: "Art Building",
     description: "Paints, brushes, canvases included",
-    image: "/placeholder.svg"
+    image: "/placeholder.svg",
   },
   {
     id: 3,
@@ -43,8 +67,8 @@ const mockMiscellaneous = [
     seller: "Green Thumb Tim",
     location: "Campus Gardens",
     description: "Low-maintenance indoor plants",
-    image: "/placeholder.svg"
-  }
+    image: "/placeholder.svg",
+  },
 ];
 
 export default function Miscellaneous() {
@@ -53,10 +77,11 @@ export default function Miscellaneous() {
   const [sortBy, setSortBy] = useState("price-low");
   const { isFavorite, toggleFavorite } = useFavorites();
 
-  const filteredItems = mockMiscellaneous.filter(item =>
-    item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    item.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    item.description.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredItems = mockMiscellaneous.filter(
+    (item) =>
+      item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.description.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
   return (
@@ -67,7 +92,9 @@ export default function Miscellaneous() {
           <Package className="w-8 h-8 text-gray-600" />
           Miscellaneous
         </h1>
-        <p className="text-muted-foreground">Find unique items and everything else you might need</p>
+        <p className="text-muted-foreground">
+          Find unique items and everything else you might need
+        </p>
       </div>
 
       {/* Search and Filters */}
@@ -122,10 +149,13 @@ export default function Miscellaneous() {
       </div>
 
       {/* Results */}
-      <div className={viewMode === "grid"
-        ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        : "space-y-4"
-      }>
+      <div
+        className={
+          viewMode === "grid"
+            ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            : "space-y-4"
+        }
+      >
         {filteredItems.map((item) => (
           <div key={item.id}>
             {viewMode === "grid" ? (
@@ -135,7 +165,9 @@ export default function Miscellaneous() {
                     <div className="aspect-[4/3] bg-gradient-to-br from-gray-50 to-gray-100 rounded-md mb-3 flex items-center justify-center">
                       <Package className="w-12 h-12 text-gray-400" />
                     </div>
-                    <CardTitle className="text-lg line-clamp-2">{item.title}</CardTitle>
+                    <CardTitle className="text-lg line-clamp-2">
+                      {item.title}
+                    </CardTitle>
                     <CardDescription>{item.category}</CardDescription>
                   </CardHeader>
                 </Link>
@@ -143,8 +175,12 @@ export default function Miscellaneous() {
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <span className="text-2xl font-bold text-green-600">${item.price}</span>
-                        <span className="text-sm text-muted-foreground line-through">${item.originalPrice}</span>
+                        <span className="text-2xl font-bold text-green-600">
+                          ${item.price}
+                        </span>
+                        <span className="text-sm text-muted-foreground line-through">
+                          ${item.originalPrice}
+                        </span>
                       </div>
                       <div className="flex items-center gap-2">
                         <Badge variant="secondary">{item.condition}</Badge>
@@ -158,7 +194,9 @@ export default function Miscellaneous() {
                             toggleFavorite(item.id);
                           }}
                         >
-                          <Heart className={`w-4 h-4 ${isFavorite(item.id) ? 'fill-red-500 text-red-500' : ''}`} />
+                          <Heart
+                            className={`w-4 h-4 ${isFavorite(item.id) ? "fill-red-500 text-red-500" : ""}`}
+                          />
                         </Button>
                       </div>
                     </div>
@@ -199,12 +237,18 @@ export default function Miscellaneous() {
                           <h3 className="font-semibold text-foreground hover:text-primary transition-colors line-clamp-1">
                             {item.title}
                           </h3>
-                          <p className="text-sm text-muted-foreground">{item.category}</p>
+                          <p className="text-sm text-muted-foreground">
+                            {item.category}
+                          </p>
                         </Link>
                         <div className="flex items-center space-x-2 ml-4">
                           <div className="text-right">
-                            <span className="text-lg font-bold text-green-600">${item.price}</span>
-                            <span className="text-sm text-muted-foreground line-through ml-1">${item.originalPrice}</span>
+                            <span className="text-lg font-bold text-green-600">
+                              ${item.price}
+                            </span>
+                            <span className="text-sm text-muted-foreground line-through ml-1">
+                              ${item.originalPrice}
+                            </span>
                           </div>
                           <Button
                             variant="outline"
@@ -216,7 +260,9 @@ export default function Miscellaneous() {
                               toggleFavorite(item.id);
                             }}
                           >
-                            <Heart className={`w-4 h-4 ${isFavorite(item.id) ? 'fill-red-500 text-red-500' : ''}`} />
+                            <Heart
+                              className={`w-4 h-4 ${isFavorite(item.id) ? "fill-red-500 text-red-500" : ""}`}
+                            />
                           </Button>
                         </div>
                       </div>
@@ -247,7 +293,9 @@ export default function Miscellaneous() {
         <div className="text-center py-12">
           <Package className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
           <h3 className="text-lg font-medium mb-2">No items found</h3>
-          <p className="text-muted-foreground">Try adjusting your search or check back later for new listings.</p>
+          <p className="text-muted-foreground">
+            Try adjusting your search or check back later for new listings.
+          </p>
         </div>
       )}
     </div>

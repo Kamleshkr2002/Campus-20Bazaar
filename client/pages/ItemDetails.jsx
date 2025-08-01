@@ -1,13 +1,33 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useFavorites } from "../contexts/FavoritesContext";
-import { 
-  ArrowLeft, Heart, Share2, MapPin, Calendar, User, MessageCircle, 
-  Shield, Star, ChevronLeft, ChevronRight, Package, Truck, CreditCard,
-  AlertTriangle, Eye, Clock
+import {
+  ArrowLeft,
+  Heart,
+  Share2,
+  MapPin,
+  Calendar,
+  User,
+  MessageCircle,
+  Shield,
+  Star,
+  ChevronLeft,
+  ChevronRight,
+  Package,
+  Truck,
+  CreditCard,
+  AlertTriangle,
+  Eye,
+  Clock,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -22,14 +42,15 @@ const mockItems = {
     originalPrice: 1199,
     condition: "Excellent",
     category: "Electronics",
-    description: "Barely used MacBook Air M2 with original box and charger. Perfect for students! Only 3 months old, selling due to upgrade. Includes original packaging, charger, and documentation.",
+    description:
+      "Barely used MacBook Air M2 with original box and charger. Perfect for students! Only 3 months old, selling due to upgrade. Includes original packaging, charger, and documentation.",
     specifications: {
-      "Processor": "Apple M2 Chip",
-      "Memory": "8GB Unified Memory",
-      "Storage": "256GB SSD",
-      "Display": "13.6-inch Liquid Retina",
-      "Battery": "Up to 18 hours",
-      "Color": "Midnight"
+      Processor: "Apple M2 Chip",
+      Memory: "8GB Unified Memory",
+      Storage: "256GB SSD",
+      Display: "13.6-inch Liquid Retina",
+      Battery: "Up to 18 hours",
+      Color: "Midnight",
     },
     images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     seller: {
@@ -39,7 +60,7 @@ const mockItems = {
       reviews: 23,
       responseTime: "Usually responds within 1 hour",
       memberSince: "September 2023",
-      verified: true
+      verified: true,
     },
     location: "East Campus, Building C",
     postedDate: "2024-01-15",
@@ -47,7 +68,7 @@ const mockItems = {
     interested: 8,
     pickupOptions: ["Campus pickup", "Meet in person"],
     paymentMethods: ["Cash", "Venmo", "PayPal"],
-    tags: ["laptop", "apple", "macbook", "student", "electronics"]
+    tags: ["laptop", "apple", "macbook", "student", "electronics"],
   },
   2: {
     id: 2,
@@ -56,14 +77,15 @@ const mockItems = {
     originalPrice: 120,
     condition: "Good",
     category: "Textbooks",
-    description: "Used for MATH 141. Some highlighting and notes in margins, but all pages intact. Great condition overall. Perfect for studying calculus!",
+    description:
+      "Used for MATH 141. Some highlighting and notes in margins, but all pages intact. Great condition overall. Perfect for studying calculus!",
     specifications: {
-      "Author": "James Stewart",
-      "Edition": "8th Edition",
-      "ISBN": "978-1285741550",
-      "Publisher": "Cengage Learning",
-      "Pages": "1368",
-      "Course": "MATH 141"
+      Author: "James Stewart",
+      Edition: "8th Edition",
+      ISBN: "978-1285741550",
+      Publisher: "Cengage Learning",
+      Pages: "1368",
+      Course: "MATH 141",
     },
     images: ["/placeholder.svg", "/placeholder.svg"],
     seller: {
@@ -73,7 +95,7 @@ const mockItems = {
       reviews: 15,
       responseTime: "Usually responds within 2 hours",
       memberSince: "August 2023",
-      verified: true
+      verified: true,
     },
     location: "North Campus Library",
     postedDate: "2024-01-12",
@@ -81,7 +103,7 @@ const mockItems = {
     interested: 5,
     pickupOptions: ["Campus pickup", "Library meetup"],
     paymentMethods: ["Cash", "Venmo"],
-    tags: ["textbook", "calculus", "math", "stewart", "education"]
+    tags: ["textbook", "calculus", "math", "stewart", "education"],
   },
   3: {
     id: 3,
@@ -90,16 +112,22 @@ const mockItems = {
     originalPrice: 179,
     condition: "Good",
     category: "Furniture",
-    description: "Solid wood bed frame in good condition. Easy to disassemble for transport. Some minor scratches but very stable and comfortable.",
+    description:
+      "Solid wood bed frame in good condition. Easy to disassemble for transport. Some minor scratches but very stable and comfortable.",
     specifications: {
-      "Size": "Queen (160x200 cm)",
-      "Material": "Oak veneer",
-      "Height": "97 cm",
-      "Assembly": "Required",
-      "Mattress": "Not included",
-      "Color": "Oak effect"
+      Size: "Queen (160x200 cm)",
+      Material: "Oak veneer",
+      Height: "97 cm",
+      Assembly: "Required",
+      Mattress: "Not included",
+      Color: "Oak effect",
     },
-    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
+    images: [
+      "/placeholder.svg",
+      "/placeholder.svg",
+      "/placeholder.svg",
+      "/placeholder.svg",
+    ],
     seller: {
       name: "Rachel Kim",
       avatar: "/placeholder.svg",
@@ -107,7 +135,7 @@ const mockItems = {
       reviews: 12,
       responseTime: "Usually responds within 3 hours",
       memberSince: "October 2023",
-      verified: true
+      verified: true,
     },
     location: "North Campus, Residence Hall A",
     postedDate: "2024-01-10",
@@ -115,7 +143,7 @@ const mockItems = {
     interested: 12,
     pickupOptions: ["Pickup required", "Help with disassembly"],
     paymentMethods: ["Cash", "Venmo", "PayPal"],
-    tags: ["furniture", "bed", "ikea", "queen", "bedroom"]
+    tags: ["furniture", "bed", "ikea", "queen", "bedroom"],
   },
   4: {
     id: 4,
@@ -124,14 +152,15 @@ const mockItems = {
     originalPrice: 799,
     condition: "Good",
     category: "Electronics",
-    description: "iPad Pro with Apple Pencil support. Great for digital notes and creative work. Includes original charger and protective case.",
+    description:
+      "iPad Pro with Apple Pencil support. Great for digital notes and creative work. Includes original charger and protective case.",
     specifications: {
-      "Display": "11-inch Liquid Retina",
-      "Storage": "128GB",
-      "Connectivity": "WiFi + Cellular",
-      "Processor": "M1 Chip",
-      "Color": "Space Gray",
-      "Year": "2022"
+      Display: "11-inch Liquid Retina",
+      Storage: "128GB",
+      Connectivity: "WiFi + Cellular",
+      Processor: "M1 Chip",
+      Color: "Space Gray",
+      Year: "2022",
     },
     images: ["/placeholder.svg", "/placeholder.svg"],
     seller: {
@@ -141,7 +170,7 @@ const mockItems = {
       reviews: 18,
       responseTime: "Usually responds within 2 hours",
       memberSince: "November 2023",
-      verified: true
+      verified: true,
     },
     location: "North Campus, Dorm B",
     postedDate: "2024-01-14",
@@ -149,7 +178,7 @@ const mockItems = {
     interested: 6,
     pickupOptions: ["Campus pickup", "Meet at library"],
     paymentMethods: ["Cash", "Venmo"],
-    tags: ["tablet", "apple", "ipad", "electronics", "student"]
+    tags: ["tablet", "apple", "ipad", "electronics", "student"],
   },
   5: {
     id: 5,
@@ -158,14 +187,15 @@ const mockItems = {
     originalPrice: 45,
     condition: "Like New",
     category: "Electronics",
-    description: "Multi-port USB-C hub with HDMI, USB 3.0, and SD card slots. Perfect for laptops and tablets.",
+    description:
+      "Multi-port USB-C hub with HDMI, USB 3.0, and SD card slots. Perfect for laptops and tablets.",
     specifications: {
-      "Ports": "7 ports total",
-      "HDMI": "4K@30Hz support",
-      "USB": "3 x USB 3.0 ports",
+      Ports: "7 ports total",
+      HDMI: "4K@30Hz support",
+      USB: "3 x USB 3.0 ports",
       "SD Card": "SD/microSD slots",
-      "Power": "100W pass-through",
-      "Compatibility": "MacBook, iPad Pro, PC"
+      Power: "100W pass-through",
+      Compatibility: "MacBook, iPad Pro, PC",
     },
     images: ["/placeholder.svg"],
     seller: {
@@ -175,7 +205,7 @@ const mockItems = {
       reviews: 25,
       responseTime: "Usually responds within 1 hour",
       memberSince: "August 2023",
-      verified: true
+      verified: true,
     },
     location: "Engineering Building",
     postedDate: "2024-01-13",
@@ -183,7 +213,7 @@ const mockItems = {
     interested: 4,
     pickupOptions: ["Campus pickup", "Engineering building"],
     paymentMethods: ["Cash", "Venmo", "PayPal"],
-    tags: ["usb", "hub", "adapter", "electronics", "laptop"]
+    tags: ["usb", "hub", "adapter", "electronics", "laptop"],
   },
   6: {
     id: 6,
@@ -192,14 +222,15 @@ const mockItems = {
     originalPrice: 60,
     condition: "Excellent",
     category: "Electronics",
-    description: "Ergonomic aluminum laptop stand. Adjustable height and angle for better posture during long study sessions.",
+    description:
+      "Ergonomic aluminum laptop stand. Adjustable height and angle for better posture during long study sessions.",
     specifications: {
-      "Material": "Aluminum alloy",
-      "Compatibility": "11-17 inch laptops",
-      "Adjustable": "Height and angle",
-      "Weight": "1.2 lbs",
-      "Color": "Silver",
-      "Foldable": "Yes"
+      Material: "Aluminum alloy",
+      Compatibility: "11-17 inch laptops",
+      Adjustable: "Height and angle",
+      Weight: "1.2 lbs",
+      Color: "Silver",
+      Foldable: "Yes",
     },
     images: ["/placeholder.svg", "/placeholder.svg"],
     seller: {
@@ -209,7 +240,7 @@ const mockItems = {
       reviews: 12,
       responseTime: "Usually responds within 3 hours",
       memberSince: "September 2023",
-      verified: true
+      verified: true,
     },
     location: "Library Study Area",
     postedDate: "2024-01-11",
@@ -217,14 +248,19 @@ const mockItems = {
     interested: 3,
     pickupOptions: ["Campus pickup", "Library meetup"],
     paymentMethods: ["Cash", "Venmo"],
-    tags: ["laptop", "stand", "ergonomic", "study", "aluminum"]
-  }
+    tags: ["laptop", "stand", "ergonomic", "study", "aluminum"],
+  },
 };
 
 const relatedItems = [
   { id: 4, title: "iPad Pro 11-inch", price: 450, image: "/placeholder.svg" },
   { id: 5, title: "USB-C Hub 7-in-1", price: 25, image: "/placeholder.svg" },
-  { id: 6, title: "Adjustable Laptop Stand", price: 35, image: "/placeholder.svg" }
+  {
+    id: 6,
+    title: "Adjustable Laptop Stand",
+    price: 35,
+    image: "/placeholder.svg",
+  },
 ];
 
 export default function ItemDetails() {
@@ -236,22 +272,22 @@ export default function ItemDetails() {
   const itemId = parseInt(id) || item.id;
 
   const nextImage = () => {
-    setCurrentImageIndex((prev) => 
-      prev === item.images.length - 1 ? 0 : prev + 1
+    setCurrentImageIndex((prev) =>
+      prev === item.images.length - 1 ? 0 : prev + 1,
     );
   };
 
   const prevImage = () => {
-    setCurrentImageIndex((prev) => 
-      prev === 0 ? item.images.length - 1 : prev - 1
+    setCurrentImageIndex((prev) =>
+      prev === 0 ? item.images.length - 1 : prev - 1,
     );
   };
 
   const formatDate = (dateString) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
+    return new Date(dateString).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
     });
   };
 
@@ -272,8 +308,8 @@ export default function ItemDetails() {
         <div className="lg:col-span-2">
           <div className="relative">
             <div className="aspect-[4/3] bg-gray-100 rounded-lg overflow-hidden mb-4">
-              <img 
-                src={item.images[currentImageIndex]} 
+              <img
+                src={item.images[currentImageIndex]}
                 alt={item.title}
                 className="w-full h-full object-cover"
               />
@@ -298,7 +334,7 @@ export default function ItemDetails() {
                 </>
               )}
             </div>
-            
+
             {/* Thumbnail Gallery */}
             {item.images.length > 1 && (
               <div className="flex gap-2 overflow-x-auto">
@@ -307,10 +343,16 @@ export default function ItemDetails() {
                     key={index}
                     onClick={() => setCurrentImageIndex(index)}
                     className={`flex-shrink-0 w-20 h-20 rounded-md overflow-hidden border-2 ${
-                      index === currentImageIndex ? 'border-primary' : 'border-gray-200'
+                      index === currentImageIndex
+                        ? "border-primary"
+                        : "border-gray-200"
                     }`}
                   >
-                    <img src={image} alt={`${item.title} ${index + 1}`} className="w-full h-full object-cover" />
+                    <img
+                      src={image}
+                      alt={`${item.title} ${index + 1}`}
+                      className="w-full h-full object-cover"
+                    />
                   </button>
                 ))}
               </div>
@@ -325,7 +367,7 @@ export default function ItemDetails() {
                 <TabsTrigger value="specifications">Specs</TabsTrigger>
                 <TabsTrigger value="safety">Safety</TabsTrigger>
               </TabsList>
-              
+
               <TabsContent value="description" className="mt-6">
                 <Card>
                   <CardHeader>
@@ -348,7 +390,7 @@ export default function ItemDetails() {
                   </CardContent>
                 </Card>
               </TabsContent>
-              
+
               <TabsContent value="specifications" className="mt-6">
                 <Card>
                   <CardHeader>
@@ -356,17 +398,21 @@ export default function ItemDetails() {
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-3">
-                      {Object.entries(item.specifications).map(([key, value]) => (
-                        <div key={key} className="flex justify-between">
-                          <span className="font-medium">{key}:</span>
-                          <span className="text-muted-foreground">{value}</span>
-                        </div>
-                      ))}
+                      {Object.entries(item.specifications).map(
+                        ([key, value]) => (
+                          <div key={key} className="flex justify-between">
+                            <span className="font-medium">{key}:</span>
+                            <span className="text-muted-foreground">
+                              {value}
+                            </span>
+                          </div>
+                        ),
+                      )}
                     </div>
                   </CardContent>
                 </Card>
               </TabsContent>
-              
+
               <TabsContent value="safety" className="mt-6">
                 <Card>
                   <CardHeader>
@@ -381,21 +427,29 @@ export default function ItemDetails() {
                         <MapPin className="w-5 h-5 text-blue-600 mt-0.5" />
                         <div>
                           <h4 className="font-medium">Meet in Public</h4>
-                          <p className="text-sm text-muted-foreground">Always meet in well-lit, public areas on campus</p>
+                          <p className="text-sm text-muted-foreground">
+                            Always meet in well-lit, public areas on campus
+                          </p>
                         </div>
                       </div>
                       <div className="flex items-start gap-3">
                         <CreditCard className="w-5 h-5 text-green-600 mt-0.5" />
                         <div>
                           <h4 className="font-medium">Secure Payment</h4>
-                          <p className="text-sm text-muted-foreground">Use secure payment methods and avoid cash when possible</p>
+                          <p className="text-sm text-muted-foreground">
+                            Use secure payment methods and avoid cash when
+                            possible
+                          </p>
                         </div>
                       </div>
                       <div className="flex items-start gap-3">
                         <AlertTriangle className="w-5 h-5 text-orange-600 mt-0.5" />
                         <div>
                           <h4 className="font-medium">Trust Your Instincts</h4>
-                          <p className="text-sm text-muted-foreground">If something feels off, don't proceed with the transaction</p>
+                          <p className="text-sm text-muted-foreground">
+                            If something feels off, don't proceed with the
+                            transaction
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -414,8 +468,12 @@ export default function ItemDetails() {
               <div className="flex items-center justify-between">
                 <div>
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="text-3xl font-bold text-green-600">${item.price}</span>
-                    <span className="text-lg text-muted-foreground line-through">${item.originalPrice}</span>
+                    <span className="text-3xl font-bold text-green-600">
+                      ${item.price}
+                    </span>
+                    <span className="text-lg text-muted-foreground line-through">
+                      ${item.originalPrice}
+                    </span>
                   </div>
                   <Badge variant="secondary">{item.condition}</Badge>
                 </div>
@@ -424,7 +482,9 @@ export default function ItemDetails() {
                   size="icon"
                   onClick={() => toggleFavorite(itemId)}
                 >
-                  <Heart className={`w-4 h-4 ${isFavorite(itemId) ? 'fill-red-500 text-red-500' : ''}`} />
+                  <Heart
+                    className={`w-4 h-4 ${isFavorite(itemId) ? "fill-red-500 text-red-500" : ""}`}
+                  />
                 </Button>
               </div>
               <CardTitle className="text-xl">{item.title}</CardTitle>
@@ -460,13 +520,21 @@ export default function ItemDetails() {
               <div className="flex items-center gap-3 mb-4">
                 <Avatar>
                   <AvatarImage src={item.seller.avatar} />
-                  <AvatarFallback>{item.seller.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
+                  <AvatarFallback>
+                    {item.seller.name
+                      .split(" ")
+                      .map((n) => n[0])
+                      .join("")}
+                  </AvatarFallback>
                 </Avatar>
                 <div className="flex-1">
                   <div className="flex items-center gap-2">
                     <h3 className="font-medium">{item.seller.name}</h3>
                     {item.seller.verified && (
-                      <Badge variant="outline" className="text-green-600 border-green-600">
+                      <Badge
+                        variant="outline"
+                        className="text-green-600 border-green-600"
+                      >
                         <Shield className="w-3 h-3 mr-1" />
                         Verified
                       </Badge>
@@ -475,13 +543,15 @@ export default function ItemDetails() {
                   <div className="flex items-center gap-1">
                     <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                     <span className="text-sm">{item.seller.rating}</span>
-                    <span className="text-sm text-muted-foreground">({item.seller.reviews} reviews)</span>
+                    <span className="text-sm text-muted-foreground">
+                      ({item.seller.reviews} reviews)
+                    </span>
                   </div>
                 </div>
               </div>
-              
+
               <Separator className="my-4" />
-              
+
               <div className="space-y-2 text-sm">
                 <div className="flex items-center gap-2">
                   <Clock className="w-4 h-4 text-muted-foreground" />
@@ -515,28 +585,36 @@ export default function ItemDetails() {
               </div>
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Posted</span>
-                <span className="font-medium">{formatDate(item.postedDate)}</span>
+                <span className="font-medium">
+                  {formatDate(item.postedDate)}
+                </span>
               </div>
-              
+
               <Separator className="my-4" />
-              
+
               <div>
                 <h4 className="font-medium mb-2">Pickup Options</h4>
                 <div className="space-y-1">
                   {item.pickupOptions.map((option) => (
-                    <div key={option} className="flex items-center gap-2 text-sm">
+                    <div
+                      key={option}
+                      className="flex items-center gap-2 text-sm"
+                    >
                       <Truck className="w-3 h-3 text-muted-foreground" />
                       <span>{option}</span>
                     </div>
                   ))}
                 </div>
               </div>
-              
+
               <div>
                 <h4 className="font-medium mb-2">Payment Methods</h4>
                 <div className="space-y-1">
                   {item.paymentMethods.map((method) => (
-                    <div key={method} className="flex items-center gap-2 text-sm">
+                    <div
+                      key={method}
+                      className="flex items-center gap-2 text-sm"
+                    >
                       <CreditCard className="w-3 h-3 text-muted-foreground" />
                       <span>{method}</span>
                     </div>
@@ -553,11 +631,18 @@ export default function ItemDetails() {
         <h2 className="text-2xl font-bold mb-6">You might also like</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {relatedItems.map((relatedItem) => (
-            <Card key={relatedItem.id} className="hover:shadow-lg transition-shadow">
+            <Card
+              key={relatedItem.id}
+              className="hover:shadow-lg transition-shadow"
+            >
               <Link to={`/item/${relatedItem.id}`}>
                 <CardHeader className="pb-3">
                   <div className="aspect-[4/3] bg-gray-100 rounded-md mb-3 relative overflow-hidden">
-                    <img src={relatedItem.image} alt={relatedItem.title} className="w-full h-full object-cover rounded-md" />
+                    <img
+                      src={relatedItem.image}
+                      alt={relatedItem.title}
+                      className="w-full h-full object-cover rounded-md"
+                    />
                     <Button
                       variant="outline"
                       size="icon"
@@ -568,15 +653,21 @@ export default function ItemDetails() {
                         toggleFavorite(relatedItem.id);
                       }}
                     >
-                      <Heart className={`w-4 h-4 ${isFavorite(relatedItem.id) ? 'fill-red-500 text-red-500' : ''}`} />
+                      <Heart
+                        className={`w-4 h-4 ${isFavorite(relatedItem.id) ? "fill-red-500 text-red-500" : ""}`}
+                      />
                     </Button>
                   </div>
-                  <CardTitle className="text-lg line-clamp-2 hover:text-primary transition-colors">{relatedItem.title}</CardTitle>
+                  <CardTitle className="text-lg line-clamp-2 hover:text-primary transition-colors">
+                    {relatedItem.title}
+                  </CardTitle>
                 </CardHeader>
               </Link>
               <CardContent className="pt-0">
                 <div className="flex items-center justify-between">
-                  <span className="text-xl font-bold text-green-600">${relatedItem.price}</span>
+                  <span className="text-xl font-bold text-green-600">
+                    ${relatedItem.price}
+                  </span>
                   <Button variant="outline" size="sm" asChild>
                     <Link to={`/item/${relatedItem.id}`}>View Details</Link>
                   </Button>

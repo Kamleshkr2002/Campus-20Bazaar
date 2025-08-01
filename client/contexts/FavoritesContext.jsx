@@ -1,11 +1,11 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect } from "react";
 
 const FavoritesContext = createContext();
 
 export const useFavorites = () => {
   const context = useContext(FavoritesContext);
   if (!context) {
-    throw new Error('useFavorites must be used within a FavoritesProvider');
+    throw new Error("useFavorites must be used within a FavoritesProvider");
   }
   return context;
 };
@@ -13,17 +13,17 @@ export const useFavorites = () => {
 export const FavoritesProvider = ({ children }) => {
   const [favorites, setFavorites] = useState(() => {
     // Load favorites from localStorage on initialization
-    const savedFavorites = localStorage.getItem('campusmarket-favorites');
+    const savedFavorites = localStorage.getItem("campusmarket-favorites");
     return savedFavorites ? JSON.parse(savedFavorites) : [];
   });
 
   // Save favorites to localStorage whenever favorites change
   useEffect(() => {
-    localStorage.setItem('campusmarket-favorites', JSON.stringify(favorites));
+    localStorage.setItem("campusmarket-favorites", JSON.stringify(favorites));
   }, [favorites]);
 
   const addToFavorites = (itemId) => {
-    setFavorites(prev => {
+    setFavorites((prev) => {
       if (!prev.includes(itemId)) {
         return [...prev, itemId];
       }
@@ -32,7 +32,7 @@ export const FavoritesProvider = ({ children }) => {
   };
 
   const removeFromFavorites = (itemId) => {
-    setFavorites(prev => prev.filter(id => id !== itemId));
+    setFavorites((prev) => prev.filter((id) => id !== itemId));
   };
 
   const toggleFavorite = (itemId) => {
@@ -52,7 +52,7 @@ export const FavoritesProvider = ({ children }) => {
     addToFavorites,
     removeFromFavorites,
     toggleFavorite,
-    isFavorite
+    isFavorite,
   };
 
   return (

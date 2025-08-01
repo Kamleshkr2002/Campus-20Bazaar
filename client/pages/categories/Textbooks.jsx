@@ -1,12 +1,34 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Search, Filter, Grid, List, Book, DollarSign, User, MapPin, Heart } from "lucide-react";
+import {
+  Search,
+  Filter,
+  Grid,
+  List,
+  Book,
+  DollarSign,
+  User,
+  MapPin,
+  Heart,
+} from "lucide-react";
 import { useFavorites } from "../../contexts/FavoritesContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const mockTextbooks = [
   {
@@ -20,7 +42,7 @@ const mockTextbooks = [
     location: "North Campus",
     course: "MATH 141",
     edition: "8th Edition",
-    image: "/placeholder.svg"
+    image: "/placeholder.svg",
   },
   {
     id: 2,
@@ -33,7 +55,7 @@ const mockTextbooks = [
     location: "South Campus",
     course: "CHEM 241",
     edition: "7th Edition",
-    image: "/placeholder.svg"
+    image: "/placeholder.svg",
   },
   {
     id: 3,
@@ -46,8 +68,8 @@ const mockTextbooks = [
     location: "West Campus",
     course: "PSYC 100",
     edition: "11th Edition",
-    image: "/placeholder.svg"
-  }
+    image: "/placeholder.svg",
+  },
 ];
 
 export default function Textbooks() {
@@ -56,10 +78,11 @@ export default function Textbooks() {
   const [sortBy, setSortBy] = useState("price-low");
   const { isFavorite, toggleFavorite } = useFavorites();
 
-  const filteredBooks = mockTextbooks.filter(book =>
-    book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    book.author.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    book.course.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredBooks = mockTextbooks.filter(
+    (book) =>
+      book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      book.author.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      book.course.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
   return (
@@ -70,7 +93,9 @@ export default function Textbooks() {
           <Book className="w-8 h-8 text-blue-600" />
           Textbooks
         </h1>
-        <p className="text-muted-foreground">Find affordable textbooks for your courses</p>
+        <p className="text-muted-foreground">
+          Find affordable textbooks for your courses
+        </p>
       </div>
 
       {/* Search and Filters */}
@@ -125,10 +150,13 @@ export default function Textbooks() {
       </div>
 
       {/* Results */}
-      <div className={viewMode === "grid"
-        ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        : "space-y-4"
-      }>
+      <div
+        className={
+          viewMode === "grid"
+            ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            : "space-y-4"
+        }
+      >
         {filteredBooks.map((book) => (
           <div key={book.id}>
             {viewMode === "grid" ? (
@@ -138,7 +166,9 @@ export default function Textbooks() {
                     <div className="aspect-[3/4] bg-gray-100 rounded-md mb-3 flex items-center justify-center">
                       <Book className="w-12 h-12 text-gray-400" />
                     </div>
-                    <CardTitle className="text-lg line-clamp-2">{book.title}</CardTitle>
+                    <CardTitle className="text-lg line-clamp-2">
+                      {book.title}
+                    </CardTitle>
                     <CardDescription>by {book.author}</CardDescription>
                   </CardHeader>
                 </Link>
@@ -146,8 +176,12 @@ export default function Textbooks() {
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <span className="text-2xl font-bold text-green-600">${book.price}</span>
-                        <span className="text-sm text-muted-foreground line-through">${book.originalPrice}</span>
+                        <span className="text-2xl font-bold text-green-600">
+                          ${book.price}
+                        </span>
+                        <span className="text-sm text-muted-foreground line-through">
+                          ${book.originalPrice}
+                        </span>
                       </div>
                       <div className="flex items-center gap-2">
                         <Badge variant="secondary">{book.condition}</Badge>
@@ -161,7 +195,9 @@ export default function Textbooks() {
                             toggleFavorite(book.id);
                           }}
                         >
-                          <Heart className={`w-4 h-4 ${isFavorite(book.id) ? 'fill-red-500 text-red-500' : ''}`} />
+                          <Heart
+                            className={`w-4 h-4 ${isFavorite(book.id) ? "fill-red-500 text-red-500" : ""}`}
+                          />
                         </Button>
                       </div>
                     </div>
@@ -169,7 +205,9 @@ export default function Textbooks() {
                     <div className="space-y-1 text-sm text-muted-foreground">
                       <div className="flex items-center gap-1">
                         <Book className="w-3 h-3" />
-                        <span>{book.course} • {book.edition}</span>
+                        <span>
+                          {book.course} • {book.edition}
+                        </span>
                       </div>
                       <div className="flex items-center gap-1">
                         <User className="w-3 h-3" />
@@ -202,12 +240,18 @@ export default function Textbooks() {
                           <h3 className="font-semibold text-foreground hover:text-primary transition-colors line-clamp-1">
                             {book.title}
                           </h3>
-                          <p className="text-sm text-muted-foreground">by {book.author}</p>
+                          <p className="text-sm text-muted-foreground">
+                            by {book.author}
+                          </p>
                         </Link>
                         <div className="flex items-center space-x-2 ml-4">
                           <div className="text-right">
-                            <span className="text-lg font-bold text-green-600">${book.price}</span>
-                            <span className="text-sm text-muted-foreground line-through ml-1">${book.originalPrice}</span>
+                            <span className="text-lg font-bold text-green-600">
+                              ${book.price}
+                            </span>
+                            <span className="text-sm text-muted-foreground line-through ml-1">
+                              ${book.originalPrice}
+                            </span>
                           </div>
                           <Button
                             variant="outline"
@@ -219,13 +263,17 @@ export default function Textbooks() {
                               toggleFavorite(book.id);
                             }}
                           >
-                            <Heart className={`w-4 h-4 ${isFavorite(book.id) ? 'fill-red-500 text-red-500' : ''}`} />
+                            <Heart
+                              className={`w-4 h-4 ${isFavorite(book.id) ? "fill-red-500 text-red-500" : ""}`}
+                            />
                           </Button>
                         </div>
                       </div>
                       <div className="flex items-center gap-4 text-sm text-muted-foreground mb-2">
                         <Badge variant="secondary">{book.condition}</Badge>
-                        <span>{book.course} • {book.edition}</span>
+                        <span>
+                          {book.course} • {book.edition}
+                        </span>
                         <span>{book.seller}</span>
                       </div>
                       <div className="flex items-center justify-between text-sm text-muted-foreground">
@@ -250,7 +298,9 @@ export default function Textbooks() {
         <div className="text-center py-12">
           <Book className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
           <h3 className="text-lg font-medium mb-2">No textbooks found</h3>
-          <p className="text-muted-foreground">Try adjusting your search or check back later for new listings.</p>
+          <p className="text-muted-foreground">
+            Try adjusting your search or check back later for new listings.
+          </p>
         </div>
       )}
     </div>
