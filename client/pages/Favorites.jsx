@@ -227,12 +227,6 @@ export default function Favorites() {
               Browse All Items
             </Link>
           </Button>
-          <Button variant="outline" asChild>
-            <Link to="/categories/textbooks">📚 Textbooks</Link>
-          </Button>
-          <Button variant="outline" asChild>
-            <Link to="/categories/electronics">💻 Electronics</Link>
-          </Button>
         </div>
       </div>
     </div>
