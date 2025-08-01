@@ -506,7 +506,12 @@ export default function ItemDetails() {
                 <MessageCircle className="w-4 h-4 mr-2" />
                 Contact Seller
               </Button>
-              <Button variant="outline" size="lg" className="w-full">
+              <Button
+                variant="outline"
+                size="lg"
+                className="w-full"
+                onClick={() => setIsShareDialogOpen(true)}
+              >
                 <Share2 className="w-4 h-4 mr-2" />
                 Share Item
               </Button>
