@@ -158,18 +158,6 @@ export function ShareDialog({ isOpen, onClose, item }) {
             <h4 className="font-medium">Share via</h4>
             
             <div className="grid grid-cols-2 gap-3">
-              {/* Native Share (if supported) */}
-              {navigator.share && (
-                <Button
-                  variant="outline"
-                  onClick={shareNative}
-                  className="flex items-center gap-2 h-12"
-                >
-                  <Share2 className="w-4 h-4" />
-                  Share
-                </Button>
-              )}
-
               {/* Email */}
               <Button
                 variant="outline"
@@ -200,14 +188,14 @@ export function ShareDialog({ isOpen, onClose, item }) {
                 WhatsApp
               </Button>
 
-              {/* Twitter */}
+              {/* X (formerly Twitter) */}
               <Button
                 variant="outline"
                 onClick={shareViaTwitter}
                 className="flex items-center gap-2 h-12 text-blue-500 hover:text-blue-600"
               >
                 <Twitter className="w-4 h-4" />
-                Twitter
+                X
               </Button>
 
               {/* Facebook */}
