@@ -90,7 +90,7 @@ const items = [
 ];
 
 export default function Browse() {
-  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+  const [viewMode, setViewMode] = useState("grid");
   const [searchQuery, setSearchQuery] = useState("");
 
   return (
