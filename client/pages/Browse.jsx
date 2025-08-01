@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Search, Filter, Grid, List, Star, MapPin, Clock } from "lucide-react";
+import { Search, Filter, Grid, List, Star, MapPin, Clock, Heart } from "lucide-react";
+import { useFavorites } from "../contexts/FavoritesContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
