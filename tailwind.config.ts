@@ -57,6 +57,18 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        brand: {
+          purple: "hsl(240 95% 60%)",
+          "purple-light": "hsl(250 95% 75%)",
+          "purple-dark": "hsl(235 95% 45%)",
+          lavender: "hsl(270 100% 98%)",
+          "lavender-dark": "hsl(270 20% 95%)",
+        },
+        marketplace: {
+          primary: "hsl(var(--primary))",
+          secondary: "hsl(var(--secondary))",
+          accent: "hsl(var(--accent))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
