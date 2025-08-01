@@ -74,8 +74,8 @@ export function Navigation() {
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild className="rounded-lg hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-100 transition-all duration-200">
-                  <Link to="/categories/other" className="flex items-center px-3 py-2.5 text-sm font-medium">
-                    📦 Other
+                  <Link to="/categories/miscellaneous" className="flex items-center px-3 py-2.5 text-sm font-medium">
+                    📦 Miscellaneous
                   </Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
