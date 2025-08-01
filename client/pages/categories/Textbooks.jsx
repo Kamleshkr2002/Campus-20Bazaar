@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { Search, Filter, Grid, List, Book, DollarSign, User, MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Search, Filter, Grid, List, Book, DollarSign, User, MapPin, Heart } from "lucide-react";
+import { useFavorites } from "../../contexts/FavoritesContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
