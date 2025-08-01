@@ -135,7 +135,7 @@ export default function Index() {
                 className="group"
               >
                 <Card className="hover:shadow-lg transition-all duration-300 group-hover:-translate-y-1">
-                  <CardContent className="p-6 text-center">
+                  <CardContent className="p-4 lg:p-6 text-center">
                     <div className={`w-16 h-16 rounded-full ${category.color} flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform`}>
                       <category.icon className="w-8 h-8" />
                     </div>
