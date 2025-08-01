@@ -127,14 +127,16 @@ export default function Textbooks() {
       {/* Results */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredBooks.map((book) => (
-          <Card key={book.id} className="hover:shadow-lg transition-shadow cursor-pointer">
-            <CardHeader className="pb-3">
-              <div className="aspect-[3/4] bg-gray-100 rounded-md mb-3 flex items-center justify-center">
-                <Book className="w-12 h-12 text-gray-400" />
-              </div>
-              <CardTitle className="text-lg line-clamp-2">{book.title}</CardTitle>
-              <CardDescription>by {book.author}</CardDescription>
-            </CardHeader>
+          <Card key={book.id} className="hover:shadow-lg transition-shadow">
+            <Link to={`/item/${book.id}`}>
+              <CardHeader className="pb-3">
+                <div className="aspect-[3/4] bg-gray-100 rounded-md mb-3 flex items-center justify-center">
+                  <Book className="w-12 h-12 text-gray-400" />
+                </div>
+                <CardTitle className="text-lg line-clamp-2">{book.title}</CardTitle>
+                <CardDescription>by {book.author}</CardDescription>
+              </CardHeader>
+            </Link>
             <CardContent className="pt-0">
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
@@ -142,9 +144,23 @@ export default function Textbooks() {
                     <span className="text-2xl font-bold text-green-600">${book.price}</span>
                     <span className="text-sm text-muted-foreground line-through">${book.originalPrice}</span>
                   </div>
-                  <Badge variant="secondary">{book.condition}</Badge>
+                  <div className="flex items-center gap-2">
+                    <Badge variant="secondary">{book.condition}</Badge>
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      className="h-8 w-8"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        toggleFavorite(book.id);
+                      }}
+                    >
+                      <Heart className={`w-4 h-4 ${isFavorite(book.id) ? 'fill-red-500 text-red-500' : ''}`} />
+                    </Button>
+                  </div>
                 </div>
-                
+
                 <div className="space-y-1 text-sm text-muted-foreground">
                   <div className="flex items-center gap-1">
                     <Book className="w-3 h-3" />
@@ -160,8 +176,8 @@ export default function Textbooks() {
                   </div>
                 </div>
 
-                <Button className="w-full mt-4">
-                  View Details
+                <Button className="w-full mt-4" asChild>
+                  <Link to={`/item/${book.id}`}>View Details</Link>
                 </Button>
               </div>
             </CardContent>
