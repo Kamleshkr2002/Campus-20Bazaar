@@ -5,6 +5,7 @@ import { createRoot } from "react-dom/client";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { FavoritesProvider } from "./contexts/FavoritesContext";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import Index from "./pages/Index";
