@@ -139,9 +139,9 @@ export default function Index() {
                 <Input
                   type="text"
                   placeholder="Search for textbooks, laptops, furniture..."
-                  className="pl-12 pr-4 py-4 text-lg bg-white/80 backdrop-blur-sm border-0 shadow-lg focus-visible:ring-2 focus-visible:ring-primary"
+                  className="pl-12 pr-24 py-4 text-lg bg-white/80 backdrop-blur-sm border-0 shadow-lg focus-visible:ring-2 focus-visible:ring-primary"
                 />
-                <Button className="absolute right-2 top-2 bg-brand-purple hover:bg-brand-purple-dark">
+                <Button className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-brand-purple hover:bg-brand-purple-dark">
                   Search
                 </Button>
               </div>
