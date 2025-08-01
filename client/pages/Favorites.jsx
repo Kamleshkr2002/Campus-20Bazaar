@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Heart, Search, User, MapPin, Package } from "lucide-react";
+import { Heart, Search, User, MapPin, Package, Share2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
