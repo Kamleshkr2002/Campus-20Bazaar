@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import { useFavorites } from "../contexts/FavoritesContext";
 import { 
   ArrowLeft, Heart, Share2, MapPin, Calendar, User, MessageCircle, 
   Shield, Star, ChevronLeft, ChevronRight, Package, Truck, CreditCard,
