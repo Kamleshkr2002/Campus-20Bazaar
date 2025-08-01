@@ -122,13 +122,53 @@ export function Navigation() {
               >
                 Browse Items
               </Link>
-              <Link
-                to="/categories"
-                className="text-foreground hover:text-primary transition-colors py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Categories
-              </Link>
+              <div className="space-y-2">
+                <div className="text-foreground font-medium py-2">Categories</div>
+                <div className="pl-4 space-y-2">
+                  <Link
+                    to="/categories/textbooks"
+                    className="block text-foreground hover:text-primary transition-colors py-1"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Textbooks
+                  </Link>
+                  <Link
+                    to="/categories/electronics"
+                    className="block text-foreground hover:text-primary transition-colors py-1"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Electronics
+                  </Link>
+                  <Link
+                    to="/categories/furniture"
+                    className="block text-foreground hover:text-primary transition-colors py-1"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Furniture
+                  </Link>
+                  <Link
+                    to="/categories/clothing"
+                    className="block text-foreground hover:text-primary transition-colors py-1"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Clothing
+                  </Link>
+                  <Link
+                    to="/categories/sports"
+                    className="block text-foreground hover:text-primary transition-colors py-1"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Sports & Recreation
+                  </Link>
+                  <Link
+                    to="/categories/other"
+                    className="block text-foreground hover:text-primary transition-colors py-1"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Other
+                  </Link>
+                </div>
+              </div>
               <Link
                 to="/favorites"
                 className="text-foreground hover:text-primary transition-colors py-2"
