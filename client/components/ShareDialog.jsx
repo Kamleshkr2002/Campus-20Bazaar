@@ -192,9 +192,9 @@ export function ShareDialog({ isOpen, onClose, item }) {
               <Button
                 variant="outline"
                 onClick={shareViaTwitter}
-                className="flex items-center gap-2 h-12 text-blue-500 hover:text-blue-600"
+                className="flex items-center gap-2 h-12 text-black hover:text-gray-800"
               >
-                <Twitter className="w-4 h-4" />
+                <XIcon className="w-4 h-4" />
                 X
               </Button>
 
