@@ -2,12 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowLeft, Construction } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-interface PlaceholderPageProps {
-  title: string;
-  description: string;
-}
-
-export default function PlaceholderPage({ title, description }: PlaceholderPageProps) {
+export default function PlaceholderPage({ title, description }) {
   return (
     <div className="min-h-[60vh] flex items-center justify-center">
       <div className="text-center max-w-md mx-auto px-4">
