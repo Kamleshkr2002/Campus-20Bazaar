@@ -684,6 +684,13 @@ export default function ItemDetails() {
           ))}
         </div>
       </div>
+
+      {/* Share Dialog */}
+      <ShareDialog
+        isOpen={isShareDialogOpen}
+        onClose={() => setIsShareDialogOpen(false)}
+        item={item}
+      />
     </div>
   );
 }
