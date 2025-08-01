@@ -11,6 +11,7 @@ import Index from "./pages/Index";
 import Browse from "./pages/Browse";
 import PlaceholderPage from "./pages/PlaceholderPage";
 import NotFound from "./pages/NotFound";
+import ItemDetails from "./pages/ItemDetails";
 import Textbooks from "./pages/categories/Textbooks";
 import Electronics from "./pages/categories/Electronics";
 import Furniture from "./pages/categories/Furniture";
