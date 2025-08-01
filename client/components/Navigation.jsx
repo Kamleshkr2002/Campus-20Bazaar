@@ -43,28 +43,40 @@ export function Navigation() {
               Browse
             </Link>
             <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center text-foreground hover:text-primary transition-colors">
+              <DropdownMenuTrigger className="flex items-center text-foreground hover:text-primary transition-all duration-200 px-3 py-2 rounded-lg hover:bg-secondary/50 focus:outline-none focus:ring-2 focus:ring-primary/20">
                 Categories
-                <ChevronDown className="w-4 h-4 ml-1" />
+                <ChevronDown className="w-4 h-4 ml-1 transition-transform duration-200 group-data-[state=open]:rotate-180" />
               </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuItem asChild>
-                  <Link to="/categories/textbooks">Textbooks</Link>
+              <DropdownMenuContent className="w-56 p-2 bg-white/95 backdrop-blur-md border-0 shadow-xl rounded-xl">
+                <DropdownMenuItem asChild className="rounded-lg hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 transition-all duration-200">
+                  <Link to="/categories/textbooks" className="flex items-center px-3 py-2.5 text-sm font-medium">
+                    📚 Textbooks
+                  </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/categories/electronics">Electronics</Link>
+                <DropdownMenuItem asChild className="rounded-lg hover:bg-gradient-to-r hover:from-purple-50 hover:to-purple-100 transition-all duration-200">
+                  <Link to="/categories/electronics" className="flex items-center px-3 py-2.5 text-sm font-medium">
+                    💻 Electronics
+                  </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/categories/furniture">Furniture</Link>
+                <DropdownMenuItem asChild className="rounded-lg hover:bg-gradient-to-r hover:from-green-50 hover:to-green-100 transition-all duration-200">
+                  <Link to="/categories/furniture" className="flex items-center px-3 py-2.5 text-sm font-medium">
+                    🪑 Furniture
+                  </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/categories/clothing">Clothing</Link>
+                <DropdownMenuItem asChild className="rounded-lg hover:bg-gradient-to-r hover:from-pink-50 hover:to-pink-100 transition-all duration-200">
+                  <Link to="/categories/clothing" className="flex items-center px-3 py-2.5 text-sm font-medium">
+                    👕 Clothing
+                  </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/categories/sports">Sports & Recreation</Link>
+                <DropdownMenuItem asChild className="rounded-lg hover:bg-gradient-to-r hover:from-orange-50 hover:to-orange-100 transition-all duration-200">
+                  <Link to="/categories/sports" className="flex items-center px-3 py-2.5 text-sm font-medium">
+                    ⚽ Sports & Recreation
+                  </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/categories/other">Other</Link>
+                <DropdownMenuItem asChild className="rounded-lg hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-100 transition-all duration-200">
+                  <Link to="/categories/other" className="flex items-center px-3 py-2.5 text-sm font-medium">
+                    📦 Other
+                  </Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
