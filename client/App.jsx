@@ -40,7 +40,7 @@ const App = () => (
             <Route path="/categories/sports" element={<Sports />} />
             <Route path="/categories/miscellaneous" element={<Miscellaneous />} />
             <Route path="/categories/:category" element={<PlaceholderPage title="Category Items" description="Browse items in this specific category." />} />
-            <Route path="/item/:id" element={<PlaceholderPage title="Item Details" description="View detailed information about this item and contact the seller." />} />
+            <Route path="/item/:id" element={<ItemDetails />} />
             <Route path="/sell" element={<PlaceholderPage title="Sell Your Item" description="List your item for sale and reach thousands of students on campus." />} />
             <Route path="/profile" element={<PlaceholderPage title="My Profile" description="Manage your account, listings, and selling history." />} />
             <Route path="/favorites" element={<PlaceholderPage title="My Favorites" description="Keep track of items you're interested in purchasing." />} />
