@@ -42,9 +42,32 @@ export function Navigation() {
             <Link to="/browse" className="text-foreground hover:text-primary transition-colors">
               Browse
             </Link>
-            <Link to="/categories" className="text-foreground hover:text-primary transition-colors">
-              Categories
-            </Link>
+            <DropdownMenu>
+              <DropdownMenuTrigger className="flex items-center text-foreground hover:text-primary transition-colors">
+                Categories
+                <ChevronDown className="w-4 h-4 ml-1" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem asChild>
+                  <Link to="/categories/textbooks">Textbooks</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/categories/electronics">Electronics</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/categories/furniture">Furniture</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/categories/clothing">Clothing</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/categories/sports">Sports & Recreation</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/categories/other">Other</Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
             <Button asChild className="bg-brand-purple hover:bg-brand-purple-dark">
               <Link to="/sell">
                 <Plus className="w-4 h-4 mr-1" />
