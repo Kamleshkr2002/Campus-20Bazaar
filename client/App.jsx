@@ -64,15 +64,7 @@ const App = () => (
                 }
               />
               <Route path="/item/:id" element={<ItemDetails />} />
-              <Route
-                path="/sell"
-                element={
-                  <PlaceholderPage
-                    title="Sell Your Item"
-                    description="List your item for sale and reach thousands of students on campus."
-                  />
-                }
-              />
+              <Route path="/sell" element={<Sell />} />
               <Route
                 path="/profile"
                 element={
