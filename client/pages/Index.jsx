@@ -116,6 +116,7 @@ const categories = [
 ];
 
 export default function Index() {
+  const { isFavorite, toggleFavorite } = useFavorites();
   return (
     <div className="min-h-screen flex flex-col">
       {/* Hero Section */}
