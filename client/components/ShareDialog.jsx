@@ -5,12 +5,12 @@ import {
   Mail,
   MessageCircle,
   Facebook,
-  Twitter,
   Instagram,
   Check,
   QrCode,
   Link as LinkIcon,
 } from "lucide-react";
+import { XIcon } from "./XIcon";
 import {
   Dialog,
   DialogContent,
