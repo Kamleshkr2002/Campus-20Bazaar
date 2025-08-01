@@ -46,7 +46,7 @@ const App = () => (
             <Route path="/item/:id" element={<ItemDetails />} />
             <Route path="/sell" element={<PlaceholderPage title="Sell Your Item" description="List your item for sale and reach thousands of students on campus." />} />
             <Route path="/profile" element={<PlaceholderPage title="My Profile" description="Manage your account, listings, and selling history." />} />
-            <Route path="/favorites" element={<PlaceholderPage title="My Favorites" description="Keep track of items you're interested in purchasing." />} />
+            <Route path="/favorites" element={<Favorites />} />
             <Route path="/how-it-works" element={<PlaceholderPage title="How It Works" description="Learn how to safely buy and sell items on CampusMarket." />} />
             <Route path="/help" element={<PlaceholderPage title="Help Center" description="Find answers to frequently asked questions and get support." />} />
             <Route path="/safety" element={<PlaceholderPage title="Safety Tips" description="Important safety guidelines for buying and selling on campus." />} />
