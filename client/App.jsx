@@ -32,6 +32,12 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/browse" element={<Browse />} />
             <Route path="/categories" element={<PlaceholderPage title="Categories" description="Browse items by category to find exactly what you're looking for." />} />
+            <Route path="/categories/textbooks" element={<Textbooks />} />
+            <Route path="/categories/electronics" element={<Electronics />} />
+            <Route path="/categories/furniture" element={<Furniture />} />
+            <Route path="/categories/clothing" element={<Clothing />} />
+            <Route path="/categories/sports" element={<Sports />} />
+            <Route path="/categories/miscellaneous" element={<Miscellaneous />} />
             <Route path="/categories/:category" element={<PlaceholderPage title="Category Items" description="Browse items in this specific category." />} />
             <Route path="/item/:id" element={<PlaceholderPage title="Item Details" description="View detailed information about this item and contact the seller." />} />
             <Route path="/sell" element={<PlaceholderPage title="Sell Your Item" description="List your item for sale and reach thousands of students on campus." />} />
