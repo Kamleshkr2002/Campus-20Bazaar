@@ -643,32 +643,36 @@ export default function ItemDetails() {
               className="hover:shadow-lg transition-shadow"
             >
               <CardHeader className="pb-3">
-                <Link to={`/item/${relatedItem.id}`}>
-                  <div className="aspect-[4/3] bg-gray-100 rounded-md mb-3 relative overflow-hidden">
-                    <img
-                      src={relatedItem.image}
-                      alt={relatedItem.title}
-                      className="w-full h-full object-cover rounded-md"
+                <div className="relative">
+                  <Link to={`/item/${relatedItem.id}`}>
+                    <div className="aspect-[4/3] bg-gray-100 rounded-md mb-3 overflow-hidden">
+                      <img
+                        src={relatedItem.image}
+                        alt={relatedItem.title}
+                        className="w-full h-full object-cover rounded-md"
+                      />
+                    </div>
+                  </Link>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="absolute top-2 right-2 h-8 w-8 bg-white/90 backdrop-blur-sm hover:bg-white"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      toggleFavorite(relatedItem.id);
+                    }}
+                  >
+                    <Heart
+                      className={`w-4 h-4 ${isFavorite(relatedItem.id) ? "fill-red-500 text-red-500" : ""}`}
                     />
-                  </div>
+                  </Button>
+                </div>
+                <Link to={`/item/${relatedItem.id}`}>
                   <CardTitle className="text-lg line-clamp-2 hover:text-primary transition-colors">
                     {relatedItem.title}
                   </CardTitle>
                 </Link>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="absolute top-2 right-2 h-8 w-8 bg-white/90 backdrop-blur-sm hover:bg-white"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    toggleFavorite(relatedItem.id);
-                  }}
-                >
-                  <Heart
-                    className={`w-4 h-4 ${isFavorite(relatedItem.id) ? "fill-red-500 text-red-500" : ""}`}
-                  />
-                </Button>
               </CardHeader>
               <CardContent className="pt-0">
                 <div className="flex items-center justify-between">
