@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useFavorites } from "../contexts/FavoritesContext";
+import { ShareDialog } from "@/components/ShareDialog";
 import {
   ArrowLeft,
   Heart,
