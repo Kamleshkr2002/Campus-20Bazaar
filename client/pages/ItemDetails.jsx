@@ -120,9 +120,9 @@ const mockItems = {
 };
 
 const relatedItems = [
-  { id: 4, title: "iPad Pro 11-inch", price: 450, image: "/placeholder.svg" },
-  { id: 5, title: "USB-C Hub", price: 25, image: "/placeholder.svg" },
-  { id: 6, title: "Laptop Stand", price: 35, image: "/placeholder.svg" }
+  { id: 1, title: "MacBook Air M2", price: 850, image: "/placeholder.svg" },
+  { id: 2, title: "Calculus Textbook", price: 45, image: "/placeholder.svg" },
+  { id: 3, title: "IKEA MALM Bed Frame", price: 80, image: "/placeholder.svg" }
 ];
 
 export default function ItemDetails() {
