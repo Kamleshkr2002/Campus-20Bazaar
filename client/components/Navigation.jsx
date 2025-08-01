@@ -173,11 +173,11 @@ export function Navigation() {
                     Sports & Recreation
                   </Link>
                   <Link
-                    to="/categories/other"
+                    to="/categories/miscellaneous"
                     className="block text-foreground hover:text-primary transition-colors py-1"
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    Other
+                    Miscellaneous
                   </Link>
                 </div>
               </div>
