@@ -128,9 +128,10 @@ const relatedItems = [
 export default function ItemDetails() {
   const { id } = useParams();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [isFavorited, setIsFavorited] = useState(false);
-  
+  const { isFavorite, toggleFavorite } = useFavorites();
+
   const item = mockItems[id] || mockItems[1]; // Fallback to item 1 if not found
+  const itemId = parseInt(id) || item.id;
 
   const nextImage = () => {
     setCurrentImageIndex((prev) => 
