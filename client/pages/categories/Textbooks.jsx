@@ -54,6 +54,7 @@ export default function Textbooks() {
   const [searchQuery, setSearchQuery] = useState("");
   const [viewMode, setViewMode] = useState("grid");
   const [sortBy, setSortBy] = useState("price-low");
+  const { isFavorite, toggleFavorite } = useFavorites();
 
   const filteredBooks = mockTextbooks.filter(book =>
     book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
