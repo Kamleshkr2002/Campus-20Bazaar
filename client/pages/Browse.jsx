@@ -93,6 +93,7 @@ const items = [
 export default function Browse() {
   const [viewMode, setViewMode] = useState("grid");
   const [searchQuery, setSearchQuery] = useState("");
+  const { isFavorite, toggleFavorite } = useFavorites();
 
   return (
     <div className="container mx-auto px-4 py-8">
