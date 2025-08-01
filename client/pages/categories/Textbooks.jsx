@@ -130,61 +130,119 @@ export default function Textbooks() {
         : "space-y-4"
       }>
         {filteredBooks.map((book) => (
-          <Card key={book.id} className="hover:shadow-lg transition-shadow">
-            <Link to={`/item/${book.id}`}>
-              <CardHeader className="pb-3">
-                <div className="aspect-[3/4] bg-gray-100 rounded-md mb-3 flex items-center justify-center">
-                  <Book className="w-12 h-12 text-gray-400" />
-                </div>
-                <CardTitle className="text-lg line-clamp-2">{book.title}</CardTitle>
-                <CardDescription>by {book.author}</CardDescription>
-              </CardHeader>
-            </Link>
-            <CardContent className="pt-0">
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="text-2xl font-bold text-green-600">${book.price}</span>
-                    <span className="text-sm text-muted-foreground line-through">${book.originalPrice}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Badge variant="secondary">{book.condition}</Badge>
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      className="h-8 w-8"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        toggleFavorite(book.id);
-                      }}
-                    >
-                      <Heart className={`w-4 h-4 ${isFavorite(book.id) ? 'fill-red-500 text-red-500' : ''}`} />
+          <div key={book.id}>
+            {viewMode === "grid" ? (
+              <Card className="hover:shadow-lg transition-shadow">
+                <Link to={`/item/${book.id}`}>
+                  <CardHeader className="pb-3">
+                    <div className="aspect-[3/4] bg-gray-100 rounded-md mb-3 flex items-center justify-center">
+                      <Book className="w-12 h-12 text-gray-400" />
+                    </div>
+                    <CardTitle className="text-lg line-clamp-2">{book.title}</CardTitle>
+                    <CardDescription>by {book.author}</CardDescription>
+                  </CardHeader>
+                </Link>
+                <CardContent className="pt-0">
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <span className="text-2xl font-bold text-green-600">${book.price}</span>
+                        <span className="text-sm text-muted-foreground line-through">${book.originalPrice}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Badge variant="secondary">{book.condition}</Badge>
+                        <Button
+                          variant="outline"
+                          size="icon"
+                          className="h-8 w-8"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            toggleFavorite(book.id);
+                          }}
+                        >
+                          <Heart className={`w-4 h-4 ${isFavorite(book.id) ? 'fill-red-500 text-red-500' : ''}`} />
+                        </Button>
+                      </div>
+                    </div>
+
+                    <div className="space-y-1 text-sm text-muted-foreground">
+                      <div className="flex items-center gap-1">
+                        <Book className="w-3 h-3" />
+                        <span>{book.course} • {book.edition}</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <User className="w-3 h-3" />
+                        <span>{book.seller}</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <MapPin className="w-3 h-3" />
+                        <span>{book.location}</span>
+                      </div>
+                    </div>
+
+                    <Button className="w-full mt-4" asChild>
+                      <Link to={`/item/${book.id}`}>View Details</Link>
                     </Button>
                   </div>
-                </div>
-
-                <div className="space-y-1 text-sm text-muted-foreground">
-                  <div className="flex items-center gap-1">
-                    <Book className="w-3 h-3" />
-                    <span>{book.course} • {book.edition}</span>
+                </CardContent>
+              </Card>
+            ) : (
+              <Card className="hover:shadow-md transition-shadow">
+                <CardContent className="p-4">
+                  <div className="flex gap-4">
+                    <Link to={`/item/${book.id}`} className="flex-shrink-0">
+                      <div className="w-20 h-24 bg-gray-100 rounded-md flex items-center justify-center">
+                        <Book className="w-8 h-8 text-gray-400" />
+                      </div>
+                    </Link>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-start justify-between mb-2">
+                        <Link to={`/item/${book.id}`}>
+                          <h3 className="font-semibold text-foreground hover:text-primary transition-colors line-clamp-1">
+                            {book.title}
+                          </h3>
+                          <p className="text-sm text-muted-foreground">by {book.author}</p>
+                        </Link>
+                        <div className="flex items-center space-x-2 ml-4">
+                          <div className="text-right">
+                            <span className="text-lg font-bold text-green-600">${book.price}</span>
+                            <span className="text-sm text-muted-foreground line-through ml-1">${book.originalPrice}</span>
+                          </div>
+                          <Button
+                            variant="outline"
+                            size="icon"
+                            className="h-8 w-8"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              toggleFavorite(book.id);
+                            }}
+                          >
+                            <Heart className={`w-4 h-4 ${isFavorite(book.id) ? 'fill-red-500 text-red-500' : ''}`} />
+                          </Button>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-4 text-sm text-muted-foreground mb-2">
+                        <Badge variant="secondary">{book.condition}</Badge>
+                        <span>{book.course} • {book.edition}</span>
+                        <span>{book.seller}</span>
+                      </div>
+                      <div className="flex items-center justify-between text-sm text-muted-foreground">
+                        <div className="flex items-center space-x-1">
+                          <MapPin className="w-3 h-3" />
+                          <span>{book.location}</span>
+                        </div>
+                        <Button size="sm" asChild>
+                          <Link to={`/item/${book.id}`}>View Details</Link>
+                        </Button>
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-1">
-                    <User className="w-3 h-3" />
-                    <span>{book.seller}</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <MapPin className="w-3 h-3" />
-                    <span>{book.location}</span>
-                  </div>
-                </div>
-
-                <Button className="w-full mt-4" asChild>
-                  <Link to={`/item/${book.id}`}>View Details</Link>
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
+                </CardContent>
+              </Card>
+            )}
+          </div>
         ))}
       </div>
 
