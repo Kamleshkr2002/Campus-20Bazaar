@@ -1,5 +1,17 @@
 import { Link } from "react-router-dom";
-import { Search, BookOpen, Laptop, Armchair, Car, Gamepad2, Package, Star, MapPin, Clock, ArrowRight } from "lucide-react";
+import {
+  Search,
+  BookOpen,
+  Laptop,
+  Armchair,
+  Car,
+  Gamepad2,
+  Package,
+  Star,
+  MapPin,
+  Clock,
+  ArrowRight,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
@@ -9,7 +21,7 @@ import { Badge } from "@/components/ui/badge";
 const featuredItems = [
   {
     id: 1,
-    title: "MacBook Pro 13\" M1",
+    title: 'MacBook Pro 13" M1',
     price: 899,
     originalPrice: 1299,
     image: "/placeholder.svg",
@@ -63,12 +75,42 @@ const featuredItems = [
 
 // Categories data
 const categories = [
-  { name: "Textbooks", icon: BookOpen, count: 1247, color: "bg-blue-100 text-blue-700" },
-  { name: "Electronics", icon: Laptop, count: 892, color: "bg-purple-100 text-purple-700" },
-  { name: "Furniture", icon: Armchair, count: 634, color: "bg-green-100 text-green-700" },
-  { name: "Transportation", icon: Car, count: 156, color: "bg-orange-100 text-orange-700" },
-  { name: "Gaming", icon: Gamepad2, count: 423, color: "bg-red-100 text-red-700" },
-  { name: "Miscellaneous", icon: Package, count: 287, color: "bg-yellow-100 text-yellow-700" },
+  {
+    name: "Textbooks",
+    icon: BookOpen,
+    count: 1247,
+    color: "bg-blue-100 text-blue-700",
+  },
+  {
+    name: "Electronics",
+    icon: Laptop,
+    count: 892,
+    color: "bg-purple-100 text-purple-700",
+  },
+  {
+    name: "Furniture",
+    icon: Armchair,
+    count: 634,
+    color: "bg-green-100 text-green-700",
+  },
+  {
+    name: "Transportation",
+    icon: Car,
+    count: 156,
+    color: "bg-orange-100 text-orange-700",
+  },
+  {
+    name: "Gaming",
+    icon: Gamepad2,
+    count: 423,
+    color: "bg-red-100 text-red-700",
+  },
+  {
+    name: "Miscellaneous",
+    icon: Package,
+    count: 287,
+    color: "bg-yellow-100 text-yellow-700",
+  },
 ];
 
 export default function Index() {
@@ -85,10 +127,11 @@ export default function Index() {
               </span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              The trusted marketplace for college students. Find amazing deals on textbooks, 
-              electronics, furniture, and more from students on your campus.
+              The trusted marketplace for college students. Find amazing deals
+              on textbooks, electronics, furniture, and more from students on
+              your campus.
             </p>
-            
+
             {/* Hero Search */}
             <div className="max-w-2xl mx-auto mb-8">
               <div className="relative">
@@ -105,7 +148,11 @@ export default function Index() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button size="lg" asChild className="bg-brand-purple hover:bg-brand-purple-dark px-8">
+              <Button
+                size="lg"
+                asChild
+                className="bg-brand-purple hover:bg-brand-purple-dark px-8"
+              >
                 <Link to="/browse">
                   Browse Items
                   <ArrowRight className="ml-2 w-4 h-4" />
@@ -123,10 +170,14 @@ export default function Index() {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4">Shop by Category</h2>
-            <p className="text-muted-foreground">Find exactly what you need from fellow students</p>
+            <h2 className="text-3xl font-bold text-foreground mb-4">
+              Shop by Category
+            </h2>
+            <p className="text-muted-foreground">
+              Find exactly what you need from fellow students
+            </p>
           </div>
-          
+
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
             {categories.map((category) => (
               <Link
@@ -136,11 +187,17 @@ export default function Index() {
               >
                 <Card className="hover:shadow-lg transition-all duration-300 group-hover:-translate-y-1">
                   <CardContent className="p-4 lg:p-6 text-center">
-                    <div className={`w-12 h-12 lg:w-16 lg:h-16 rounded-full ${category.color} flex items-center justify-center mx-auto mb-3 lg:mb-4 group-hover:scale-110 transition-transform`}>
+                    <div
+                      className={`w-12 h-12 lg:w-16 lg:h-16 rounded-full ${category.color} flex items-center justify-center mx-auto mb-3 lg:mb-4 group-hover:scale-110 transition-transform`}
+                    >
                       <category.icon className="w-6 h-6 lg:w-8 lg:h-8" />
                     </div>
-                    <h3 className="text-sm lg:text-base font-semibold text-foreground mb-1">{category.name}</h3>
-                    <p className="text-xs lg:text-sm text-muted-foreground">{category.count} items</p>
+                    <h3 className="text-sm lg:text-base font-semibold text-foreground mb-1">
+                      {category.name}
+                    </h3>
+                    <p className="text-xs lg:text-sm text-muted-foreground">
+                      {category.count} items
+                    </p>
                   </CardContent>
                 </Card>
               </Link>
@@ -154,8 +211,12 @@ export default function Index() {
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center mb-12">
             <div>
-              <h2 className="text-3xl font-bold text-foreground mb-2">Featured Items</h2>
-              <p className="text-muted-foreground">Handpicked deals from trusted sellers</p>
+              <h2 className="text-3xl font-bold text-foreground mb-2">
+                Featured Items
+              </h2>
+              <p className="text-muted-foreground">
+                Handpicked deals from trusted sellers
+              </p>
             </div>
             <Button variant="outline" asChild>
               <Link to="/browse">View All</Link>
@@ -173,7 +234,10 @@ export default function Index() {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                     <div className="absolute top-3 left-3">
-                      <Badge variant="secondary" className="bg-white/90 backdrop-blur-sm">
+                      <Badge
+                        variant="secondary"
+                        className="bg-white/90 backdrop-blur-sm"
+                      >
                         {item.category}
                       </Badge>
                     </div>
@@ -185,20 +249,26 @@ export default function Index() {
                       </div>
                     )}
                   </div>
-                  
+
                   <CardContent className="p-4">
                     <h3 className="font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
                       {item.title}
                     </h3>
-                    
+
                     <div className="flex items-center justify-between mb-3">
                       <div className="flex items-center space-x-2">
-                        <span className="text-2xl font-bold text-foreground">${item.price}</span>
-                        <span className="text-sm text-muted-foreground line-through">${item.originalPrice}</span>
+                        <span className="text-2xl font-bold text-foreground">
+                          ${item.price}
+                        </span>
+                        <span className="text-sm text-muted-foreground line-through">
+                          ${item.originalPrice}
+                        </span>
                       </div>
                       <div className="flex items-center space-x-1">
                         <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                        <span className="text-sm text-muted-foreground">{item.rating}</span>
+                        <span className="text-sm text-muted-foreground">
+                          {item.rating}
+                        </span>
                       </div>
                     </div>
 
@@ -232,10 +302,15 @@ export default function Index() {
             Ready to Start Selling?
           </h2>
           <p className="text-white/90 mb-8 max-w-2xl mx-auto">
-            Join thousands of students already earning extra cash by selling items they no longer need.
-            It's free, safe, and super easy!
+            Join thousands of students already earning extra cash by selling
+            items they no longer need. It's free, safe, and super easy!
           </p>
-          <Button size="lg" variant="secondary" asChild className="bg-white text-brand-purple hover:bg-white/90">
+          <Button
+            size="lg"
+            variant="secondary"
+            asChild
+            className="bg-white text-brand-purple hover:bg-white/90"
+          >
             <Link to="/sell">
               Sell Your First Item
               <ArrowRight className="ml-2 w-4 h-4" />
