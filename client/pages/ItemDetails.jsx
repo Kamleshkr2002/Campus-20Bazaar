@@ -320,9 +320,9 @@ export default function ItemDetails() {
                 <Button
                   variant="outline"
                   size="icon"
-                  onClick={() => setIsFavorited(!isFavorited)}
+                  onClick={() => toggleFavorite(itemId)}
                 >
-                  <Heart className={`w-4 h-4 ${isFavorited ? 'fill-red-500 text-red-500' : ''}`} />
+                  <Heart className={`w-4 h-4 ${isFavorite(itemId) ? 'fill-red-500 text-red-500' : ''}`} />
                 </Button>
               </div>
               <CardTitle className="text-xl">{item.title}</CardTitle>
