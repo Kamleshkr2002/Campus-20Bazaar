@@ -14,6 +14,7 @@ import {
   Heart,
 } from "lucide-react";
 import { useFavorites } from "../contexts/FavoritesContext";
+import { useTypingAnimation } from "../hooks/use-typing-animation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
