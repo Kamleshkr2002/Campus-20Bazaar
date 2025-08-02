@@ -47,13 +47,12 @@ export default function Messages() {
           </div>
 
           {/* Chat Area */}
-          <div className={`lg:col-span-2 ${!showChat ? "hidden lg:block" : ""}`}>
+          <div
+            className={`lg:col-span-2 ${!showChat ? "hidden lg:block" : ""}`}
+          >
             <Card className="h-full">
               {selectedChat ? (
-                <Chat 
-                  chatData={selectedChat} 
-                  onBack={handleBackToList}
-                />
+                <Chat chatData={selectedChat} onBack={handleBackToList} />
               ) : (
                 <div className="flex flex-col items-center justify-center h-full text-center p-8">
                   <MessageCircle className="w-24 h-24 text-muted-foreground/50 mb-6" />
@@ -61,7 +60,8 @@ export default function Messages() {
                     Welcome to Messages
                   </h2>
                   <p className="text-muted-foreground max-w-md">
-                    Select a conversation from the left to start chatting with buyers and sellers.
+                    Select a conversation from the left to start chatting with
+                    buyers and sellers.
                   </p>
                 </div>
               )}

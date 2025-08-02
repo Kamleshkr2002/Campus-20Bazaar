@@ -533,7 +533,11 @@ export default function ItemDetails() {
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              <Button size="lg" className="w-full" onClick={handleContactSeller}>
+              <Button
+                size="lg"
+                className="w-full"
+                onClick={handleContactSeller}
+              >
                 <MessageCircle className="w-4 h-4 mr-2" />
                 Contact Seller
               </Button>

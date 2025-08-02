@@ -6,13 +6,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import {
-  ArrowLeft,
-  Send,
-  MoreVertical,
-  Image,
-  Package,
-} from "lucide-react";
+import { ArrowLeft, Send, MoreVertical, Image, Package } from "lucide-react";
 
 export default function Chat({ chatData, onBack }) {
   const [message, setMessage] = useState("");
@@ -38,27 +32,30 @@ export default function Chat({ chatData, onBack }) {
     setMessage("");
 
     // Simulate response after 1-3 seconds
-    setTimeout(() => {
-      const responses = [
-        "Sure! When would be a good time to meet?",
-        "That sounds great! I'm available this afternoon.",
-        "Yes, it's still available. Would you like to see more photos?",
-        "I can meet you at the library around 3 PM if that works?",
-        "The condition is excellent, barely used!",
-      ];
-      
-      const responseMessage = {
-        id: Date.now() + 1,
-        text: responses[Math.floor(Math.random() * responses.length)],
-        sender: "other",
-        timestamp: new Date().toLocaleTimeString([], {
-          hour: "2-digit",
-          minute: "2-digit",
-        }),
-      };
-      
-      setMessages(prev => [...prev, responseMessage]);
-    }, Math.random() * 2000 + 1000);
+    setTimeout(
+      () => {
+        const responses = [
+          "Sure! When would be a good time to meet?",
+          "That sounds great! I'm available this afternoon.",
+          "Yes, it's still available. Would you like to see more photos?",
+          "I can meet you at the library around 3 PM if that works?",
+          "The condition is excellent, barely used!",
+        ];
+
+        const responseMessage = {
+          id: Date.now() + 1,
+          text: responses[Math.floor(Math.random() * responses.length)],
+          sender: "other",
+          timestamp: new Date().toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+          }),
+        };
+
+        setMessages((prev) => [...prev, responseMessage]);
+      },
+      Math.random() * 2000 + 1000,
+    );
   };
 
   const handleKeyPress = (e) => {

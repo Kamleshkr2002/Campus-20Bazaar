@@ -17,7 +17,7 @@ const mockChats = [
       isOnline: true,
     },
     item: {
-      title: "MacBook Pro 13\" M1",
+      title: 'MacBook Pro 13" M1',
       price: 899,
     },
     lastMessage: {
@@ -140,9 +140,10 @@ export default function ChatList({ onSelectChat }) {
     return text;
   };
 
-  const filteredChats = chats.filter((chat) =>
-    chat.otherUser.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    chat.item?.title.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredChats = chats.filter(
+    (chat) =>
+      chat.otherUser.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      chat.item?.title.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   const handleSelectChat = (chat) => {
@@ -150,16 +151,19 @@ export default function ChatList({ onSelectChat }) {
 
     // Mark message as read if it was unread
     if (!chat.lastMessage.isRead) {
-      setChats(prevChats =>
-        prevChats.map(c =>
+      setChats((prevChats) =>
+        prevChats.map((c) =>
           c.id === chat.id
             ? { ...c, lastMessage: { ...c.lastMessage, isRead: true } }
-            : c
-        )
+            : c,
+        ),
       );
 
       // Pass the updated chat to parent with read status
-      const updatedChat = { ...chat, lastMessage: { ...chat.lastMessage, isRead: true } };
+      const updatedChat = {
+        ...chat,
+        lastMessage: { ...chat.lastMessage, isRead: true },
+      };
       onSelectChat?.(updatedChat);
     } else {
       onSelectChat?.(chat);
@@ -176,7 +180,7 @@ export default function ChatList({ onSelectChat }) {
             <Plus className="w-4 h-4" />
           </Button>
         </div>
-        
+
         {/* Search */}
         <div className="relative">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
@@ -197,7 +201,9 @@ export default function ChatList({ onSelectChat }) {
               <div
                 key={chat.id}
                 className={`p-4 hover:bg-gray-50 cursor-pointer transition-colors ${
-                  selectedChatId === chat.id ? "bg-brand-purple/5 border-r-2 border-brand-purple" : ""
+                  selectedChatId === chat.id
+                    ? "bg-brand-purple/5 border-r-2 border-brand-purple"
+                    : ""
                 }`}
                 onClick={() => handleSelectChat(chat)}
               >
@@ -215,7 +221,7 @@ export default function ChatList({ onSelectChat }) {
                       <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></div>
                     )}
                   </div>
-                  
+
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between mb-1">
                       <h3 className="font-medium text-sm truncate">
@@ -225,22 +231,28 @@ export default function ChatList({ onSelectChat }) {
                         {chat.lastMessage.timestamp}
                       </span>
                     </div>
-                    
+
                     {chat.item && (
                       <div className="flex items-center gap-2 mb-1">
                         <Badge variant="outline" className="text-xs">
-                          {chat.otherUser.role === "seller" ? "Selling" : "Buying"}
+                          {chat.otherUser.role === "seller"
+                            ? "Selling"
+                            : "Buying"}
                         </Badge>
                         <span className="text-xs text-muted-foreground truncate">
                           {chat.item.title}
                         </span>
                       </div>
                     )}
-                    
+
                     <div className="flex items-center justify-between">
-                      <p className={`text-sm whitespace-nowrap overflow-hidden ${
-                        !chat.lastMessage.isRead ? "font-medium text-foreground" : "text-muted-foreground"
-                      }`}>
+                      <p
+                        className={`text-sm whitespace-nowrap overflow-hidden ${
+                          !chat.lastMessage.isRead
+                            ? "font-medium text-foreground"
+                            : "text-muted-foreground"
+                        }`}
+                      >
                         {truncateMessage(chat.lastMessage.text)}
                       </p>
                       {!chat.lastMessage.isRead && (
@@ -258,10 +270,9 @@ export default function ChatList({ onSelectChat }) {
                 {searchTerm ? "No chats found" : "No messages yet"}
               </h3>
               <p className="text-muted-foreground max-w-sm">
-                {searchTerm 
+                {searchTerm
                   ? "Try adjusting your search terms"
-                  : "Start conversations when you find items you're interested in"
-                }
+                  : "Start conversations when you find items you're interested in"}
               </p>
             </div>
           )}

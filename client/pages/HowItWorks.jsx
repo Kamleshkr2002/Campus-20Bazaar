@@ -124,11 +124,15 @@ export default function HowItWorks() {
               Works
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Your trusted marketplace for buying and selling with fellow students.
-              Safe, simple, and designed for campus life.
+              Your trusted marketplace for buying and selling with fellow
+              students. Safe, simple, and designed for campus life.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" asChild className="bg-brand-purple hover:bg-brand-purple-dark">
+              <Button
+                size="lg"
+                asChild
+                className="bg-brand-purple hover:bg-brand-purple-dark"
+              >
                 <Link to="/browse">
                   Start Shopping
                   <ArrowRight className="ml-2 w-4 h-4" />
@@ -165,7 +169,10 @@ export default function HowItWorks() {
                       <step.icon className="w-8 h-8" />
                     </div>
                     <div className="flex items-center justify-center gap-2 mb-2">
-                      <Badge variant="outline" className="text-sm font-semibold">
+                      <Badge
+                        variant="outline"
+                        className="text-sm font-semibold"
+                      >
                         Step {step.step}
                       </Badge>
                     </div>
@@ -175,7 +182,10 @@ export default function HowItWorks() {
                   <CardContent>
                     <ul className="space-y-2">
                       {step.details.map((detail, idx) => (
-                        <li key={idx} className="flex items-center gap-2 text-sm">
+                        <li
+                          key={idx}
+                          className="flex items-center gap-2 text-sm"
+                        >
                           <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
                           <span>{detail}</span>
                         </li>
@@ -183,7 +193,7 @@ export default function HowItWorks() {
                     </ul>
                   </CardContent>
                 </Card>
-                
+
                 {/* Arrow connector */}
                 {index < steps.length - 1 && (
                   <div className="hidden lg:block absolute top-1/2 -right-6 transform -translate-y-1/2">
@@ -210,20 +220,31 @@ export default function HowItWorks() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {sellingSteps.map((step, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow">
+              <Card
+                key={index}
+                className="text-center hover:shadow-lg transition-shadow"
+              >
                 <CardContent className="p-6">
                   <div className="w-12 h-12 bg-brand-purple/10 rounded-full flex items-center justify-center mx-auto mb-4">
                     <step.icon className="w-6 h-6 text-brand-purple" />
                   </div>
-                  <h3 className="font-semibold text-foreground mb-2">{step.title}</h3>
-                  <p className="text-sm text-muted-foreground">{step.description}</p>
+                  <h3 className="font-semibold text-foreground mb-2">
+                    {step.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    {step.description}
+                  </p>
                 </CardContent>
               </Card>
             ))}
           </div>
 
           <div className="text-center mt-12">
-            <Button size="lg" asChild className="bg-brand-purple hover:bg-brand-purple-dark">
+            <Button
+              size="lg"
+              asChild
+              className="bg-brand-purple hover:bg-brand-purple-dark"
+            >
               <Link to="/sell">
                 List Your First Item
                 <ArrowRight className="ml-2 w-4 h-4" />
@@ -241,7 +262,8 @@ export default function HowItWorks() {
               Safety First
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Your safety is our top priority. Follow these guidelines for secure transactions
+              Your safety is our top priority. Follow these guidelines for
+              secure transactions
             </p>
           </div>
 
@@ -260,7 +282,9 @@ export default function HowItWorks() {
                       <tip.icon className="w-6 h-6" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-foreground mb-2">{tip.title}</h3>
+                      <h3 className="font-semibold text-foreground mb-2">
+                        {tip.title}
+                      </h3>
                       <p className="text-muted-foreground">{tip.description}</p>
                     </div>
                   </div>
@@ -296,7 +320,8 @@ export default function HowItWorks() {
               </div>
               <h3 className="text-xl font-semibold mb-3">Student Community</h3>
               <p className="text-muted-foreground">
-                Connect with verified students from your campus for trustworthy transactions
+                Connect with verified students from your campus for trustworthy
+                transactions
               </p>
             </div>
 
@@ -306,7 +331,8 @@ export default function HowItWorks() {
               </div>
               <h3 className="text-xl font-semibold mb-3">Safe & Secure</h3>
               <p className="text-muted-foreground">
-                Built-in safety features and guidelines to protect both buyers and sellers
+                Built-in safety features and guidelines to protect both buyers
+                and sellers
               </p>
             </div>
 
@@ -322,8 +348,6 @@ export default function HowItWorks() {
           </div>
         </div>
       </section>
-
-      
     </div>
   );
 }
