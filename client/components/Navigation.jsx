@@ -162,6 +162,13 @@ export function Navigation() {
                   <Heart className="w-5 h-5" />
                 </Link>
               </Button>
+              {isLoggedIn && (
+                <Button variant="ghost" size="icon" asChild>
+                  <Link to="/messages">
+                    <MessageCircle className="w-5 h-5" />
+                  </Link>
+                </Button>
+              )}
               <Button
                 variant="ghost"
                 size="icon"
