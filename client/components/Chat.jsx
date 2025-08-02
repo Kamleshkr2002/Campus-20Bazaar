@@ -19,13 +19,7 @@ export default function Chat({ chatData, onBack }) {
   const [messages, setMessages] = useState(chatData?.messages || []);
   const messagesEndRef = useRef(null);
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
+  // Removed auto-scroll functionality
 
   const handleSendMessage = () => {
     if (!message.trim()) return;
