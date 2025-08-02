@@ -221,10 +221,10 @@ export default function ChatList({ onSelectChat }) {
                     )}
                     
                     <div className="flex items-center justify-between">
-                      <p className={`text-sm truncate ${
+                      <p className={`text-sm ${
                         !chat.lastMessage.isRead ? "font-medium text-foreground" : "text-muted-foreground"
                       }`}>
-                        {chat.lastMessage.text}
+                        {truncateMessage(chat.lastMessage.text)}
                       </p>
                       {!chat.lastMessage.isRead && (
                         <div className="w-2 h-2 bg-brand-purple rounded-full flex-shrink-0 ml-2"></div>
