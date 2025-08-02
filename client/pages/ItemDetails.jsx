@@ -266,6 +266,7 @@ const relatedItems = [
 
 export default function ItemDetails() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isShareDialogOpen, setIsShareDialogOpen] = useState(false);
   const { isFavorite, toggleFavorite } = useFavorites();
