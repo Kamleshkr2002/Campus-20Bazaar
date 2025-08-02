@@ -3,14 +3,14 @@ import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { 
-  Dialog, 
-  DialogContent, 
-  DialogDescription, 
-  DialogHeader, 
-  DialogTitle, 
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
   DialogTrigger,
-  DialogFooter 
+  DialogFooter,
 } from "@/components/ui/dialog";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { User, Mail, GraduationCap, Settings, Save, X } from "lucide-react";
@@ -46,9 +46,7 @@ export function EditProfile({ children }) {
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogTrigger asChild>
-        {children}
-      </DialogTrigger>
+      <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
@@ -59,13 +57,16 @@ export function EditProfile({ children }) {
             Update your profile information below.
           </DialogDescription>
         </DialogHeader>
-        
+
         <div className="space-y-6 py-4">
           {/* Avatar Section */}
           <div className="flex items-center gap-4">
             <Avatar className="w-16 h-16">
               <AvatarFallback className="bg-brand-purple text-white text-lg">
-                {formData.name?.split(' ').map(n => n[0]).join('')}
+                {formData.name
+                  ?.split(" ")
+                  .map((n) => n[0])
+                  .join("")}
               </AvatarFallback>
             </Avatar>
             <div>
@@ -136,7 +137,10 @@ export function EditProfile({ children }) {
             <X className="w-4 h-4 mr-2" />
             Cancel
           </Button>
-          <Button onClick={handleSave} className="bg-brand-purple hover:bg-brand-purple-dark">
+          <Button
+            onClick={handleSave}
+            className="bg-brand-purple hover:bg-brand-purple-dark"
+          >
             <Save className="w-4 h-4 mr-2" />
             Save Changes
           </Button>

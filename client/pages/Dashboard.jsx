@@ -2,21 +2,27 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { EditProfile } from "@/components/EditProfile";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { 
-  User, 
-  Mail, 
-  GraduationCap, 
-  Package, 
-  Heart, 
+import {
+  User,
+  Mail,
+  GraduationCap,
+  Package,
+  Heart,
   TrendingUp,
   LogOut,
   Settings,
   Plus,
-  Eye
+  Eye,
 } from "lucide-react";
 
 export default function Dashboard() {
@@ -73,8 +79,8 @@ export default function Dashboard() {
             <h1 className="text-3xl font-bold text-foreground">Dashboard</h1>
             <p className="text-muted-foreground">Welcome back, {user?.name}!</p>
           </div>
-          <Button 
-            variant="outline" 
+          <Button
+            variant="outline"
             onClick={handleLogout}
             className="flex items-center gap-2"
           >
@@ -98,7 +104,10 @@ export default function Dashboard() {
                 <div className="flex items-center gap-4">
                   <Avatar className="w-16 h-16">
                     <AvatarFallback className="bg-brand-purple text-white text-lg">
-                      {user?.name?.split(' ').map(n => n[0]).join('')}
+                      {user?.name
+                        ?.split(" ")
+                        .map((n) => n[0])
+                        .join("")}
                     </AvatarFallback>
                   </Avatar>
                   <div>
@@ -172,31 +181,47 @@ export default function Dashboard() {
               <Card>
                 <CardContent className="p-4 text-center">
                   <Package className="w-8 h-8 mx-auto mb-2 text-brand-purple" />
-                  <div className="text-2xl font-bold">{userStats.activeListings}</div>
-                  <div className="text-xs text-muted-foreground">Active Listings</div>
+                  <div className="text-2xl font-bold">
+                    {userStats.activeListings}
+                  </div>
+                  <div className="text-xs text-muted-foreground">
+                    Active Listings
+                  </div>
                 </CardContent>
               </Card>
-              
+
               <Card>
                 <CardContent className="p-4 text-center">
                   <TrendingUp className="w-8 h-8 mx-auto mb-2 text-green-500" />
-                  <div className="text-2xl font-bold">{userStats.totalSales}</div>
-                  <div className="text-xs text-muted-foreground">Total Sales</div>
+                  <div className="text-2xl font-bold">
+                    {userStats.totalSales}
+                  </div>
+                  <div className="text-xs text-muted-foreground">
+                    Total Sales
+                  </div>
                 </CardContent>
               </Card>
-              
+
               <Card>
                 <CardContent className="p-4 text-center">
-                  <div className="w-8 h-8 mx-auto mb-2 text-yellow-500 text-lg">💰</div>
-                  <div className="text-2xl font-bold">${userStats.totalEarnings}</div>
-                  <div className="text-xs text-muted-foreground">Total Earnings</div>
+                  <div className="w-8 h-8 mx-auto mb-2 text-yellow-500 text-lg">
+                    💰
+                  </div>
+                  <div className="text-2xl font-bold">
+                    ${userStats.totalEarnings}
+                  </div>
+                  <div className="text-xs text-muted-foreground">
+                    Total Earnings
+                  </div>
                 </CardContent>
               </Card>
-              
+
               <Card>
                 <CardContent className="p-4 text-center">
                   <Heart className="w-8 h-8 mx-auto mb-2 text-red-500" />
-                  <div className="text-2xl font-bold">{userStats.favoriteItems}</div>
+                  <div className="text-2xl font-bold">
+                    {userStats.favoriteItems}
+                  </div>
                   <div className="text-xs text-muted-foreground">Favorites</div>
                 </CardContent>
               </Card>
@@ -214,7 +239,10 @@ export default function Dashboard() {
                 {recentListings.length > 0 ? (
                   <div className="space-y-4">
                     {recentListings.map((listing) => (
-                      <div key={listing.id} className="flex items-center justify-between p-4 border rounded-lg">
+                      <div
+                        key={listing.id}
+                        className="flex items-center justify-between p-4 border rounded-lg"
+                      >
                         <div className="flex-1">
                           <h4 className="font-medium">{listing.title}</h4>
                           <div className="flex items-center gap-4 mt-1">
@@ -222,8 +250,16 @@ export default function Dashboard() {
                               ${listing.price}
                             </span>
                             <Badge
-                              variant={listing.status === "Active" ? "default" : "secondary"}
-                              className={listing.status === "Active" ? "bg-green-100 text-green-700" : ""}
+                              variant={
+                                listing.status === "Active"
+                                  ? "default"
+                                  : "secondary"
+                              }
+                              className={
+                                listing.status === "Active"
+                                  ? "bg-green-100 text-green-700"
+                                  : ""
+                              }
                             >
                               {listing.status}
                             </Badge>
@@ -246,7 +282,8 @@ export default function Dashboard() {
                       No listings yet
                     </h3>
                     <p className="text-muted-foreground mb-6 max-w-sm">
-                      Start selling items to your campus community and see them appear here.
+                      Start selling items to your campus community and see them
+                      appear here.
                     </p>
                     <Button
                       className="bg-brand-purple hover:bg-brand-purple-dark"
@@ -259,8 +296,6 @@ export default function Dashboard() {
                 )}
               </CardContent>
             </Card>
-
-
           </div>
         </div>
       </div>

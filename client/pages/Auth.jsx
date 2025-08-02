@@ -4,7 +4,13 @@ import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { User, Mail, Lock, GraduationCap, Chrome } from "lucide-react";
 
@@ -95,7 +101,10 @@ export default function Auth() {
           </TabsTrigger>
         </TabsList>
 
-        <TabsContent value="login" className="animate-in slide-in-from-right-2 duration-300">
+        <TabsContent
+          value="login"
+          className="animate-in slide-in-from-right-2 duration-300"
+        >
           <Card>
             <CardHeader>
               <CardTitle>Login to your account</CardTitle>
@@ -139,7 +148,10 @@ export default function Auth() {
                     />
                   </div>
                 </div>
-                <Button type="submit" className="w-full bg-brand-purple hover:bg-brand-purple-dark">
+                <Button
+                  type="submit"
+                  className="w-full bg-brand-purple hover:bg-brand-purple-dark"
+                >
                   Login
                 </Button>
 
@@ -148,7 +160,9 @@ export default function Auth() {
                     <span className="w-full border-t" />
                   </div>
                   <div className="relative flex justify-center text-xs uppercase">
-                    <span className="bg-background px-2 text-muted-foreground">Or continue with</span>
+                    <span className="bg-background px-2 text-muted-foreground">
+                      Or continue with
+                    </span>
                   </div>
                 </div>
 
@@ -166,7 +180,10 @@ export default function Auth() {
           </Card>
         </TabsContent>
 
-        <TabsContent value="register" className="animate-in slide-in-from-left-2 duration-300">
+        <TabsContent
+          value="register"
+          className="animate-in slide-in-from-left-2 duration-300"
+        >
           <Card>
             <CardHeader>
               <CardTitle>Create an account</CardTitle>
@@ -186,7 +203,10 @@ export default function Auth() {
                       placeholder="Enter your full name"
                       value={registerForm.name}
                       onChange={(e) =>
-                        setRegisterForm({ ...registerForm, name: e.target.value })
+                        setRegisterForm({
+                          ...registerForm,
+                          name: e.target.value,
+                        })
                       }
                       className="pl-10"
                       required
@@ -203,7 +223,10 @@ export default function Auth() {
                       placeholder="Enter your email"
                       value={registerForm.email}
                       onChange={(e) =>
-                        setRegisterForm({ ...registerForm, email: e.target.value })
+                        setRegisterForm({
+                          ...registerForm,
+                          email: e.target.value,
+                        })
                       }
                       className="pl-10"
                       required
@@ -220,7 +243,10 @@ export default function Auth() {
                       placeholder="Enter your university"
                       value={registerForm.university}
                       onChange={(e) =>
-                        setRegisterForm({ ...registerForm, university: e.target.value })
+                        setRegisterForm({
+                          ...registerForm,
+                          university: e.target.value,
+                        })
                       }
                       className="pl-10"
                       required
@@ -237,7 +263,10 @@ export default function Auth() {
                       placeholder="Create a password"
                       value={registerForm.password}
                       onChange={(e) =>
-                        setRegisterForm({ ...registerForm, password: e.target.value })
+                        setRegisterForm({
+                          ...registerForm,
+                          password: e.target.value,
+                        })
                       }
                       className="pl-10"
                       required
@@ -245,7 +274,9 @@ export default function Auth() {
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="register-confirm-password">Confirm Password</Label>
+                  <Label htmlFor="register-confirm-password">
+                    Confirm Password
+                  </Label>
                   <div className="relative">
                     <Lock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                     <Input
@@ -264,7 +295,10 @@ export default function Auth() {
                     />
                   </div>
                 </div>
-                <Button type="submit" className="w-full bg-brand-purple hover:bg-brand-purple-dark">
+                <Button
+                  type="submit"
+                  className="w-full bg-brand-purple hover:bg-brand-purple-dark"
+                >
                   Create Account
                 </Button>
 
@@ -273,7 +307,9 @@ export default function Auth() {
                     <span className="w-full border-t" />
                   </div>
                   <div className="relative flex justify-center text-xs uppercase">
-                    <span className="bg-background px-2 text-muted-foreground">Or continue with</span>
+                    <span className="bg-background px-2 text-muted-foreground">
+                      Or continue with
+                    </span>
                   </div>
                 </div>
 

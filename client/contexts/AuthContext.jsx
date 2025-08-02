@@ -11,7 +11,7 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     const savedAuthState = localStorage.getItem("isLoggedIn");
     const savedUser = localStorage.getItem("user");
-    
+
     if (savedAuthState === "true" && savedUser) {
       setIsLoggedIn(true);
       setUser(JSON.parse(savedUser));
