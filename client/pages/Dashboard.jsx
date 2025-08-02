@@ -216,13 +216,16 @@ export default function Dashboard() {
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card
+                className="cursor-pointer hover:shadow-lg transition-shadow"
+                onClick={() => navigate("/messages")}
+              >
                 <CardContent className="p-4 text-center">
-                  <Heart className="w-8 h-8 mx-auto mb-2 text-red-500" />
+                  <MessageCircle className="w-8 h-8 mx-auto mb-2 text-brand-purple" />
                   <div className="text-2xl font-bold">
-                    {userStats.favoriteItems}
+                    {userStats.activeChats}
                   </div>
-                  <div className="text-xs text-muted-foreground">Favorites</div>
+                  <div className="text-xs text-muted-foreground">Active Chats</div>
                 </CardContent>
               </Card>
             </div>
