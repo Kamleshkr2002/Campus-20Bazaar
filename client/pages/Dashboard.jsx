@@ -205,16 +205,7 @@ export default function Dashboard() {
             {/* Recent Listings */}
             <Card>
               <CardHeader>
-                <div className="flex items-center justify-between">
-                  <CardTitle>Recent Listings</CardTitle>
-                  <Button 
-                    className="bg-brand-purple hover:bg-brand-purple-dark"
-                    onClick={() => navigate("/sell")}
-                  >
-                    <Plus className="w-4 h-4 mr-2" />
-                    Add New Item
-                  </Button>
-                </div>
+                <CardTitle>Recent Listings</CardTitle>
                 <CardDescription>
                   Manage your current and past listings
                 </CardDescription>
