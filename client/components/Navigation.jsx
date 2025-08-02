@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
 import {
   Search,
   User,
@@ -21,6 +22,21 @@ import {
 
 export function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isLoggedIn, loading } = useAuth();
+  const navigate = useNavigate();
+
+  // Don't render navigation until auth context is loaded
+  if (loading) {
+    return null;
+  }
+
+  const handleProfileClick = () => {
+    if (isLoggedIn) {
+      navigate("/dashboard");
+    } else {
+      navigate("/auth");
+    }
+  };
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-border">
@@ -145,10 +161,13 @@ export function Navigation() {
                   <Heart className="w-5 h-5" />
                 </Link>
               </Button>
-              <Button variant="ghost" size="icon" asChild>
-                <Link to="/profile">
-                  <User className="w-5 h-5" />
-                </Link>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={handleProfileClick}
+                title={isLoggedIn ? "Dashboard" : "Login"}
+              >
+                <User className="w-5 h-5" />
               </Button>
             </div>
           </nav>
@@ -247,13 +266,15 @@ export function Navigation() {
               >
                 My Favorites
               </Link>
-              <Link
-                to="/profile"
-                className="text-foreground hover:text-primary transition-colors py-2"
-                onClick={() => setIsMenuOpen(false)}
+              <button
+                onClick={() => {
+                  handleProfileClick();
+                  setIsMenuOpen(false);
+                }}
+                className="text-left text-foreground hover:text-primary transition-colors py-2"
               >
-                My Profile
-              </Link>
+                {isLoggedIn ? "Dashboard" : "Login / Register"}
+              </button>
               <Button
                 asChild
                 className="bg-brand-purple hover:bg-brand-purple-dark mt-4"
