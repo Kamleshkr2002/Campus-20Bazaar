@@ -1,24 +1,36 @@
 import { useState } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "../components/ui/card";
 import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
 import { Textarea } from "../components/ui/textarea";
 import { Button } from "../components/ui/button";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../components/ui/select";
 import { Badge } from "../components/ui/badge";
 import { Alert, AlertDescription } from "../components/ui/alert";
-import { 
-  Mail, 
-  MessageCircle, 
-  Phone, 
-  MapPin, 
-  Clock, 
+import {
+  Mail,
+  MessageCircle,
+  Phone,
+  MapPin,
+  Clock,
   Send,
   CheckCircle,
   HelpCircle,
   Bug,
   Shield,
-  CreditCard
+  CreditCard,
 } from "lucide-react";
 
 export default function Contact() {
@@ -28,12 +40,12 @@ export default function Contact() {
     subject: "",
     category: "",
     message: "",
-    priority: "medium"
+    priority: "medium",
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleInputChange = (field, value) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   const handleSubmit = (e) => {
@@ -48,7 +60,7 @@ export default function Contact() {
       subject: "",
       category: "",
       message: "",
-      priority: "medium"
+      priority: "medium",
     });
   };
 
@@ -59,7 +71,7 @@ export default function Contact() {
       description: "Chat with our support team in real-time",
       details: "Available Mon-Fri, 9 AM - 5 PM EST",
       action: "Start Chat",
-      available: true
+      available: true,
     },
     {
       icon: Mail,
@@ -67,7 +79,7 @@ export default function Contact() {
       description: "Send us a detailed message",
       details: "support@campusmarket.edu",
       action: "Send Email",
-      available: true
+      available: true,
     },
     {
       icon: Phone,
@@ -75,8 +87,8 @@ export default function Contact() {
       description: "Speak directly with our team",
       details: "(555) 987-6543",
       action: "Call Now",
-      available: false
-    }
+      available: false,
+    },
   ];
 
   const faqCategories = [
@@ -84,26 +96,26 @@ export default function Contact() {
       icon: HelpCircle,
       title: "General Questions",
       description: "How CampusMarket works, getting started",
-      color: "bg-blue-500/10 text-blue-600"
+      color: "bg-blue-500/10 text-blue-600",
     },
     {
       icon: Bug,
       title: "Technical Issues",
       description: "App problems, login issues, bugs",
-      color: "bg-red-500/10 text-red-600"
+      color: "bg-red-500/10 text-red-600",
     },
     {
       icon: Shield,
       title: "Safety & Security",
       description: "Report suspicious activity, safety concerns",
-      color: "bg-green-500/10 text-green-600"
+      color: "bg-green-500/10 text-green-600",
     },
     {
       icon: CreditCard,
       title: "Account & Billing",
       description: "Account settings, subscription questions",
-      color: "bg-purple-500/10 text-purple-600"
-    }
+      color: "bg-purple-500/10 text-purple-600",
+    },
   ];
 
   return (
@@ -111,9 +123,12 @@ export default function Contact() {
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-foreground mb-4">Contact Us</h1>
+          <h1 className="text-4xl font-bold text-foreground mb-4">
+            Contact Us
+          </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Have a question or need help? We're here to assist you. Choose the best way to reach out to our support team.
+            Have a question or need help? We're here to assist you. Choose the
+            best way to reach out to our support team.
           </p>
         </div>
 
@@ -122,7 +137,8 @@ export default function Contact() {
           <Alert className="mb-8 border-green-200 bg-green-50">
             <CheckCircle className="h-4 w-4 text-green-600" />
             <AlertDescription className="text-green-800">
-              <strong>Message sent successfully!</strong> We'll get back to you within 24 hours.
+              <strong>Message sent successfully!</strong> We'll get back to you
+              within 24 hours.
             </AlertDescription>
           </Alert>
         )}
@@ -132,7 +148,10 @@ export default function Contact() {
           {contactMethods.map((method, index) => {
             const IconComponent = method.icon;
             return (
-              <Card key={index} className={`text-center transition-shadow hover:shadow-lg ${method.available ? 'cursor-pointer' : 'opacity-60'}`}>
+              <Card
+                key={index}
+                className={`text-center transition-shadow hover:shadow-lg ${method.available ? "cursor-pointer" : "opacity-60"}`}
+              >
                 <CardHeader>
                   <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
                     <IconComponent className="w-6 h-6 text-primary" />
@@ -141,9 +160,11 @@ export default function Contact() {
                   <CardDescription>{method.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-muted-foreground mb-4">{method.details}</p>
-                  <Button 
-                    variant={method.available ? "default" : "secondary"} 
+                  <p className="text-sm text-muted-foreground mb-4">
+                    {method.details}
+                  </p>
+                  <Button
+                    variant={method.available ? "default" : "secondary"}
                     size="sm"
                     disabled={!method.available}
                   >
@@ -170,7 +191,8 @@ export default function Contact() {
                   <span>Send us a Message</span>
                 </CardTitle>
                 <CardDescription>
-                  Fill out the form below and we'll get back to you as soon as possible
+                  Fill out the form below and we'll get back to you as soon as
+                  possible
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -182,7 +204,9 @@ export default function Contact() {
                         id="name"
                         type="text"
                         value={formData.name}
-                        onChange={(e) => handleInputChange("name", e.target.value)}
+                        onChange={(e) =>
+                          handleInputChange("name", e.target.value)
+                        }
                         placeholder="Enter your full name"
                         required
                       />
@@ -193,7 +217,9 @@ export default function Contact() {
                         id="email"
                         type="email"
                         value={formData.email}
-                        onChange={(e) => handleInputChange("email", e.target.value)}
+                        onChange={(e) =>
+                          handleInputChange("email", e.target.value)
+                        }
                         placeholder="your.email@university.edu"
                         required
                       />
@@ -202,17 +228,29 @@ export default function Contact() {
 
                   <div className="space-y-2">
                     <Label htmlFor="category">Category</Label>
-                    <Select onValueChange={(value) => handleInputChange("category", value)}>
+                    <Select
+                      onValueChange={(value) =>
+                        handleInputChange("category", value)
+                      }
+                    >
                       <SelectTrigger>
                         <SelectValue placeholder="Select a category" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="general">General Question</SelectItem>
-                        <SelectItem value="technical">Technical Issue</SelectItem>
+                        <SelectItem value="general">
+                          General Question
+                        </SelectItem>
+                        <SelectItem value="technical">
+                          Technical Issue
+                        </SelectItem>
                         <SelectItem value="safety">Safety Concern</SelectItem>
                         <SelectItem value="account">Account Issue</SelectItem>
-                        <SelectItem value="billing">Billing Question</SelectItem>
-                        <SelectItem value="feedback">Feedback/Suggestion</SelectItem>
+                        <SelectItem value="billing">
+                          Billing Question
+                        </SelectItem>
+                        <SelectItem value="feedback">
+                          Feedback/Suggestion
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -223,7 +261,9 @@ export default function Contact() {
                       id="subject"
                       type="text"
                       value={formData.subject}
-                      onChange={(e) => handleInputChange("subject", e.target.value)}
+                      onChange={(e) =>
+                        handleInputChange("subject", e.target.value)
+                      }
                       placeholder="Brief description of your inquiry"
                       required
                     />
@@ -231,14 +271,25 @@ export default function Contact() {
 
                   <div className="space-y-2">
                     <Label htmlFor="priority">Priority</Label>
-                    <Select onValueChange={(value) => handleInputChange("priority", value)} defaultValue="medium">
+                    <Select
+                      onValueChange={(value) =>
+                        handleInputChange("priority", value)
+                      }
+                      defaultValue="medium"
+                    >
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="low">Low - General inquiry</SelectItem>
-                        <SelectItem value="medium">Medium - Standard support</SelectItem>
-                        <SelectItem value="high">High - Urgent issue</SelectItem>
+                        <SelectItem value="low">
+                          Low - General inquiry
+                        </SelectItem>
+                        <SelectItem value="medium">
+                          Medium - Standard support
+                        </SelectItem>
+                        <SelectItem value="high">
+                          High - Urgent issue
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -248,7 +299,9 @@ export default function Contact() {
                     <Textarea
                       id="message"
                       value={formData.message}
-                      onChange={(e) => handleInputChange("message", e.target.value)}
+                      onChange={(e) =>
+                        handleInputChange("message", e.target.value)
+                      }
                       placeholder="Please provide as much detail as possible about your question or issue..."
                       rows={6}
                       required
@@ -279,13 +332,22 @@ export default function Contact() {
                   {faqCategories.map((category, index) => {
                     const IconComponent = category.icon;
                     return (
-                      <div key={index} className="flex items-center space-x-3 p-3 rounded-lg border hover:bg-accent/50 cursor-pointer transition-colors">
-                        <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${category.color}`}>
+                      <div
+                        key={index}
+                        className="flex items-center space-x-3 p-3 rounded-lg border hover:bg-accent/50 cursor-pointer transition-colors"
+                      >
+                        <div
+                          className={`w-8 h-8 rounded-lg flex items-center justify-center ${category.color}`}
+                        >
                           <IconComponent className="w-4 h-4" />
                         </div>
                         <div>
-                          <h4 className="font-medium text-sm">{category.title}</h4>
-                          <p className="text-xs text-muted-foreground">{category.description}</p>
+                          <h4 className="font-medium text-sm">
+                            {category.title}
+                          </h4>
+                          <p className="text-xs text-muted-foreground">
+                            {category.description}
+                          </p>
                         </div>
                       </div>
                     );
@@ -318,7 +380,8 @@ export default function Contact() {
                   </div>
                   <div className="pt-3 border-t">
                     <p className="text-xs text-muted-foreground">
-                      Email responses typically within 24 hours during business days
+                      Email responses typically within 24 hours during business
+                      days
                     </p>
                   </div>
                 </div>
@@ -336,16 +399,23 @@ export default function Contact() {
               <CardContent>
                 <div className="space-y-3">
                   <div>
-                    <p className="font-medium text-sm">Student Technology Center</p>
-                    <p className="text-sm text-muted-foreground">Building A, Room 201</p>
+                    <p className="font-medium text-sm">
+                      Student Technology Center
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      Building A, Room 201
+                    </p>
                   </div>
                   <div>
                     <p className="font-medium text-sm">Office Hours</p>
-                    <p className="text-sm text-muted-foreground">Monday - Friday, 10 AM - 4 PM</p>
+                    <p className="text-sm text-muted-foreground">
+                      Monday - Friday, 10 AM - 4 PM
+                    </p>
                   </div>
                   <div className="pt-3 border-t">
                     <p className="text-xs text-muted-foreground">
-                      Walk-in support available during office hours for urgent issues
+                      Walk-in support available during office hours for urgent
+                      issues
                     </p>
                   </div>
                 </div>

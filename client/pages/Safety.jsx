@@ -1,17 +1,23 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "../components/ui/card";
 import { Badge } from "../components/ui/badge";
 import { Alert, AlertDescription } from "../components/ui/alert";
-import { 
-  Shield, 
-  MapPin, 
-  CreditCard, 
-  Eye, 
-  AlertTriangle, 
-  CheckCircle, 
-  Users, 
+import {
+  Shield,
+  MapPin,
+  CreditCard,
+  Eye,
+  AlertTriangle,
+  CheckCircle,
+  Users,
   MessageCircle,
   Clock,
-  Phone
+  Phone,
 } from "lucide-react";
 
 export default function Safety() {
@@ -26,8 +32,8 @@ export default function Safety() {
         "Meet during daylight hours when possible",
         "Choose busy locations like the student center or library",
         "Never meet at your dorm room or private residence",
-        "Trust your instincts - if something feels off, leave"
-      ]
+        "Trust your instincts - if something feels off, leave",
+      ],
     },
     {
       category: "Payment Security",
@@ -39,8 +45,8 @@ export default function Safety() {
         "Never send money before seeing the item in person",
         "Avoid wire transfers or unusual payment methods",
         "Get a receipt or confirmation for expensive items",
-        "Count cash carefully during the transaction"
-      ]
+        "Count cash carefully during the transaction",
+      ],
     },
     {
       category: "Verifying Items",
@@ -52,8 +58,8 @@ export default function Safety() {
         "Test electronic devices before buying",
         "Check textbook editions and condition carefully",
         "Ask about warranty or return policies",
-        "Take photos of items for your records"
-      ]
+        "Take photos of items for your records",
+      ],
     },
     {
       category: "Communication",
@@ -65,9 +71,9 @@ export default function Safety() {
         "Save important conversations and agreements",
         "Don't share personal information unnecessarily",
         "Report suspicious or inappropriate messages",
-        "Be clear about terms and expectations"
-      ]
-    }
+        "Be clear about terms and expectations",
+      ],
+    },
   ];
 
   const redFlags = [
@@ -79,25 +85,25 @@ export default function Safety() {
     "Asks for personal financial information",
     "Won't provide additional photos or details",
     "Account created very recently",
-    "No student verification badge"
+    "No student verification badge",
   ];
 
   const emergencyContacts = [
     {
       service: "Campus Security",
       number: "(555) 123-4567",
-      description: "24/7 campus safety and security"
+      description: "24/7 campus safety and security",
     },
     {
       service: "Local Police",
       number: "911",
-      description: "Emergency situations only"
+      description: "Emergency situations only",
     },
     {
       service: "CampusMarket Support",
       number: "(555) 987-6543",
-      description: "Report marketplace issues"
-    }
+      description: "Report marketplace issues",
+    },
   ];
 
   return (
@@ -108,9 +114,12 @@ export default function Safety() {
           <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
             <Shield className="w-8 h-8 text-white" />
           </div>
-          <h1 className="text-4xl font-bold text-foreground mb-4">Safety Tips</h1>
+          <h1 className="text-4xl font-bold text-foreground mb-4">
+            Safety Tips
+          </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Your safety is our top priority. Follow these guidelines to have secure and positive experiences on CampusMarket.
+            Your safety is our top priority. Follow these guidelines to have
+            secure and positive experiences on CampusMarket.
           </p>
         </div>
 
@@ -118,7 +127,9 @@ export default function Safety() {
         <Alert className="mb-8 border-orange-200 bg-orange-50">
           <AlertTriangle className="h-4 w-4 text-orange-600" />
           <AlertDescription className="text-orange-800">
-            <strong>Important:</strong> Never share your password, student ID number, or other sensitive personal information with other users. CampusMarket staff will never ask for this information.
+            <strong>Important:</strong> Never share your password, student ID
+            number, or other sensitive personal information with other users.
+            CampusMarket staff will never ask for this information.
           </AlertDescription>
         </Alert>
 
@@ -130,10 +141,14 @@ export default function Safety() {
               <Card key={index} className="h-full">
                 <CardHeader>
                   <div className="flex items-center space-x-3">
-                    <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${category.color}`}>
+                    <div
+                      className={`w-10 h-10 rounded-lg flex items-center justify-center ${category.color}`}
+                    >
                       <IconComponent className="w-5 h-5" />
                     </div>
-                    <CardTitle className="text-xl">{category.category}</CardTitle>
+                    <CardTitle className="text-xl">
+                      {category.category}
+                    </CardTitle>
                   </div>
                 </CardHeader>
                 <CardContent>
@@ -158,7 +173,9 @@ export default function Safety() {
               <div className="flex items-center space-x-3">
                 <AlertTriangle className="w-6 h-6 text-red-600" />
                 <div>
-                  <CardTitle className="text-red-900">Red Flags to Watch For</CardTitle>
+                  <CardTitle className="text-red-900">
+                    Red Flags to Watch For
+                  </CardTitle>
                   <CardDescription className="text-red-700">
                     Be cautious if you encounter any of these warning signs
                   </CardDescription>
@@ -168,7 +185,11 @@ export default function Safety() {
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                 {redFlags.map((flag, index) => (
-                  <Badge key={index} variant="destructive" className="p-3 text-center justify-center">
+                  <Badge
+                    key={index}
+                    variant="destructive"
+                    className="p-3 text-center justify-center"
+                  >
                     {flag}
                   </Badge>
                 ))}
@@ -192,7 +213,8 @@ export default function Safety() {
                 <div>
                   <h4 className="font-medium">Plan Ahead</h4>
                   <p className="text-sm text-muted-foreground">
-                    Confirm the meeting time, location, and item details in advance
+                    Confirm the meeting time, location, and item details in
+                    advance
                   </p>
                 </div>
               </div>
@@ -201,7 +223,8 @@ export default function Safety() {
                 <div>
                   <h4 className="font-medium">Communicate Clearly</h4>
                   <p className="text-sm text-muted-foreground">
-                    Ask questions about the item condition and have clear expectations
+                    Ask questions about the item condition and have clear
+                    expectations
                   </p>
                 </div>
               </div>
@@ -210,7 +233,8 @@ export default function Safety() {
                 <div>
                   <h4 className="font-medium">Verify the Seller</h4>
                   <p className="text-sm text-muted-foreground">
-                    Check their profile, reviews, and student verification status
+                    Check their profile, reviews, and student verification
+                    status
                   </p>
                 </div>
               </div>
@@ -230,7 +254,8 @@ export default function Safety() {
                 <div>
                   <h4 className="font-medium">Inspect Thoroughly</h4>
                   <p className="text-sm text-muted-foreground">
-                    Check the item matches the description and is in good condition
+                    Check the item matches the description and is in good
+                    condition
                   </p>
                 </div>
               </div>
@@ -271,9 +296,15 @@ export default function Safety() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {emergencyContacts.map((contact, index) => (
                 <div key={index} className="text-center p-4 border rounded-lg">
-                  <h4 className="font-semibold text-foreground mb-2">{contact.service}</h4>
-                  <p className="text-2xl font-bold text-primary mb-1">{contact.number}</p>
-                  <p className="text-sm text-muted-foreground">{contact.description}</p>
+                  <h4 className="font-semibold text-foreground mb-2">
+                    {contact.service}
+                  </h4>
+                  <p className="text-2xl font-bold text-primary mb-1">
+                    {contact.number}
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    {contact.description}
+                  </p>
                 </div>
               ))}
             </div>
@@ -288,8 +319,9 @@ export default function Safety() {
               When in Doubt, Don't Proceed
             </h3>
             <p className="text-muted-foreground mb-4 max-w-2xl mx-auto">
-              Trust your instincts. If a transaction or situation doesn't feel right, it's better to walk away. 
-              There will always be other opportunities to buy or sell items safely.
+              Trust your instincts. If a transaction or situation doesn't feel
+              right, it's better to walk away. There will always be other
+              opportunities to buy or sell items safely.
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Badge variant="outline" className="px-4 py-2">

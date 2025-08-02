@@ -1,9 +1,29 @@
 import { useState } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "../components/ui/card";
 import { Input } from "../components/ui/input";
 import { Badge } from "../components/ui/badge";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../components/ui/accordion";
-import { Search, MessageCircle, ShoppingBag, CreditCard, Shield, Users, BookOpen, Phone } from "lucide-react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "../components/ui/accordion";
+import {
+  Search,
+  MessageCircle,
+  ShoppingBag,
+  CreditCard,
+  Shield,
+  Users,
+  BookOpen,
+  Phone,
+} from "lucide-react";
 
 export default function Help() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -18,8 +38,8 @@ export default function Help() {
         "How to create your first listing",
         "Setting up your student profile",
         "Navigating the marketplace",
-        "Understanding our verification process"
-      ]
+        "Understanding our verification process",
+      ],
     },
     {
       id: "buying",
@@ -30,8 +50,8 @@ export default function Help() {
         "How to search for items",
         "Making an offer on listings",
         "Communicating with sellers",
-        "Arranging pickup and payment"
-      ]
+        "Arranging pickup and payment",
+      ],
     },
     {
       id: "selling",
@@ -42,8 +62,8 @@ export default function Help() {
         "Creating compelling listings",
         "Pricing your items competitively",
         "Managing inquiries from buyers",
-        "Best practices for item photos"
-      ]
+        "Best practices for item photos",
+      ],
     },
     {
       id: "safety",
@@ -54,8 +74,8 @@ export default function Help() {
         "Meeting safely on campus",
         "Identifying scams and fraud",
         "Payment security tips",
-        "What to do if something goes wrong"
-      ]
+        "What to do if something goes wrong",
+      ],
     },
     {
       id: "community",
@@ -66,8 +86,8 @@ export default function Help() {
         "Prohibited items and services",
         "Respectful communication standards",
         "Consequences for violations",
-        "How to report inappropriate behavior"
-      ]
+        "How to report inappropriate behavior",
+      ],
     },
     {
       id: "support",
@@ -78,45 +98,51 @@ export default function Help() {
         "Submitting a support ticket",
         "Reporting technical issues",
         "Account recovery assistance",
-        "Live chat availability"
-      ]
-    }
+        "Live chat availability",
+      ],
+    },
   ];
 
   const faqItems = [
     {
       question: "How do I verify my student status?",
-      answer: "You can verify your student status by uploading a valid student ID or providing your .edu email address. Verification typically takes 24-48 hours."
+      answer:
+        "You can verify your student status by uploading a valid student ID or providing your .edu email address. Verification typically takes 24-48 hours.",
     },
     {
       question: "Is CampusMarket free to use?",
-      answer: "Yes! CampusMarket is completely free for all students. We don't charge listing fees or transaction fees."
+      answer:
+        "Yes! CampusMarket is completely free for all students. We don't charge listing fees or transaction fees.",
     },
     {
       question: "How do I arrange payment with other students?",
-      answer: "Payment arrangements are made directly between buyers and sellers. We recommend cash transactions for in-person meetups, or secure payment apps like Venmo or Zelle."
+      answer:
+        "Payment arrangements are made directly between buyers and sellers. We recommend cash transactions for in-person meetups, or secure payment apps like Venmo or Zelle.",
     },
     {
       question: "What if an item I bought doesn't match the description?",
-      answer: "Contact the seller first to resolve the issue. If you can't reach an agreement, you can report the issue through our platform and our team will help mediate."
+      answer:
+        "Contact the seller first to resolve the issue. If you can't reach an agreement, you can report the issue through our platform and our team will help mediate.",
     },
     {
       question: "Can I sell items to students from other universities?",
-      answer: "CampusMarket is designed for campus-specific communities. You can only buy and sell within your own university's marketplace."
+      answer:
+        "CampusMarket is designed for campus-specific communities. You can only buy and sell within your own university's marketplace.",
     },
     {
       question: "How do I delete my account?",
-      answer: "You can delete your account by going to Settings > Account > Delete Account. Note that this action is permanent and cannot be undone."
-    }
+      answer:
+        "You can delete your account by going to Settings > Account > Delete Account. Note that this action is permanent and cannot be undone.",
+    },
   ];
 
   const filteredCategories = categories.filter(
-    category =>
+    (category) =>
       category.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       category.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      category.articles.some(article =>
-        article.toLowerCase().includes(searchQuery.toLowerCase())
-      )
+      category.articles.some((article) =>
+        article.toLowerCase().includes(searchQuery.toLowerCase()),
+      ),
   );
 
   return (
@@ -124,11 +150,14 @@ export default function Help() {
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-foreground mb-4">Help Center</h1>
+          <h1 className="text-4xl font-bold text-foreground mb-4">
+            Help Center
+          </h1>
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Find answers to common questions and learn how to make the most of CampusMarket
+            Find answers to common questions and learn how to make the most of
+            CampusMarket
           </p>
-          
+
           {/* Search */}
           <div className="relative max-w-md mx-auto">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
@@ -153,7 +182,7 @@ export default function Help() {
               </CardDescription>
             </CardHeader>
           </Card>
-          
+
           <Card className="text-center hover:shadow-lg transition-shadow cursor-pointer">
             <CardHeader>
               <MessageCircle className="w-8 h-8 text-primary mx-auto mb-2" />
@@ -163,7 +192,7 @@ export default function Help() {
               </CardDescription>
             </CardHeader>
           </Card>
-          
+
           <Card className="text-center hover:shadow-lg transition-shadow cursor-pointer">
             <CardHeader>
               <BookOpen className="w-8 h-8 text-primary mx-auto mb-2" />
@@ -177,27 +206,39 @@ export default function Help() {
 
         {/* Help Categories */}
         <div className="mb-12">
-          <h2 className="text-2xl font-bold text-foreground mb-6">Browse by Category</h2>
+          <h2 className="text-2xl font-bold text-foreground mb-6">
+            Browse by Category
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredCategories.map((category) => {
               const IconComponent = category.icon;
               return (
-                <Card key={category.id} className="hover:shadow-lg transition-shadow cursor-pointer">
+                <Card
+                  key={category.id}
+                  className="hover:shadow-lg transition-shadow cursor-pointer"
+                >
                   <CardHeader>
                     <div className="flex items-center space-x-3">
                       <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
                         <IconComponent className="w-5 h-5 text-primary" />
                       </div>
                       <div>
-                        <CardTitle className="text-lg">{category.title}</CardTitle>
-                        <CardDescription>{category.description}</CardDescription>
+                        <CardTitle className="text-lg">
+                          {category.title}
+                        </CardTitle>
+                        <CardDescription>
+                          {category.description}
+                        </CardDescription>
                       </div>
                     </div>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-2">
                       {category.articles.slice(0, 3).map((article, index) => (
-                        <div key={index} className="text-sm text-muted-foreground hover:text-primary cursor-pointer">
+                        <div
+                          key={index}
+                          className="text-sm text-muted-foreground hover:text-primary cursor-pointer"
+                        >
                           • {article}
                         </div>
                       ))}
@@ -217,12 +258,14 @@ export default function Help() {
         {/* FAQ */}
         <div className="mb-12">
           <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold text-foreground mb-4">Frequently Asked Questions</h2>
+            <h2 className="text-2xl font-bold text-foreground mb-4">
+              Frequently Asked Questions
+            </h2>
             <p className="text-muted-foreground">
               Quick answers to the most common questions we receive
             </p>
           </div>
-          
+
           <div className="max-w-3xl mx-auto">
             <Accordion type="single" collapsible className="w-full">
               {faqItems.map((item, index) => (
