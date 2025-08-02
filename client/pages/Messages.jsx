@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { MessageCircle } from "lucide-react";
 import ChatList from "@/components/ChatList";
