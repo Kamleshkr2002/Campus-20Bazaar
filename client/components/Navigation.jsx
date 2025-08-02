@@ -22,8 +22,13 @@ import {
 
 export function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn, loading } = useAuth();
   const navigate = useNavigate();
+
+  // Don't render navigation until auth context is loaded
+  if (loading) {
+    return null;
+  }
 
   const handleProfileClick = () => {
     if (isLoggedIn) {
