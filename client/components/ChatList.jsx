@@ -132,6 +132,13 @@ export default function ChatList({ onSelectChat }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedChatId, setSelectedChatId] = useState(null);
 
+  const truncateMessage = (text) => {
+    if (text.length > 40) {
+      return text.slice(0, 38) + "..";
+    }
+    return text;
+  };
+
   const filteredChats = mockChats.filter((chat) =>
     chat.otherUser.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     chat.item?.title.toLowerCase().includes(searchTerm.toLowerCase())
