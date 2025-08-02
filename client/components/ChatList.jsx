@@ -140,14 +140,30 @@ export default function ChatList({ onSelectChat }) {
     return text;
   };
 
-  const filteredChats = mockChats.filter((chat) =>
+  const filteredChats = chats.filter((chat) =>
     chat.otherUser.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     chat.item?.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const handleSelectChat = (chat) => {
     setSelectedChatId(chat.id);
-    onSelectChat?.(chat);
+
+    // Mark message as read if it was unread
+    if (!chat.lastMessage.isRead) {
+      setChats(prevChats =>
+        prevChats.map(c =>
+          c.id === chat.id
+            ? { ...c, lastMessage: { ...c.lastMessage, isRead: true } }
+            : c
+        )
+      );
+
+      // Pass the updated chat to parent with read status
+      const updatedChat = { ...chat, lastMessage: { ...chat.lastMessage, isRead: true } };
+      onSelectChat?.(updatedChat);
+    } else {
+      onSelectChat?.(chat);
+    }
   };
 
   return (
