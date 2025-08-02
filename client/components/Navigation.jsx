@@ -5,6 +5,7 @@ import {
   Search,
   User,
   Heart,
+  MessageCircle,
   ShoppingBag,
   Menu,
   X,
