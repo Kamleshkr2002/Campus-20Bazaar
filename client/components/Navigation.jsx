@@ -156,10 +156,13 @@ export function Navigation() {
                   <Heart className="w-5 h-5" />
                 </Link>
               </Button>
-              <Button variant="ghost" size="icon" asChild>
-                <Link to="/profile">
-                  <User className="w-5 h-5" />
-                </Link>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={handleProfileClick}
+                title={isLoggedIn ? "Dashboard" : "Login"}
+              >
+                <User className="w-5 h-5" />
               </Button>
             </div>
           </nav>
