@@ -84,8 +84,9 @@ export default function Dashboard() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Profile Card */}
-          <div className="lg:col-span-1">
+          {/* Profile and Quick Actions */}
+          <div className="lg:col-span-1 space-y-6">
+            {/* Profile Card */}
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
@@ -105,9 +106,9 @@ export default function Dashboard() {
                     <Badge variant="secondary">Verified Student</Badge>
                   </div>
                 </div>
-                
+
                 <Separator />
-                
+
                 <div className="space-y-3">
                   <div className="flex items-center gap-2 text-sm">
                     <Mail className="w-4 h-4 text-muted-foreground" />
@@ -125,6 +126,41 @@ export default function Dashboard() {
                     Edit Profile
                   </Button>
                 </EditProfile>
+              </CardContent>
+            </Card>
+
+            {/* Quick Actions */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Quick Actions</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 gap-3">
+                  <Button
+                    variant="outline"
+                    className="h-16 flex items-center justify-start gap-3 px-4"
+                    onClick={() => navigate("/sell")}
+                  >
+                    <Plus className="w-5 h-5" />
+                    Sell New Item
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="h-16 flex items-center justify-start gap-3 px-4"
+                    onClick={() => navigate("/browse")}
+                  >
+                    <Package className="w-5 h-5" />
+                    Browse Items
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="h-16 flex items-center justify-start gap-3 px-4"
+                    onClick={() => navigate("/favorites")}
+                  >
+                    <Heart className="w-5 h-5" />
+                    My Favorites
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           </div>
@@ -233,40 +269,7 @@ export default function Dashboard() {
               </CardContent>
             </Card>
 
-            {/* Quick Actions */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Quick Actions</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <Button 
-                    variant="outline" 
-                    className="h-20 flex-col gap-2"
-                    onClick={() => navigate("/sell")}
-                  >
-                    <Plus className="w-6 h-6" />
-                    Sell New Item
-                  </Button>
-                  <Button 
-                    variant="outline" 
-                    className="h-20 flex-col gap-2"
-                    onClick={() => navigate("/browse")}
-                  >
-                    <Package className="w-6 h-6" />
-                    Browse Items
-                  </Button>
-                  <Button 
-                    variant="outline" 
-                    className="h-20 flex-col gap-2"
-                    onClick={() => navigate("/favorites")}
-                  >
-                    <Heart className="w-6 h-6" />
-                    My Favorites
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+
           </div>
         </div>
       </div>
