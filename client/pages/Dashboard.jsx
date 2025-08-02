@@ -164,10 +164,10 @@ export default function Dashboard() {
                   <Button
                     variant="outline"
                     className="h-16 flex items-center justify-start gap-3 px-4"
-                    onClick={() => navigate("/favorites")}
+                    onClick={() => navigate("/messages")}
                   >
-                    <Heart className="w-5 h-5" />
-                    My Favorites
+                    <MessageCircle className="w-5 h-5" />
+                    My Messages
                   </Button>
                 </div>
               </CardContent>
