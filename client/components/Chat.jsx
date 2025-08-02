@@ -10,8 +10,6 @@ import {
   ArrowLeft,
   Send,
   MoreVertical,
-  Phone,
-  Video,
   Image,
   Package,
 } from "lucide-react";
