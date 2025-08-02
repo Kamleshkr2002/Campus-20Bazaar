@@ -30,7 +30,8 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <FavoritesProvider>
+    <AuthProvider>
+      <FavoritesProvider>
       <Toaster />
       <Sonner />
       <BrowserRouter>
@@ -70,6 +71,8 @@ const App = () => (
               />
               <Route path="/item/:id" element={<ItemDetails />} />
               <Route path="/sell" element={<Sell />} />
+              <Route path="/auth" element={<Auth />} />
+              <Route path="/dashboard" element={<Dashboard />} />
               <Route
                 path="/profile"
                 element={
@@ -149,7 +152,8 @@ const App = () => (
           <Footer />
         </div>
       </BrowserRouter>
-    </FavoritesProvider>
+      </FavoritesProvider>
+    </AuthProvider>
   </QueryClientProvider>
 );
 
