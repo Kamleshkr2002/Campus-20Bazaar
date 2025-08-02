@@ -23,6 +23,8 @@ import Furniture from "./pages/categories/Furniture";
 import Clothing from "./pages/categories/Clothing";
 import Sports from "./pages/categories/Sports";
 import Miscellaneous from "./pages/categories/Miscellaneous";
+import Auth from "./pages/Auth";
+import Dashboard from "./pages/Dashboard";
 
 const queryClient = new QueryClient();
 
