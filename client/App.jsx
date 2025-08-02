@@ -94,15 +94,7 @@ const App = () => (
                   }
                 />
                 <Route path="/favorites" element={<Favorites />} />
-                <Route
-                  path="/how-it-works"
-                  element={
-                    <PlaceholderPage
-                      title="How It Works"
-                      description="Learn how to safely buy and sell items on CampusMarket."
-                    />
-                  }
-                />
+                <Route path="/how-it-works" element={<HowItWorks />} />
                 <Route path="/help" element={<Help />} />
                 <Route path="/safety" element={<Safety />} />
                 <Route path="/contact" element={<Contact />} />
