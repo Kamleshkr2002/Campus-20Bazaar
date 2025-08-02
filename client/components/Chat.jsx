@@ -109,12 +109,6 @@ export default function Chat({ chatData, onBack }) {
         </div>
         <div className="flex items-center gap-2">
           <Button variant="ghost" size="sm">
-            <Phone className="w-4 h-4" />
-          </Button>
-          <Button variant="ghost" size="sm">
-            <Video className="w-4 h-4" />
-          </Button>
-          <Button variant="ghost" size="sm">
             <MoreVertical className="w-4 h-4" />
           </Button>
         </div>
