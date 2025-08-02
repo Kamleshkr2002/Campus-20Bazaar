@@ -25,6 +25,12 @@ import Sports from "./pages/categories/Sports";
 import Miscellaneous from "./pages/categories/Miscellaneous";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
+import Help from "./pages/Help";
+import Safety from "./pages/Safety";
+import Contact from "./pages/Contact";
+import Report from "./pages/Report";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
 
 const queryClient = new QueryClient();
 
@@ -95,60 +101,12 @@ const App = () => (
                     />
                   }
                 />
-                <Route
-                  path="/help"
-                  element={
-                    <PlaceholderPage
-                      title="Help Center"
-                      description="Find answers to frequently asked questions and get support."
-                    />
-                  }
-                />
-                <Route
-                  path="/safety"
-                  element={
-                    <PlaceholderPage
-                      title="Safety Tips"
-                      description="Important safety guidelines for buying and selling on campus."
-                    />
-                  }
-                />
-                <Route
-                  path="/contact"
-                  element={
-                    <PlaceholderPage
-                      title="Contact Us"
-                      description="Get in touch with our support team for assistance."
-                    />
-                  }
-                />
-                <Route
-                  path="/report"
-                  element={
-                    <PlaceholderPage
-                      title="Report Issue"
-                      description="Report suspicious activity or problematic listings."
-                    />
-                  }
-                />
-                <Route
-                  path="/privacy"
-                  element={
-                    <PlaceholderPage
-                      title="Privacy Policy"
-                      description="Learn how we protect and handle your personal information."
-                    />
-                  }
-                />
-                <Route
-                  path="/terms"
-                  element={
-                    <PlaceholderPage
-                      title="Terms of Service"
-                      description="Read our terms and conditions for using CampusMarket."
-                    />
-                  }
-                />
+                <Route path="/help" element={<Help />} />
+                <Route path="/safety" element={<Safety />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/report" element={<Report />} />
+                <Route path="/privacy" element={<Privacy />} />
+                <Route path="/terms" element={<Terms />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>
