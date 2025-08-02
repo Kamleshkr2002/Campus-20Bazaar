@@ -8,12 +8,14 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { FavoritesProvider } from "./contexts/FavoritesContext";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import Index from "./pages/Index";
 import Browse from "./pages/Browse";
 import PlaceholderPage from "./pages/PlaceholderPage";
 import NotFound from "./pages/NotFound";
 import ItemDetails from "./pages/ItemDetails";
 import Favorites from "./pages/Favorites";
+import Sell from "./pages/Sell";
 import Textbooks from "./pages/categories/Textbooks";
 import Electronics from "./pages/categories/Electronics";
 import Furniture from "./pages/categories/Furniture";
@@ -29,6 +31,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <div className="flex flex-col min-h-screen">
           <Navigation />
           <main className="flex-1">
@@ -63,15 +66,7 @@ const App = () => (
                 }
               />
               <Route path="/item/:id" element={<ItemDetails />} />
-              <Route
-                path="/sell"
-                element={
-                  <PlaceholderPage
-                    title="Sell Your Item"
-                    description="List your item for sale and reach thousands of students on campus."
-                  />
-                }
-              />
+              <Route path="/sell" element={<Sell />} />
               <Route
                 path="/profile"
                 element={

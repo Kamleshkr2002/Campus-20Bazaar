@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useFavorites } from "../contexts/FavoritesContext";
+import { ShareDialog } from "@/components/ShareDialog";
 import {
   ArrowLeft,
   Heart,
@@ -266,6 +267,7 @@ const relatedItems = [
 export default function ItemDetails() {
   const { id } = useParams();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isShareDialogOpen, setIsShareDialogOpen] = useState(false);
   const { isFavorite, toggleFavorite } = useFavorites();
 
   const item = mockItems[id] || mockItems[1]; // Fallback to item 1 if not found
@@ -504,7 +506,12 @@ export default function ItemDetails() {
                 <MessageCircle className="w-4 h-4 mr-2" />
                 Contact Seller
               </Button>
-              <Button variant="outline" size="lg" className="w-full">
+              <Button
+                variant="outline"
+                size="lg"
+                className="w-full"
+                onClick={() => setIsShareDialogOpen(true)}
+              >
                 <Share2 className="w-4 h-4 mr-2" />
                 Share Item
               </Button>
@@ -635,34 +642,38 @@ export default function ItemDetails() {
               key={relatedItem.id}
               className="hover:shadow-lg transition-shadow"
             >
-              <Link to={`/item/${relatedItem.id}`}>
-                <CardHeader className="pb-3">
-                  <div className="aspect-[4/3] bg-gray-100 rounded-md mb-3 relative overflow-hidden">
-                    <img
-                      src={relatedItem.image}
-                      alt={relatedItem.title}
-                      className="w-full h-full object-cover rounded-md"
-                    />
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      className="absolute bottom-2 right-2 h-8 w-8 bg-white/90 backdrop-blur-sm hover:bg-white"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        toggleFavorite(relatedItem.id);
-                      }}
-                    >
-                      <Heart
-                        className={`w-4 h-4 ${isFavorite(relatedItem.id) ? "fill-red-500 text-red-500" : ""}`}
+              <CardHeader className="pb-3">
+                <div className="relative">
+                  <Link to={`/item/${relatedItem.id}`}>
+                    <div className="aspect-[4/3] bg-gray-100 rounded-md mb-3 overflow-hidden">
+                      <img
+                        src={relatedItem.image}
+                        alt={relatedItem.title}
+                        className="w-full h-full object-cover rounded-md"
                       />
-                    </Button>
-                  </div>
+                    </div>
+                  </Link>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="absolute top-2 right-2 h-8 w-8 bg-white/90 backdrop-blur-sm hover:bg-white"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      toggleFavorite(relatedItem.id);
+                    }}
+                  >
+                    <Heart
+                      className={`w-4 h-4 ${isFavorite(relatedItem.id) ? "fill-red-500 text-red-500" : ""}`}
+                    />
+                  </Button>
+                </div>
+                <Link to={`/item/${relatedItem.id}`}>
                   <CardTitle className="text-lg line-clamp-2 hover:text-primary transition-colors">
                     {relatedItem.title}
                   </CardTitle>
-                </CardHeader>
-              </Link>
+                </Link>
+              </CardHeader>
               <CardContent className="pt-0">
                 <div className="flex items-center justify-between">
                   <span className="text-xl font-bold text-green-600">
@@ -677,6 +688,13 @@ export default function ItemDetails() {
           ))}
         </div>
       </div>
+
+      {/* Share Dialog */}
+      <ShareDialog
+        isOpen={isShareDialogOpen}
+        onClose={() => setIsShareDialogOpen(false)}
+        item={item}
+      />
     </div>
   );
 }

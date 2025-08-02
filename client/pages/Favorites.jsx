@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Heart, Search, User, MapPin, Package } from "lucide-react";
+import { Heart, Search, User, MapPin, Package, Share2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -10,6 +10,8 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useFavorites } from "../contexts/FavoritesContext";
+import { ShareDialog } from "@/components/ShareDialog";
+import { useState } from "react";
 
 // Mock data that matches the category pages and ItemDetails
 const allItems = {
@@ -77,6 +79,8 @@ const allItems = {
 
 export default function Favorites() {
   const { favorites, toggleFavorite, isFavorite } = useFavorites();
+  const [shareDialogOpen, setShareDialogOpen] = useState(false);
+  const [itemToShare, setItemToShare] = useState(null);
 
   const favoriteItems = favorites.map((id) => allItems[id]).filter(Boolean); // Remove any undefined items
 
@@ -222,12 +226,6 @@ export default function Favorites() {
               <Search className="w-4 h-4 mr-2" />
               Browse All Items
             </Link>
-          </Button>
-          <Button variant="outline" asChild>
-            <Link to="/categories/textbooks">📚 Textbooks</Link>
-          </Button>
-          <Button variant="outline" asChild>
-            <Link to="/categories/electronics">💻 Electronics</Link>
           </Button>
         </div>
       </div>
