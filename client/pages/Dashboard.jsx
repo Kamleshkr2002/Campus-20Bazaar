@@ -17,7 +17,7 @@ import {
   Mail,
   GraduationCap,
   Package,
-  Heart,
+  MessageCircle,
   TrendingUp,
   LogOut,
   Settings,
