@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { User, Mail, Lock, GraduationCap } from "lucide-react";
+import { User, Mail, Lock, GraduationCap, Chrome } from "lucide-react";
 
 export default function Auth() {
   const [loginForm, setLoginForm] = useState({ email: "", password: "" });
@@ -56,6 +56,18 @@ export default function Auth() {
     }
   };
 
+  const handleGoogleAuth = () => {
+    // Simulate Google auth - replace with actual Google OAuth
+    const userData = {
+      id: 1,
+      name: "Google User",
+      email: "user@gmail.com",
+      university: "Demo University",
+    };
+    login(userData);
+    navigate("/dashboard");
+  };
+
   return (
     <div className="container mx-auto px-4 py-8 max-w-md">
       <div className="text-center mb-8">
@@ -68,12 +80,22 @@ export default function Auth() {
       </div>
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-        <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="login">Login</TabsTrigger>
-          <TabsTrigger value="register">Register</TabsTrigger>
+        <TabsList className="grid w-full grid-cols-2 bg-muted p-1 h-12">
+          <TabsTrigger
+            value="login"
+            className="data-[state=active]:bg-white data-[state=active]:text-foreground data-[state=active]:shadow-sm transition-all duration-300 ease-in-out transform data-[state=active]:scale-[0.98] rounded-md h-10"
+          >
+            Login
+          </TabsTrigger>
+          <TabsTrigger
+            value="register"
+            className="data-[state=active]:bg-white data-[state=active]:text-foreground data-[state=active]:shadow-sm transition-all duration-300 ease-in-out transform data-[state=active]:scale-[0.98] rounded-md h-10"
+          >
+            Register
+          </TabsTrigger>
         </TabsList>
 
-        <TabsContent value="login">
+        <TabsContent value="login" className="animate-in slide-in-from-right-2 duration-300">
           <Card>
             <CardHeader>
               <CardTitle>Login to your account</CardTitle>
@@ -120,12 +142,31 @@ export default function Auth() {
                 <Button type="submit" className="w-full bg-brand-purple hover:bg-brand-purple-dark">
                   Login
                 </Button>
+
+                <div className="relative">
+                  <div className="absolute inset-0 flex items-center">
+                    <span className="w-full border-t" />
+                  </div>
+                  <div className="relative flex justify-center text-xs uppercase">
+                    <span className="bg-background px-2 text-muted-foreground">Or continue with</span>
+                  </div>
+                </div>
+
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="w-full hover:bg-secondary/80 transition-colors duration-200"
+                  onClick={handleGoogleAuth}
+                >
+                  <Chrome className="w-4 h-4 mr-2" />
+                  Google
+                </Button>
               </form>
             </CardContent>
           </Card>
         </TabsContent>
 
-        <TabsContent value="register">
+        <TabsContent value="register" className="animate-in slide-in-from-left-2 duration-300">
           <Card>
             <CardHeader>
               <CardTitle>Create an account</CardTitle>
@@ -225,6 +266,25 @@ export default function Auth() {
                 </div>
                 <Button type="submit" className="w-full bg-brand-purple hover:bg-brand-purple-dark">
                   Create Account
+                </Button>
+
+                <div className="relative">
+                  <div className="absolute inset-0 flex items-center">
+                    <span className="w-full border-t" />
+                  </div>
+                  <div className="relative flex justify-center text-xs uppercase">
+                    <span className="bg-background px-2 text-muted-foreground">Or continue with</span>
+                  </div>
+                </div>
+
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="w-full hover:bg-secondary/80 transition-colors duration-200"
+                  onClick={handleGoogleAuth}
+                >
+                  <Chrome className="w-4 h-4 mr-2" />
+                  Google
                 </Button>
               </form>
             </CardContent>
