@@ -141,11 +141,11 @@ export default function Index() {
             {/* Hero Search */}
             <div className="max-w-2xl mx-auto mb-8">
               <div className="relative">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
+                <Search className="absolute left-1 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
                 <Input
                   type="text"
-                  placeholder="Search for textbooks, laptops, furniture..."
-                  className="pl-12 pr-24 py-4 text-lg bg-white/80 backdrop-blur-sm border-0 shadow-lg focus-visible:ring-2 focus-visible:ring-primary"
+                  placeholder={`Search for ${animatedText}...`}
+                  className="pl-7 pr-24 py-4 text-lg bg-white/80 backdrop-blur-sm border-0 shadow-lg focus-visible:ring-2 focus-visible:ring-primary"
                 />
                 <Button className="absolute right-1 top-1/2 transform -translate-y-1/2 bg-brand-purple hover:bg-brand-purple-dark">
                   Search
