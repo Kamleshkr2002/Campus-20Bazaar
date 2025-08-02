@@ -274,6 +274,15 @@ export function Navigation() {
               >
                 My Favorites
               </Link>
+              {isLoggedIn && (
+                <Link
+                  to="/messages"
+                  className="text-foreground hover:text-primary transition-colors py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Messages
+                </Link>
+              )}
               <button
                 onClick={() => {
                   handleProfileClick();
