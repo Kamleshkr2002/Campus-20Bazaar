@@ -294,6 +294,36 @@ export default function ItemDetails() {
     });
   };
 
+  const handleContactSeller = () => {
+    // Navigate to messages page with seller and item context
+    navigate("/messages", {
+      state: {
+        newChat: {
+          otherUser: {
+            name: item.seller.name,
+            role: "seller",
+            isOnline: true,
+          },
+          item: {
+            title: item.title,
+            price: item.price,
+          },
+          messages: [
+            {
+              id: 1,
+              text: `Hi! I'm interested in your ${item.title}. Is it still available?`,
+              sender: "me",
+              timestamp: new Date().toLocaleTimeString([], {
+                hour: "2-digit",
+                minute: "2-digit",
+              }),
+            },
+          ],
+        },
+      },
+    });
+  };
+
   return (
     <div className="container mx-auto px-4 py-8">
       {/* Back Navigation */}
