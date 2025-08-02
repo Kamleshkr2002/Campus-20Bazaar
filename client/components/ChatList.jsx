@@ -131,6 +131,7 @@ const mockChats = [
 export default function ChatList({ onSelectChat }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedChatId, setSelectedChatId] = useState(null);
+  const [chats, setChats] = useState(mockChats);
 
   const truncateMessage = (text) => {
     if (text.length > 40) {
