@@ -261,13 +261,15 @@ export function Navigation() {
               >
                 My Favorites
               </Link>
-              <Link
-                to="/profile"
-                className="text-foreground hover:text-primary transition-colors py-2"
-                onClick={() => setIsMenuOpen(false)}
+              <button
+                onClick={() => {
+                  handleProfileClick();
+                  setIsMenuOpen(false);
+                }}
+                className="text-left text-foreground hover:text-primary transition-colors py-2"
               >
-                My Profile
-              </Link>
+                {isLoggedIn ? "Dashboard" : "Login / Register"}
+              </button>
               <Button
                 asChild
                 className="bg-brand-purple hover:bg-brand-purple-dark mt-4"
