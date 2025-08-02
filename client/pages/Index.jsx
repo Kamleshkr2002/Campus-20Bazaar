@@ -118,6 +118,8 @@ const categories = [
 
 export default function Index() {
   const { isFavorite, toggleFavorite } = useFavorites();
+  const typingWords = ['textbooks', 'laptops', 'furniture'];
+  const animatedText = useTypingAnimation(typingWords, 150, 75, 1500);
   return (
     <div className="min-h-screen flex flex-col">
       {/* Hero Section */}
