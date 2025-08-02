@@ -95,6 +95,7 @@ const App = () => (
                   }
                 />
                 <Route path="/favorites" element={<Favorites />} />
+                <Route path="/messages" element={<Messages />} />
                 <Route path="/how-it-works" element={<HowItWorks />} />
                 <Route path="/help" element={<Help />} />
                 <Route path="/safety" element={<Safety />} />
