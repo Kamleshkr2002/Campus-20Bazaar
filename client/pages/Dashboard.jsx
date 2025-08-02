@@ -17,7 +17,7 @@ import {
   Mail,
   GraduationCap,
   Package,
-  Heart,
+  MessageCircle,
   TrendingUp,
   LogOut,
   Settings,
@@ -39,7 +39,6 @@ export default function Dashboard() {
     activeListings: 3,
     totalSales: 12,
     totalEarnings: 450,
-    favoriteItems: 8,
   };
 
   // Mock data for recent listings - set to empty to test no listings state
@@ -164,10 +163,10 @@ export default function Dashboard() {
                   <Button
                     variant="outline"
                     className="h-16 flex items-center justify-start gap-3 px-4"
-                    onClick={() => navigate("/favorites")}
+                    onClick={() => navigate("/messages")}
                   >
-                    <Heart className="w-5 h-5" />
-                    My Favorites
+                    <MessageCircle className="w-5 h-5" />
+                    My Messages
                   </Button>
                 </div>
               </CardContent>
@@ -177,7 +176,7 @@ export default function Dashboard() {
           {/* Stats and Content */}
           <div className="lg:col-span-2 space-y-6">
             {/* Stats Cards */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <Card>
                 <CardContent className="p-4 text-center">
                   <Package className="w-8 h-8 mx-auto mb-2 text-brand-purple" />
@@ -213,16 +212,6 @@ export default function Dashboard() {
                   <div className="text-xs text-muted-foreground">
                     Total Earnings
                   </div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardContent className="p-4 text-center">
-                  <Heart className="w-8 h-8 mx-auto mb-2 text-red-500" />
-                  <div className="text-2xl font-bold">
-                    {userStats.favoriteItems}
-                  </div>
-                  <div className="text-xs text-muted-foreground">Favorites</div>
                 </CardContent>
               </Card>
             </div>

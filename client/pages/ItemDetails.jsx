@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { useFavorites } from "../contexts/FavoritesContext";
 import { ShareDialog } from "@/components/ShareDialog";
 import {
@@ -266,6 +266,7 @@ const relatedItems = [
 
 export default function ItemDetails() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isShareDialogOpen, setIsShareDialogOpen] = useState(false);
   const { isFavorite, toggleFavorite } = useFavorites();
@@ -290,6 +291,36 @@ export default function ItemDetails() {
       year: "numeric",
       month: "long",
       day: "numeric",
+    });
+  };
+
+  const handleContactSeller = () => {
+    // Navigate to messages page with seller and item context
+    navigate("/messages", {
+      state: {
+        newChat: {
+          otherUser: {
+            name: item.seller.name,
+            role: "seller",
+            isOnline: true,
+          },
+          item: {
+            title: item.title,
+            price: item.price,
+          },
+          messages: [
+            {
+              id: 1,
+              text: `Hi! I'm interested in your ${item.title}. Is it still available?`,
+              sender: "me",
+              timestamp: new Date().toLocaleTimeString([], {
+                hour: "2-digit",
+                minute: "2-digit",
+              }),
+            },
+          ],
+        },
+      },
     });
   };
 
@@ -502,7 +533,11 @@ export default function ItemDetails() {
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              <Button size="lg" className="w-full">
+              <Button
+                size="lg"
+                className="w-full"
+                onClick={handleContactSeller}
+              >
                 <MessageCircle className="w-4 h-4 mr-2" />
                 Contact Seller
               </Button>

@@ -5,6 +5,7 @@ import {
   Search,
   User,
   Heart,
+  MessageCircle,
   ShoppingBag,
   Menu,
   X,
@@ -161,6 +162,13 @@ export function Navigation() {
                   <Heart className="w-5 h-5" />
                 </Link>
               </Button>
+              {isLoggedIn && (
+                <Button variant="ghost" size="icon" asChild>
+                  <Link to="/messages">
+                    <MessageCircle className="w-5 h-5" />
+                  </Link>
+                </Button>
+              )}
               <Button
                 variant="ghost"
                 size="icon"
@@ -266,6 +274,15 @@ export function Navigation() {
               >
                 My Favorites
               </Link>
+              {isLoggedIn && (
+                <Link
+                  to="/messages"
+                  className="text-foreground hover:text-primary transition-colors py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Messages
+                </Link>
+              )}
               <button
                 onClick={() => {
                   handleProfileClick();

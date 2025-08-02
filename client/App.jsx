@@ -27,6 +27,8 @@ import Miscellaneous from "./pages/categories/Miscellaneous";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
 import Help from "./pages/Help";
+import HowItWorks from "./pages/HowItWorks";
+import Messages from "./pages/Messages";
 import Safety from "./pages/Safety";
 import Contact from "./pages/Contact";
 import Report from "./pages/Report";
@@ -93,15 +95,8 @@ const App = () => (
                   }
                 />
                 <Route path="/favorites" element={<Favorites />} />
-                <Route
-                  path="/how-it-works"
-                  element={
-                    <PlaceholderPage
-                      title="How It Works"
-                      description="Learn how to safely buy and sell items on CampusMarket."
-                    />
-                  }
-                />
+                <Route path="/messages" element={<Messages />} />
+                <Route path="/how-it-works" element={<HowItWorks />} />
                 <Route path="/help" element={<Help />} />
                 <Route path="/safety" element={<Safety />} />
                 <Route path="/contact" element={<Contact />} />
