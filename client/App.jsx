@@ -27,6 +27,7 @@ import Miscellaneous from "./pages/categories/Miscellaneous";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
 import Help from "./pages/Help";
+import HowItWorks from "./pages/HowItWorks";
 import Safety from "./pages/Safety";
 import Contact from "./pages/Contact";
 import Report from "./pages/Report";
