@@ -39,7 +39,7 @@ export default function Dashboard() {
     activeListings: 3,
     totalSales: 12,
     totalEarnings: 450,
-    favoriteItems: 8,
+    activeChats: 5,
   };
 
   // Mock data for recent listings - set to empty to test no listings state
