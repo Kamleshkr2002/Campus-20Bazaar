@@ -6,8 +6,24 @@ import ChatList from "@/components/ChatList";
 import Chat from "@/components/Chat";
 
 export default function Messages() {
+  const location = useLocation();
   const [selectedChat, setSelectedChat] = useState(null);
   const [showChat, setShowChat] = useState(false);
+
+  // Check if there's a new chat to start from navigation
+  useEffect(() => {
+    if (location.state?.newChat) {
+      const newChat = {
+        id: Date.now(), // Generate temporary ID
+        ...location.state.newChat,
+      };
+      setSelectedChat(newChat);
+      setShowChat(true);
+
+      // Clear the navigation state to prevent re-initialization
+      window.history.replaceState({}, document.title);
+    }
+  }, [location.state]);
 
   const handleSelectChat = (chat) => {
     setSelectedChat(chat);
