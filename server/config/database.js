@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
-import { config } from './config.js';
-import logger from '../utils/logger.js';
+import mongoose from "mongoose";
+import { config } from "./config.js";
+import logger from "../utils/logger.js";
 
 class Database {
   constructor() {
@@ -18,25 +18,25 @@ class Database {
       };
 
       this.connection = await mongoose.connect(config.mongodbUri, options);
-      
-      logger.info('Connected to MongoDB successfully');
-      
+
+      logger.info("Connected to MongoDB successfully");
+
       // Handle connection events
-      mongoose.connection.on('error', (error) => {
-        logger.error('MongoDB connection error:', error);
+      mongoose.connection.on("error", (error) => {
+        logger.error("MongoDB connection error:", error);
       });
 
-      mongoose.connection.on('disconnected', () => {
-        logger.warn('MongoDB disconnected');
+      mongoose.connection.on("disconnected", () => {
+        logger.warn("MongoDB disconnected");
       });
 
-      mongoose.connection.on('reconnected', () => {
-        logger.info('MongoDB reconnected');
+      mongoose.connection.on("reconnected", () => {
+        logger.info("MongoDB reconnected");
       });
 
       return this.connection;
     } catch (error) {
-      logger.error('Failed to connect to MongoDB:', error);
+      logger.error("Failed to connect to MongoDB:", error);
       process.exit(1);
     }
   }
@@ -44,20 +44,20 @@ class Database {
   async disconnect() {
     try {
       await mongoose.disconnect();
-      logger.info('Disconnected from MongoDB');
+      logger.info("Disconnected from MongoDB");
     } catch (error) {
-      logger.error('Error disconnecting from MongoDB:', error);
+      logger.error("Error disconnecting from MongoDB:", error);
     }
   }
 
   async dropDatabase() {
     try {
-      if (config.nodeEnv === 'test') {
+      if (config.nodeEnv === "test") {
         await mongoose.connection.dropDatabase();
-        logger.info('Test database dropped');
+        logger.info("Test database dropped");
       }
     } catch (error) {
-      logger.error('Error dropping database:', error);
+      logger.error("Error dropping database:", error);
     }
   }
 

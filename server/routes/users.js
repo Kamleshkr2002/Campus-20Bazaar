@@ -1,35 +1,48 @@
-import express from 'express';
-import { User, Item } from '../models/index.js';
-import { authenticate, requireAdmin, requireOwnershipOrAdmin } from '../middleware/auth.js';
-import { uploadAvatar, handleUploadError, cleanupOnError } from '../middleware/upload.js';
-import { validateUserUpdate, validatePagination, handleValidationErrors } from '../middleware/validation.js';
-import { catchAsync, AppError } from '../middleware/errorHandler.js';
+import express from "express";
+import { User, Item } from "../models/index.js";
+import {
+  authenticate,
+  requireAdmin,
+  requireOwnershipOrAdmin,
+} from "../middleware/auth.js";
+import {
+  uploadAvatar,
+  handleUploadError,
+  cleanupOnError,
+} from "../middleware/upload.js";
+import {
+  validateUserUpdate,
+  validatePagination,
+  handleValidationErrors,
+} from "../middleware/validation.js";
+import { catchAsync, AppError } from "../middleware/errorHandler.js";
 
 const router = express.Router();
 
 // Get user profile by ID
-router.get('/:id',
+router.get(
+  "/:id",
   catchAsync(async (req, res) => {
-    const user = await User.findById(req.params.id)
-      .populate({
-        path: 'itemsForSale',
-        match: { status: 'active' },
-        options: { limit: 10, sort: { createdAt: -1 } }
-      });
+    const user = await User.findById(req.params.id).populate({
+      path: "itemsForSale",
+      match: { status: "active" },
+      options: { limit: 10, sort: { createdAt: -1 } },
+    });
 
     if (!user || !user.isActive) {
-      throw new AppError('User not found', 404);
+      throw new AppError("User not found", 404);
     }
 
     res.json({
       success: true,
       data: { user },
     });
-  })
+  }),
 );
 
 // Update user profile
-router.patch('/profile',
+router.patch(
+  "/profile",
   authenticate,
   uploadAvatar,
   handleUploadError,
@@ -37,10 +50,17 @@ router.patch('/profile',
   validateUserUpdate,
   handleValidationErrors,
   catchAsync(async (req, res) => {
-    const allowedUpdates = ['firstName', 'lastName', 'phone', 'bio', 'location', 'preferences'];
+    const allowedUpdates = [
+      "firstName",
+      "lastName",
+      "phone",
+      "bio",
+      "location",
+      "preferences",
+    ];
     const updates = {};
 
-    allowedUpdates.forEach(field => {
+    allowedUpdates.forEach((field) => {
       if (req.body[field] !== undefined) {
         updates[field] = req.body[field];
       }
@@ -59,27 +79,28 @@ router.patch('/profile',
 
     res.json({
       success: true,
-      message: 'Profile updated successfully',
+      message: "Profile updated successfully",
       data: { user: req.user },
     });
-  })
+  }),
 );
 
 // Get user's items
-router.get('/:id/items',
+router.get(
+  "/:id/items",
   validatePagination,
   handleValidationErrors,
   catchAsync(async (req, res) => {
-    const { page = 1, limit = 20, status = 'active' } = req.query;
+    const { page = 1, limit = 20, status = "active" } = req.query;
     const skip = (page - 1) * limit;
 
     const user = await User.findById(req.params.id);
     if (!user) {
-      throw new AppError('User not found', 404);
+      throw new AppError("User not found", 404);
     }
 
     const items = await Item.find({ seller: req.params.id, status })
-      .populate('seller', 'firstName lastName avatar')
+      .populate("seller", "firstName lastName avatar")
       .sort({ createdAt: -1 })
       .limit(parseInt(limit))
       .skip(skip);
@@ -98,11 +119,12 @@ router.get('/:id/items',
         },
       },
     });
-  })
+  }),
 );
 
 // Admin routes
-router.get('/',
+router.get(
+  "/",
   authenticate,
   requireAdmin,
   validatePagination,
@@ -112,25 +134,25 @@ router.get('/',
     const skip = (page - 1) * limit;
 
     let query = {};
-    
+
     if (search) {
       query.$or = [
-        { firstName: { $regex: search, $options: 'i' } },
-        { lastName: { $regex: search, $options: 'i' } },
-        { email: { $regex: search, $options: 'i' } },
+        { firstName: { $regex: search, $options: "i" } },
+        { lastName: { $regex: search, $options: "i" } },
+        { email: { $regex: search, $options: "i" } },
       ];
     }
-    
+
     if (university) {
-      query.university = { $regex: university, $options: 'i' };
+      query.university = { $regex: university, $options: "i" };
     }
-    
+
     if (isVerified !== undefined) {
-      query.isEmailVerified = isVerified === 'true';
+      query.isEmailVerified = isVerified === "true";
     }
 
     const users = await User.find(query)
-      .select('-password -refreshTokens')
+      .select("-password -refreshTokens")
       .sort({ createdAt: -1 })
       .limit(parseInt(limit))
       .skip(skip);
@@ -149,7 +171,7 @@ router.get('/',
         },
       },
     });
-  })
+  }),
 );
 
 export default router;

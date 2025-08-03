@@ -49,8 +49,10 @@ campusbazaar/
 ## 🚀 Technology Stack & Reasoning
 
 ### **Core Framework: React 18**
+
 **What**: Modern JavaScript library for building user interfaces
 **Why Chosen**:
+
 - ✅ Component-based architecture for reusability
 - ✅ Virtual DOM for optimal performance
 - ✅ Huge ecosystem and community support
@@ -58,9 +60,10 @@ campusbazaar/
 - ✅ Modern features (Hooks, Concurrent Mode, Suspense)
 
 **Key Features Used**:
+
 ```javascript
 // Modern React patterns
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext } from "react";
 
 // Context for global state
 const AuthContext = createContext();
@@ -70,13 +73,16 @@ const useAuth = () => useContext(AuthContext);
 ```
 
 **Alternatives Considered**:
+
 - **Vue.js**: Good but smaller ecosystem
 - **Angular**: Too heavy for this project
 - **Svelte**: Great performance but smaller community
 
 ### **Routing: React Router 6**
+
 **What**: Declarative routing for React applications
 **Why Chosen**:
+
 - ✅ SPA (Single Page Application) mode
 - ✅ Nested routing capabilities
 - ✅ Programmatic navigation
@@ -84,6 +90,7 @@ const useAuth = () => useContext(AuthContext);
 - ✅ Modern hooks-based API
 
 **Routing Structure**:
+
 ```javascript
 <Routes>
   <Route path="/" element={<Index />} />
@@ -98,8 +105,10 @@ const useAuth = () => useContext(AuthContext);
 ```
 
 ### **Styling: TailwindCSS 3**
+
 **What**: Utility-first CSS framework
 **Why Chosen**:
+
 - ✅ Rapid prototyping and development
 - ✅ Consistent design system
 - ✅ Small bundle size (purged unused CSS)
@@ -108,6 +117,7 @@ const useAuth = () => useContext(AuthContext);
 - ✅ Excellent customization
 
 **Design System**:
+
 ```css
 /* Custom theme in tailwind.config.js */
 colors: {
@@ -124,13 +134,16 @@ colors: {
 ```
 
 **Alternatives Considered**:
+
 - **CSS Modules**: More setup required
 - **Styled Components**: Runtime overhead
 - **Bootstrap**: Less customization flexibility
 
 ### **UI Components: Radix UI + Shadcn/ui**
+
 **What**: Headless UI components with pre-built styles
 **Why Chosen**:
+
 - ✅ Accessibility built-in (ARIA, keyboard navigation)
 - ✅ Unstyled primitives for customization
 - ✅ 40+ production-ready components
@@ -138,14 +151,51 @@ colors: {
 - ✅ TypeScript support
 
 **Component Library**:
+
 ```javascript
 // Pre-built components available
-import { Button, Input, Dialog, Dropdown, Toast, Avatar, Badge, Card, Accordion, Alert, Carousel, Command, DataTable, DatePicker, Form, HoverCard, Menubar, NavigationMenu, Popover, Progress, RadioGroup, ScrollArea, Select, Separator, Sheet, Skeleton, Slider, Switch, Table, Tabs, Textarea, Toggle, Tooltip } from '@/components/ui';
+import {
+  Button,
+  Input,
+  Dialog,
+  Dropdown,
+  Toast,
+  Avatar,
+  Badge,
+  Card,
+  Accordion,
+  Alert,
+  Carousel,
+  Command,
+  DataTable,
+  DatePicker,
+  Form,
+  HoverCard,
+  Menubar,
+  NavigationMenu,
+  Popover,
+  Progress,
+  RadioGroup,
+  ScrollArea,
+  Select,
+  Separator,
+  Sheet,
+  Skeleton,
+  Slider,
+  Switch,
+  Table,
+  Tabs,
+  Textarea,
+  Toggle,
+  Tooltip,
+} from "@/components/ui";
 ```
 
 ### **State Management: React Context + TanStack Query**
+
 **What**: Built-in React state + server state management
 **Why Chosen**:
+
 - ✅ No additional bundle size for simple state
 - ✅ TanStack Query for server state caching
 - ✅ Automatic background refetching
@@ -153,6 +203,7 @@ import { Button, Input, Dialog, Dropdown, Toast, Avatar, Badge, Card, Accordion,
 - ✅ Error handling and retry logic
 
 **State Architecture**:
+
 ```javascript
 // Global state contexts
 AuthContext: {
@@ -172,13 +223,16 @@ const { data: items, isLoading, error } = useQuery({
 ```
 
 **Alternatives Considered**:
+
 - **Redux**: Overkill for this project size
 - **Zustand**: Good but Context is sufficient
 - **Recoil**: Still experimental
 
 ### **Build Tool: Vite**
+
 **What**: Next-generation frontend build tool
 **Why Chosen**:
+
 - ✅ Lightning-fast hot module replacement (HMR)
 - ✅ Native ES modules support
 - ✅ Optimized production builds
@@ -186,34 +240,38 @@ const { data: items, isLoading, error } = useQuery({
 - ✅ TypeScript support out of the box
 
 **Configuration Features**:
+
 ```javascript
 // vite.config.ts
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react-swc';
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react-swc";
 
 export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './client'),
+      "@": path.resolve(__dirname, "./client"),
     },
   },
   server: {
     proxy: {
-      '/api': 'http://localhost:8080',
+      "/api": "http://localhost:8080",
     },
   },
 });
 ```
 
 **Alternatives Considered**:
+
 - **Create React App**: Slower, less flexible
 - **Webpack**: More complex configuration
 - **Parcel**: Good but less ecosystem
 
 ### **Icons: Lucide React**
+
 **What**: Beautiful & consistent icon library
 **Why Chosen**:
+
 - ✅ 1000+ icons with consistent design
 - ✅ Optimized SVGs
 - ✅ Tree-shakeable (only imports used icons)
@@ -221,8 +279,10 @@ export default defineConfig({
 - ✅ React-specific implementation
 
 ### **Animations: Framer Motion**
+
 **What**: Production-ready motion library for React
 **Why Chosen**:
+
 - ✅ Declarative animations
 - ✅ Gesture support (drag, hover, tap)
 - ✅ Layout animations
@@ -234,6 +294,7 @@ export default defineConfig({
 ## 🎯 Frontend Features
 
 ### **Authentication System**
+
 ```javascript
 // AuthContext.jsx - Global authentication state
 const AuthContext = createContext();
@@ -247,7 +308,7 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     const savedAuthState = localStorage.getItem("isLoggedIn");
     const savedUser = localStorage.getItem("user");
-    
+
     if (savedAuthState === "true" && savedUser) {
       setIsLoggedIn(true);
       setUser(JSON.parse(savedUser));
@@ -278,6 +339,7 @@ export function AuthProvider({ children }) {
 ```
 
 ### **Favorites System**
+
 ```javascript
 // FavoritesContext.jsx - Persistent favorites
 export const FavoritesProvider = ({ children }) => {
@@ -291,16 +353,17 @@ export const FavoritesProvider = ({ children }) => {
   }, [favorites]);
 
   const toggleFavorite = (itemId) => {
-    setFavorites(prev => 
+    setFavorites((prev) =>
       prev.includes(itemId)
-        ? prev.filter(id => id !== itemId)
-        : [...prev, itemId]
+        ? prev.filter((id) => id !== itemId)
+        : [...prev, itemId],
     );
   };
 };
 ```
 
 ### **Responsive Navigation**
+
 ```javascript
 // Navigation.jsx - Adaptive navigation
 export function Navigation() {
@@ -314,9 +377,7 @@ export function Navigation() {
         <Link to="/browse">Browse</Link>
         <DropdownMenu>
           <DropdownMenuTrigger>Categories</DropdownMenuTrigger>
-          <DropdownMenuContent>
-            {/* Category links */}
-          </DropdownMenuContent>
+          <DropdownMenuContent>{/* Category links */}</DropdownMenuContent>
         </DropdownMenu>
         <Button asChild>
           <Link to="/sell">Sell Item</Link>
@@ -335,9 +396,10 @@ export function Navigation() {
 ```
 
 ### **Real-time Chat Interface**
+
 ```javascript
 // Chat.jsx - Socket.io integration
-import { io } from 'socket.io-client';
+import { io } from "socket.io-client";
 
 export function Chat() {
   const [socket, setSocket] = useState(null);
@@ -345,15 +407,15 @@ export function Chat() {
   const [onlineUsers, setOnlineUsers] = useState([]);
 
   useEffect(() => {
-    const newSocket = io('http://localhost:8080', {
-      auth: { token: localStorage.getItem('token') }
+    const newSocket = io("http://localhost:8080", {
+      auth: { token: localStorage.getItem("token") },
     });
 
-    newSocket.on('new_message', (data) => {
-      setMessages(prev => [...prev, data.message]);
+    newSocket.on("new_message", (data) => {
+      setMessages((prev) => [...prev, data.message]);
     });
 
-    newSocket.on('user_status_changed', (data) => {
+    newSocket.on("user_status_changed", (data) => {
       // Update online user status
     });
 
@@ -370,8 +432,10 @@ export function Chat() {
 ## 🚀 Technology Stack & Reasoning
 
 ### **Core Framework: Express.js**
+
 **What**: Fast, minimalist web framework for Node.js
 **Why Chosen**:
+
 - ✅ Mature and stable (most popular Node.js framework)
 - ✅ Large ecosystem of middleware
 - ✅ Excellent performance and flexibility
@@ -379,8 +443,10 @@ export function Chat() {
 - ✅ Strong community support
 
 ### **Database: MongoDB + Mongoose**
+
 **What**: NoSQL document database with ODM
 **Why Chosen**:
+
 - ✅ Flexible schema perfect for marketplace data
 - ✅ Excellent performance for read-heavy operations
 - ✅ JSON-like documents match JavaScript objects
@@ -388,105 +454,143 @@ export function Chat() {
 - ✅ Rich querying with aggregation pipeline
 
 **Schema Examples**:
+
 ```javascript
 // User Schema
-const userSchema = new mongoose.Schema({
-  firstName: { type: String, required: true, maxlength: 50 },
-  lastName: { type: String, required: true, maxlength: 50 },
-  email: { type: String, required: true, unique: true, lowercase: true },
-  password: { type: String, required: true, select: false },
-  university: { type: String, required: true },
-  studentId: { type: String, required: true },
-  avatar: { url: String, publicId: String },
-  stats: {
-    itemsSold: { type: Number, default: 0 },
-    rating: { type: Number, default: 0, min: 0, max: 5 },
+const userSchema = new mongoose.Schema(
+  {
+    firstName: { type: String, required: true, maxlength: 50 },
+    lastName: { type: String, required: true, maxlength: 50 },
+    email: { type: String, required: true, unique: true, lowercase: true },
+    password: { type: String, required: true, select: false },
+    university: { type: String, required: true },
+    studentId: { type: String, required: true },
+    avatar: { url: String, publicId: String },
+    stats: {
+      itemsSold: { type: Number, default: 0 },
+      rating: { type: Number, default: 0, min: 0, max: 5 },
+    },
+    preferences: {
+      emailNotifications: { type: Boolean, default: true },
+      chatNotifications: { type: Boolean, default: true },
+    },
   },
-  preferences: {
-    emailNotifications: { type: Boolean, default: true },
-    chatNotifications: { type: Boolean, default: true },
-  },
-}, { timestamps: true });
+  { timestamps: true },
+);
 
 // Item Schema
-const itemSchema = new mongoose.Schema({
-  title: { type: String, required: true, maxlength: 100 },
-  description: { type: String, required: true, maxlength: 2000 },
-  price: { type: Number, required: true, min: 0, max: 50000 },
-  category: { type: String, required: true, enum: ['textbooks', 'electronics', 'furniture', 'clothing', 'sports', 'miscellaneous'] },
-  condition: { type: String, required: true, enum: ['new', 'like-new', 'good', 'fair', 'poor'] },
-  images: [{
-    url: String,
-    publicId: String,
-    isPrimary: { type: Boolean, default: false }
-  }],
-  seller: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-  status: { type: String, enum: ['active', 'sold', 'reserved', 'inactive'], default: 'active' },
-  views: { type: Number, default: 0 },
-  favorites: { type: Number, default: 0 },
-}, { timestamps: true });
+const itemSchema = new mongoose.Schema(
+  {
+    title: { type: String, required: true, maxlength: 100 },
+    description: { type: String, required: true, maxlength: 2000 },
+    price: { type: Number, required: true, min: 0, max: 50000 },
+    category: {
+      type: String,
+      required: true,
+      enum: [
+        "textbooks",
+        "electronics",
+        "furniture",
+        "clothing",
+        "sports",
+        "miscellaneous",
+      ],
+    },
+    condition: {
+      type: String,
+      required: true,
+      enum: ["new", "like-new", "good", "fair", "poor"],
+    },
+    images: [
+      {
+        url: String,
+        publicId: String,
+        isPrimary: { type: Boolean, default: false },
+      },
+    ],
+    seller: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+    status: {
+      type: String,
+      enum: ["active", "sold", "reserved", "inactive"],
+      default: "active",
+    },
+    views: { type: Number, default: 0 },
+    favorites: { type: Number, default: 0 },
+  },
+  { timestamps: true },
+);
 ```
 
 ### **Authentication: JWT + Refresh Tokens**
+
 **What**: JSON Web Tokens for stateless authentication
 **Why Chosen**:
+
 - ✅ Stateless (no server-side sessions)
 - ✅ Scalable across multiple servers
 - ✅ Contains user info payload
 - ✅ Industry standard for APIs
 
 **Implementation**:
+
 ```javascript
 // Dual token system
 const accessToken = jwt.sign(
   { userId: user._id, email: user.email, role: user.role },
   config.jwtSecret,
-  { expiresIn: '15m' }  // Short-lived
+  { expiresIn: "15m" }, // Short-lived
 );
 
 const refreshToken = jwt.sign(
   { userId: user._id },
   config.jwtSecret,
-  { expiresIn: '30d' }  // Long-lived
+  { expiresIn: "30d" }, // Long-lived
 );
 ```
 
 ### **Real-time Chat: Socket.io**
+
 **What**: WebSocket library for real-time communication
 **Why Chosen**:
+
 - ✅ Automatic fallback to polling if WebSocket fails
 - ✅ Room-based messaging perfect for chat
 - ✅ Built-in authentication middleware
 - ✅ Excellent browser compatibility
 
 **Chat Implementation**:
+
 ```javascript
 // Socket.io server setup
 class ChatSocket {
   constructor(server) {
     this.io = new Server(server, {
-      cors: { origin: config.socketIoCorsOrigin }
+      cors: { origin: config.socketIoCorsOrigin },
     });
-    
+
     this.connectedUsers = new Map(); // userId -> socketData
     this.setupEventHandlers();
   }
 
   setupEventHandlers() {
-    this.io.on('connection', (socket) => {
+    this.io.on("connection", (socket) => {
       // Authentication middleware
-      socket.on('join_conversation', (data) => {
+      socket.on("join_conversation", (data) => {
         socket.join(`conversation:${data.conversationId}`);
       });
 
-      socket.on('send_message', async (data) => {
+      socket.on("send_message", async (data) => {
         const message = await Message.create({
           conversation: data.conversationId,
           sender: socket.userId,
           content: data.content,
         });
 
-        this.io.to(`conversation:${data.conversationId}`).emit('new_message', {
+        this.io.to(`conversation:${data.conversationId}`).emit("new_message", {
           message: message.toObject(),
         });
       });
@@ -496,33 +600,39 @@ class ChatSocket {
 ```
 
 ### **File Upload: Multer**
+
 **What**: Middleware for handling multipart/form-data
 **Why Chosen**:
+
 - ✅ Integrates seamlessly with Express
 - ✅ File filtering and size limits
 - ✅ Multiple file upload support
 - ✅ Security features built-in
 
 **Upload Configuration**:
+
 ```javascript
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    const subDir = file.fieldname === 'avatar' ? 'avatars' : 'items';
-    cb(null, path.join('uploads', subDir));
+    const subDir = file.fieldname === "avatar" ? "avatars" : "items";
+    cb(null, path.join("uploads", subDir));
   },
   filename: (req, file, cb) => {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-    cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname));
-  }
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+    cb(
+      null,
+      file.fieldname + "-" + uniqueSuffix + path.extname(file.originalname),
+    );
+  },
 });
 
 const upload = multer({
   storage,
   limits: { fileSize: 5 * 1024 * 1024 }, // 5MB
   fileFilter: (req, file, cb) => {
-    const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+    const allowedTypes = ["image/jpeg", "image/png", "image/gif", "image/webp"];
     cb(null, allowedTypes.includes(file.mimetype));
-  }
+  },
 });
 ```
 
@@ -531,6 +641,7 @@ const upload = multer({
 ## 🔐 Security Implementation
 
 ### **Multi-Layer Security**
+
 ```javascript
 // 1. Rate Limiting
 const authRateLimit = rateLimit({
@@ -540,29 +651,36 @@ const authRateLimit = rateLimit({
 
 // 2. Input Validation
 const validateUserRegistration = [
-  body('email').isEmail().normalizeEmail(),
-  body('password').isLength({ min: 8 }).matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/),
+  body("email").isEmail().normalizeEmail(),
+  body("password")
+    .isLength({ min: 8 })
+    .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/),
 ];
 
 // 3. Security Headers
-app.use(helmet({
-  contentSecurityPolicy: {
-    directives: {
-      defaultSrc: ["'self'"],
-      imgSrc: ["'self'", 'data:', 'https://res.cloudinary.com'],
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        imgSrc: ["'self'", "data:", "https://res.cloudinary.com"],
+      },
     },
-  },
-}));
+  }),
+);
 
 // 4. CORS Configuration
-app.use(cors({
-  origin: config.corsOrigin,
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
-}));
+app.use(
+  cors({
+    origin: config.corsOrigin,
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+  }),
+);
 ```
 
 ### **Password Security**
+
 ```javascript
 // bcryptjs with 12 salt rounds (~250ms per hash)
 const hashPassword = async (password) => {
@@ -570,7 +688,8 @@ const hashPassword = async (password) => {
 };
 
 // Password strength validation
-const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/;
+const passwordRegex =
+  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/;
 ```
 
 ---
@@ -578,6 +697,7 @@ const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$
 ## 🌐 API Architecture
 
 ### **RESTful Endpoints**
+
 ```javascript
 // Authentication
 POST   /api/auth/register    # User registration
@@ -606,6 +726,7 @@ POST   /api/chat/conversations/:id/messages # Send message
 ```
 
 ### **Response Format**
+
 ```javascript
 // Success Response
 {
@@ -627,6 +748,7 @@ POST   /api/chat/conversations/:id/messages # Send message
 ## 📊 Environment Configuration
 
 ### **📁 .env File Location**
+
 ```
 /campusbazaar/
 ├── .env                 ← Development environment variables
@@ -707,6 +829,7 @@ LOG_FILE=logs/app.log                       # Log file location
 ## 🚀 Getting Started
 
 ### **Prerequisites**
+
 ```bash
 # Install Node.js (v18 or higher)
 node --version
@@ -719,6 +842,7 @@ mongod
 ```
 
 ### **Installation Steps**
+
 ```bash
 # 1. Clone the repository
 git clone <repository-url>
@@ -744,6 +868,7 @@ npm run dev
 ```
 
 ### **Development Scripts**
+
 ```bash
 npm run dev           # Start development server (frontend + backend)
 npm run build         # Build for production
@@ -759,6 +884,7 @@ npm run logs          # View application logs
 ## 📚 Learning Resources
 
 ### **Frontend Technologies**
+
 1. **React**: https://react.dev/
 2. **React Router**: https://reactrouter.com/
 3. **TailwindCSS**: https://tailwindcss.com/
@@ -768,6 +894,7 @@ npm run logs          # View application logs
 7. **Framer Motion**: https://www.framer.com/motion/
 
 ### **Backend Technologies**
+
 1. **Express.js**: https://expressjs.com/
 2. **MongoDB**: https://docs.mongodb.com/
 3. **Mongoose**: https://mongoosejs.com/
@@ -776,11 +903,13 @@ npm run logs          # View application logs
 6. **Multer**: https://github.com/expressjs/multer
 
 ### **Security & Best Practices**
+
 1. **Node.js Security**: https://nodejs.org/en/docs/guides/security/
 2. **OWASP Top 10**: https://owasp.org/www-project-top-ten/
 3. **JWT Security**: https://auth0.com/blog/a-look-at-the-latest-draft-for-jwt-bcp/
 
 ### **Books Recommended**
+
 1. **"React - The Complete Guide"** by Maximilian Schwarzmüller
 2. **"Node.js Design Patterns"** by Mario Casciaro
 3. **"MongoDB: The Definitive Guide"** by Shannon Bradshaw
@@ -791,6 +920,7 @@ npm run logs          # View application logs
 ## 🎯 Key Features
 
 ### **Frontend Features**
+
 - ✅ **Responsive Design** - Mobile-first approach
 - ✅ **Dark Mode Support** - TailwindCSS dark mode
 - ✅ **Real-time Chat** - Socket.io integration
@@ -803,6 +933,7 @@ npm run logs          # View application logs
 - ✅ **Error Handling** - User-friendly error messages
 
 ### **Backend Features**
+
 - ✅ **RESTful API** - Standard HTTP methods
 - ✅ **JWT Authentication** - Secure token-based auth
 - ✅ **Real-time Chat** - Socket.io messaging
@@ -815,6 +946,7 @@ npm run logs          # View application logs
 - ✅ **Database Indexing** - Optimized MongoDB queries
 
 ### **Production Ready**
+
 - ✅ **Environment Configuration** - Separate dev/prod configs
 - ✅ **Build Optimization** - Vite production builds
 - ✅ **Security Hardening** - Multiple security layers

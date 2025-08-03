@@ -7,8 +7,10 @@ This is a comprehensive, industry-ready Node.js backend built using modern web d
 ## 📚 Technology Stack & Reasoning
 
 ### **Core Framework: Express.js**
+
 **What**: Fast, minimalist web framework for Node.js
 **Why Chosen**:
+
 - ✅ Mature and stable (most popular Node.js framework)
 - ✅ Large ecosystem of middleware
 - ✅ Excellent performance and flexibility
@@ -16,13 +18,16 @@ This is a comprehensive, industry-ready Node.js backend built using modern web d
 - ✅ Strong community support
 
 **Alternatives Considered**:
+
 - **Fastify**: Faster but smaller ecosystem
 - **Koa.js**: More modern but less adoption
 - **NestJS**: Too opinionated for this project scope
 
 ### **Database: MongoDB + Mongoose**
+
 **What**: NoSQL document database with ODM
 **Why Chosen**:
+
 - ✅ Flexible schema perfect for marketplace data
 - ✅ Excellent performance for read-heavy operations
 - ✅ JSON-like documents match JavaScript objects
@@ -31,19 +36,23 @@ This is a comprehensive, industry-ready Node.js backend built using modern web d
 - ✅ Built-in replication and sharding
 
 **Alternatives Considered**:
+
 - **PostgreSQL**: Great but overkill for this use case
 - **MySQL**: Relational constraints would limit flexibility
 - **Redis**: Good for caching but not primary database
 
 **Mongoose Benefits**:
+
 - Schema validation and type casting
 - Built-in middleware (pre/post hooks)
 - Population (joins) for references
 - Query building and validation
 
 ### **Authentication: JWT (JSON Web Tokens)**
+
 **What**: Stateless authentication tokens
 **Why Chosen**:
+
 - ✅ Stateless (no server-side sessions)
 - ✅ Scalable across multiple servers
 - ✅ Contains user info payload
@@ -51,20 +60,24 @@ This is a comprehensive, industry-ready Node.js backend built using modern web d
 - ✅ Works great with frontend frameworks
 
 **Security Implementation**:
+
 ```javascript
 // Dual token system for security
-accessToken: '15-minute expiry'  // Short-lived for API calls
-refreshToken: '30-day expiry'    // Long-lived for token renewal
+accessToken: "15-minute expiry"; // Short-lived for API calls
+refreshToken: "30-day expiry"; // Long-lived for token renewal
 ```
 
 **Alternatives Considered**:
+
 - **Sessions**: Server-side storage, harder to scale
 - **OAuth**: Too complex for internal authentication
 - **Basic Auth**: Not secure enough
 
 ### **Real-time Communication: Socket.io**
+
 **What**: WebSocket library for real-time communication
 **Why Chosen**:
+
 - ✅ Automatic fallback to polling if WebSocket fails
 - ✅ Room-based messaging perfect for chat
 - ✅ Built-in authentication middleware
@@ -72,6 +85,7 @@ refreshToken: '30-day expiry'    // Long-lived for token renewal
 - ✅ Event-based architecture
 
 **Chat Architecture**:
+
 ```javascript
 // Room structure
 user:${userId}           // Personal notifications
@@ -79,13 +93,16 @@ conversation:${convId}   // Chat conversations
 ```
 
 **Alternatives Considered**:
+
 - **Native WebSocket**: Too low-level
 - **Server-Sent Events**: One-way communication only
 - **WebRTC**: Overkill for text messaging
 
 ### **File Upload: Multer**
+
 **What**: Middleware for handling multipart/form-data
 **Why Chosen**:
+
 - ✅ Integrates seamlessly with Express
 - ✅ Memory and disk storage options
 - ✅ File filtering and size limits
@@ -93,18 +110,22 @@ conversation:${convId}   // Chat conversations
 - ✅ Security features built-in
 
 **Security Features**:
+
 - File type validation
 - Size limits (5MB default)
 - Filename sanitization
 - Upload path restrictions
 
 **Alternatives Considered**:
+
 - **Busboy**: Lower level, more complex
 - **Formidable**: Less integration with Express
 
 ### **Validation: Express-Validator**
+
 **What**: Middleware for request validation
 **Why Chosen**:
+
 - ✅ Built on validator.js (battle-tested)
 - ✅ Express-native integration
 - ✅ Comprehensive validation rules
@@ -112,15 +133,19 @@ conversation:${convId}   // Chat conversations
 - ✅ Automatic error handling
 
 **Example Validation**:
+
 ```javascript
 validateUserRegistration: [
-  body('email').isEmail().normalizeEmail(),
-  body('password').isLength({ min: 8 }).matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/),
-  handleValidationErrors
-]
+  body("email").isEmail().normalizeEmail(),
+  body("password")
+    .isLength({ min: 8 })
+    .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/),
+  handleValidationErrors,
+];
 ```
 
 **Alternatives Considered**:
+
 - **Joi**: Good but adds extra dependency
 - **Yup**: More for frontend validation
 - **Custom validation**: Time-consuming to build
@@ -128,6 +153,7 @@ validateUserRegistration: [
 ### **Security: Multiple Layers**
 
 #### **Rate Limiting: express-rate-limit**
+
 ```javascript
 authRateLimit: 5 attempts per 15 minutes
 generalRateLimit: 100 requests per 15 minutes
@@ -135,6 +161,7 @@ messageRateLimit: 30 messages per minute
 ```
 
 #### **Security Headers: Helmet**
+
 - Content Security Policy
 - DNS Prefetch Control
 - X-Frame-Options
@@ -142,6 +169,7 @@ messageRateLimit: 30 messages per minute
 - And 10+ other security headers
 
 #### **CORS: cors package**
+
 ```javascript
 // Configured for development/production
 origin: specific domains only
@@ -150,14 +178,17 @@ methods: GET, POST, PUT, DELETE, PATCH
 ```
 
 #### **Input Sanitization: Custom Middleware**
+
 - XSS prevention
 - SQL injection prevention
 - HTML tag stripping
 - Script tag removal
 
 ### **Logging: Winston**
+
 **What**: Professional logging library
 **Why Chosen**:
+
 - ✅ Multiple log levels (error, warn, info, debug)
 - ✅ Multiple transports (file, console, database)
 - ✅ Structured logging with metadata
@@ -165,6 +196,7 @@ methods: GET, POST, PUT, DELETE, PATCH
 - ✅ Production-ready performance
 
 **Log Structure**:
+
 ```javascript
 {
   timestamp: '2024-01-20 10:30:45',
@@ -177,28 +209,34 @@ methods: GET, POST, PUT, DELETE, PATCH
 ```
 
 **Alternatives Considered**:
+
 - **Morgan**: HTTP-only, not comprehensive
 - **Bunyan**: Good but less popular
 - **Console.log**: Not suitable for production
 
 ### **Password Hashing: bcryptjs**
+
 **What**: Password hashing library
 **Why Chosen**:
+
 - ✅ Industry standard for password hashing
 - ✅ Configurable salt rounds (12 rounds = ~250ms)
 - ✅ Automatic salt generation
 - ✅ Time-tested security
 
 **Security Config**:
+
 ```javascript
-BCRYPT_SALT_ROUNDS=12  // ~250ms per hash
+BCRYPT_SALT_ROUNDS = 12; // ~250ms per hash
 // Higher = more secure but slower
 // 12 rounds is current industry standard
 ```
 
 ### **HTTP Client Logging: Morgan**
+
 **What**: HTTP request logger middleware
 **Why Chosen**:
+
 - ✅ Standard for Express applications
 - ✅ Configurable output formats
 - ✅ Integration with other loggers
@@ -207,6 +245,7 @@ BCRYPT_SALT_ROUNDS=12  // ~250ms per hash
 ## 🗄️ Database Schema Design
 
 ### **User Model Features**:
+
 ```javascript
 // Authentication fields
 email, password, refreshTokens[]
@@ -225,6 +264,7 @@ preferences: { emailNotifications, chatNotifications }
 ```
 
 ### **Item Model Features**:
+
 ```javascript
 // Basic information
 title, description, price, originalPrice, category, condition
@@ -246,6 +286,7 @@ moderationStatus: 'approved' | 'pending' | 'rejected'
 ### **Chat System Models**:
 
 #### **Conversation Model**:
+
 ```javascript
 participants[]     // User references
 item              // Item being discussed
@@ -259,6 +300,7 @@ metadata: {
 ```
 
 #### **Message Model**:
+
 ```javascript
 content           // Message text
 type: 'text' | 'image' | 'file' | 'offer' | 'system'
@@ -274,6 +316,7 @@ editHistory[]    // Message editing
 ## 🔄 API Architecture
 
 ### **RESTful Design Principles**:
+
 ```
 GET    /api/items          # Get all items
 POST   /api/items          # Create new item
@@ -283,6 +326,7 @@ DELETE /api/items/:id      # Delete item
 ```
 
 ### **Response Format Standard**:
+
 ```javascript
 // Success Response
 {
@@ -300,6 +344,7 @@ DELETE /api/items/:id      # Delete item
 ```
 
 ### **Authentication Flow**:
+
 ```
 1. POST /api/auth/register → { accessToken, refreshToken }
 2. Use accessToken in Authorization: Bearer <token>
@@ -310,12 +355,14 @@ DELETE /api/items/:id      # Delete item
 ## 🔒 Security Implementation
 
 ### **Input Validation Layers**:
+
 1. **Express-validator**: Schema validation
 2. **Mongoose**: Database-level validation
 3. **Custom sanitization**: XSS/injection prevention
 4. **File validation**: Type, size, content checks
 
 ### **Rate Limiting Strategy**:
+
 ```javascript
 // Different limits for different endpoints
 auth endpoints: 5/15min    // Prevent brute force
@@ -325,12 +372,13 @@ password reset: 3/1hour    # Prevent abuse
 ```
 
 ### **CORS Configuration**:
+
 ```javascript
 // Development: Allow localhost
-origin: ['http://localhost:3000', 'http://localhost:8080']
+origin: ["http://localhost:3000", "http://localhost:8080"];
 
 // Production: Specific domains only
-origin: ['https://campusbazaar.edu']
+origin: ["https://campusbazaar.edu"];
 ```
 
 ## 📁 Project Structure
@@ -368,6 +416,7 @@ server/
 ## 🚀 Performance Optimizations
 
 ### **Database Optimizations**:
+
 ```javascript
 // Strategic indexing
 userSchema.index({ email: 1 });
@@ -382,12 +431,14 @@ itemSchema.index({ title: 'text', description: 'text' });
 ```
 
 ### **Caching Strategy**:
+
 - MongoDB connection pooling
 - Express response compression
 - Static file serving with proper headers
 - Session storage in MongoDB (not memory)
 
 ### **Memory Management**:
+
 - File upload streaming (not buffering in memory)
 - Database connection limits
 - Request size limits
@@ -396,6 +447,7 @@ itemSchema.index({ title: 'text', description: 'text' });
 ## 📊 Monitoring & Logging
 
 ### **Health Check Endpoint**:
+
 ```
 GET /health
 {
@@ -409,12 +461,14 @@ GET /health
 ```
 
 ### **Logging Levels**:
+
 - **ERROR**: Application errors, failed requests
 - **WARN**: Security alerts, rate limits exceeded
 - **INFO**: User actions, system events
 - **DEBUG**: Detailed execution flow (dev only)
 
 ### **Log Rotation**:
+
 - Daily log rotation
 - Maximum 5 files kept
 - 5MB file size limit
@@ -423,6 +477,7 @@ GET /health
 ## 🌍 Environment Configuration
 
 ### **Development vs Production**:
+
 ```javascript
 // Development
 NODE_ENV=development
@@ -436,22 +491,25 @@ CORS_ORIGIN=https://campusbazaar.edu
 ```
 
 ### **Feature Flags**:
+
 ```javascript
-ENABLE_EMAIL_NOTIFICATIONS=true
-ENABLE_PUSH_NOTIFICATIONS=false
-ENABLE_FILE_UPLOAD=true
-ENABLE_CHAT=true
+ENABLE_EMAIL_NOTIFICATIONS = true;
+ENABLE_PUSH_NOTIFICATIONS = false;
+ENABLE_FILE_UPLOAD = true;
+ENABLE_CHAT = true;
 ```
 
 ## 🔄 Deployment Considerations
 
 ### **Horizontal Scaling**:
+
 - Stateless design (JWT, no server sessions)
 - Database connection pooling
 - File uploads to external storage (Cloudinary ready)
 - Socket.io with Redis adapter (for multiple servers)
 
 ### **Security in Production**:
+
 - Environment variables for secrets
 - HTTPS enforcement
 - Content Security Policy
@@ -499,6 +557,7 @@ ENABLE_CHAT=true
 ## 🤝 Contributing
 
 The codebase follows these principles:
+
 - **Clean Code**: Self-documenting, single responsibility
 - **Error Handling**: Comprehensive try-catch with logging
 - **Security First**: Input validation, authentication required

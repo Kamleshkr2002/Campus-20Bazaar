@@ -1,14 +1,30 @@
-import express from 'express';
-import { Item, User } from '../models/index.js';
-import { authenticate, optionalAuthenticate, requireOwnershipOrAdmin } from '../middleware/auth.js';
-import { uploadItemImages, handleUploadError, cleanupOnError } from '../middleware/upload.js';
-import { validateItemCreation, validateItemUpdate, validateItemSearch, validatePagination, validateObjectId, handleValidationErrors } from '../middleware/validation.js';
-import { catchAsync, AppError } from '../middleware/errorHandler.js';
+import express from "express";
+import { Item, User } from "../models/index.js";
+import {
+  authenticate,
+  optionalAuthenticate,
+  requireOwnershipOrAdmin,
+} from "../middleware/auth.js";
+import {
+  uploadItemImages,
+  handleUploadError,
+  cleanupOnError,
+} from "../middleware/upload.js";
+import {
+  validateItemCreation,
+  validateItemUpdate,
+  validateItemSearch,
+  validatePagination,
+  validateObjectId,
+  handleValidationErrors,
+} from "../middleware/validation.js";
+import { catchAsync, AppError } from "../middleware/errorHandler.js";
 
 const router = express.Router();
 
 // Get all items with search and filters
-router.get('/',
+router.get(
+  "/",
   optionalAuthenticate,
   validateItemSearch,
   validatePagination,
@@ -24,8 +40,8 @@ router.get('/',
     });
 
     const total = await Item.countDocuments({
-      status: 'active',
-      moderationStatus: 'approved',
+      status: "active",
+      moderationStatus: "approved",
     });
 
     res.json({
@@ -40,11 +56,12 @@ router.get('/',
         },
       },
     });
-  })
+  }),
 );
 
 // Create new item
-router.post('/',
+router.post(
+  "/",
   authenticate,
   uploadItemImages,
   handleUploadError,
@@ -70,28 +87,32 @@ router.post('/',
     const item = new Item(itemData);
     await item.save();
 
-    await item.populate('seller', 'firstName lastName avatar');
+    await item.populate("seller", "firstName lastName avatar");
 
     res.status(201).json({
       success: true,
-      message: 'Item created successfully',
+      message: "Item created successfully",
       data: { item },
     });
-  })
+  }),
 );
 
 // Get item by ID
-router.get('/:id',
+router.get(
+  "/:id",
   optionalAuthenticate,
-  validateObjectId('id'),
+  validateObjectId("id"),
   handleValidationErrors,
   catchAsync(async (req, res) => {
     const item = await Item.findById(req.params.id)
-      .populate('seller', 'firstName lastName avatar stats.rating stats.totalRatings university')
-      .populate('conversations');
+      .populate(
+        "seller",
+        "firstName lastName avatar stats.rating stats.totalRatings university",
+      )
+      .populate("conversations");
 
     if (!item) {
-      throw new AppError('Item not found', 404);
+      throw new AppError("Item not found", 404);
     }
 
     // Increment view count (but not for the seller)
@@ -109,34 +130,46 @@ router.get('/:id',
         similarItems,
       },
     });
-  })
+  }),
 );
 
 // Update item
-router.patch('/:id',
+router.patch(
+  "/:id",
   authenticate,
   uploadItemImages,
   handleUploadError,
   cleanupOnError,
-  validateObjectId('id'),
+  validateObjectId("id"),
   validateItemUpdate,
   handleValidationErrors,
   catchAsync(async (req, res) => {
     const item = await Item.findById(req.params.id);
 
     if (!item) {
-      throw new AppError('Item not found', 404);
+      throw new AppError("Item not found", 404);
     }
 
     // Check ownership
-    if (!req.user._id.equals(item.seller) && req.user.role !== 'admin') {
-      throw new AppError('Access denied', 403);
+    if (!req.user._id.equals(item.seller) && req.user.role !== "admin") {
+      throw new AppError("Access denied", 403);
     }
 
-    const allowedUpdates = ['title', 'description', 'price', 'condition', 'brand', 'model', 'isNegotiable', 'deliveryOptions', 'paymentMethods', 'status'];
+    const allowedUpdates = [
+      "title",
+      "description",
+      "price",
+      "condition",
+      "brand",
+      "model",
+      "isNegotiable",
+      "deliveryOptions",
+      "paymentMethods",
+      "status",
+    ];
     const updates = {};
 
-    allowedUpdates.forEach(field => {
+    allowedUpdates.forEach((field) => {
       if (req.body[field] !== undefined) {
         updates[field] = req.body[field];
       }
@@ -156,88 +189,91 @@ router.patch('/:id',
     Object.assign(item, updates);
     await item.save();
 
-    await item.populate('seller', 'firstName lastName avatar');
+    await item.populate("seller", "firstName lastName avatar");
 
     res.json({
       success: true,
-      message: 'Item updated successfully',
+      message: "Item updated successfully",
       data: { item },
     });
-  })
+  }),
 );
 
 // Delete item
-router.delete('/:id',
+router.delete(
+  "/:id",
   authenticate,
-  validateObjectId('id'),
+  validateObjectId("id"),
   handleValidationErrors,
   catchAsync(async (req, res) => {
     const item = await Item.findById(req.params.id);
 
     if (!item) {
-      throw new AppError('Item not found', 404);
+      throw new AppError("Item not found", 404);
     }
 
     // Check ownership
-    if (!req.user._id.equals(item.seller) && req.user.role !== 'admin') {
-      throw new AppError('Access denied', 403);
+    if (!req.user._id.equals(item.seller) && req.user.role !== "admin") {
+      throw new AppError("Access denied", 403);
     }
 
     await Item.findByIdAndDelete(req.params.id);
 
     res.json({
       success: true,
-      message: 'Item deleted successfully',
+      message: "Item deleted successfully",
     });
-  })
+  }),
 );
 
 // Mark item as sold
-router.patch('/:id/sold',
+router.patch(
+  "/:id/sold",
   authenticate,
-  validateObjectId('id'),
+  validateObjectId("id"),
   handleValidationErrors,
   catchAsync(async (req, res) => {
     const { buyerId, finalPrice } = req.body;
-    
+
     const item = await Item.findById(req.params.id);
 
     if (!item) {
-      throw new AppError('Item not found', 404);
+      throw new AppError("Item not found", 404);
     }
 
     // Check ownership
     if (!req.user._id.equals(item.seller)) {
-      throw new AppError('Access denied', 403);
+      throw new AppError("Access denied", 403);
     }
 
     await item.markAsSold(buyerId, finalPrice);
-    await item.populate('seller', 'firstName lastName');
+    await item.populate("seller", "firstName lastName");
 
     res.json({
       success: true,
-      message: 'Item marked as sold',
+      message: "Item marked as sold",
       data: { item },
     });
-  })
+  }),
 );
 
 // Get categories
-router.get('/meta/categories',
+router.get(
+  "/meta/categories",
   catchAsync(async (req, res) => {
     const categories = [
-      { id: 'textbooks', name: 'Textbooks', icon: '📚' },
-      { id: 'electronics', name: 'Electronics', icon: '💻' },
-      { id: 'furniture', name: 'Furniture', icon: '🪑' },
-      { id: 'clothing', name: 'Clothing', icon: '👕' },
-      { id: 'sports', name: 'Sports & Recreation', icon: '⚽' },
-      { id: 'miscellaneous', name: 'Miscellaneous', icon: '📦' },
+      { id: "textbooks", name: "Textbooks", icon: "📚" },
+      { id: "electronics", name: "Electronics", icon: "💻" },
+      { id: "furniture", name: "Furniture", icon: "🪑" },
+      { id: "clothing", name: "Clothing", icon: "👕" },
+      { id: "sports", name: "Sports & Recreation", icon: "⚽" },
+      { id: "miscellaneous", name: "Miscellaneous", icon: "📦" },
     ];
 
     // Get item counts for each category
     const categoryCounts = await Item.aggregate([
-      { $match: { status: 'active', moderationStatus: 'approved' } },
-      { $group: { _id: '$category', count: { $sum: 1 } } },
+      { $match: { status: "active", moderationStatus: "approved" } },
+      { $group: { _id: "$category", count: { $sum: 1 } } },
     ]);
 
     const categoryMap = categoryCounts.reduce((acc, item) => {
@@ -245,7 +281,7 @@ router.get('/meta/categories',
       return acc;
     }, {});
 
-    const categoriesWithCounts = categories.map(category => ({
+    const categoriesWithCounts = categories.map((category) => ({
       ...category,
       count: categoryMap[category.id] || 0,
     }));
@@ -254,7 +290,7 @@ router.get('/meta/categories',
       success: true,
       data: { categories: categoriesWithCounts },
     });
-  })
+  }),
 );
 
 export default router;
