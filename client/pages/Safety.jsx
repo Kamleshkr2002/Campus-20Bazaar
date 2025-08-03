@@ -66,7 +66,7 @@ export default function Safety() {
       icon: MessageCircle,
       color: "bg-orange-500/10 text-orange-600",
       tips: [
-        "Keep all communication on the CampusMarket platform",
+        "Keep all communication on the CampusBazaar platform",
         "Be professional and respectful in all messages",
         "Save important conversations and agreements",
         "Don't share personal information unnecessarily",
@@ -100,7 +100,7 @@ export default function Safety() {
       description: "Emergency situations only",
     },
     {
-      service: "CampusMarket Support",
+      service: "CampusBazaar Support",
       number: "(555) 987-6543",
       description: "Report marketplace issues",
     },
@@ -119,7 +119,7 @@ export default function Safety() {
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Your safety is our top priority. Follow these guidelines to have
-            secure and positive experiences on CampusMarket.
+            secure and positive experiences on CampusBazaar.
           </p>
         </div>
 
@@ -129,7 +129,7 @@ export default function Safety() {
           <AlertDescription className="text-orange-800">
             <strong>Important:</strong> Never share your password, student ID
             number, or other sensitive personal information with other users.
-            CampusMarket staff will never ask for this information.
+            CampusBazaar staff will never ask for this information.
           </AlertDescription>
         </Alert>
 

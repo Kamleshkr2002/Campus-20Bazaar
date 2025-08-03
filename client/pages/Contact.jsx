@@ -77,7 +77,7 @@ export default function Contact() {
       icon: Mail,
       title: "Email Support",
       description: "Send us a detailed message",
-      details: "support@campusmarket.edu",
+      details: "support@campusbazaar.edu",
       action: "Send Email",
       available: true,
     },
@@ -95,7 +95,7 @@ export default function Contact() {
     {
       icon: HelpCircle,
       title: "General Questions",
-      description: "How CampusMarket works, getting started",
+      description: "How CampusBazaar works, getting started",
       color: "bg-blue-500/10 text-blue-600",
     },
     {

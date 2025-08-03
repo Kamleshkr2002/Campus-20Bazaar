@@ -119,7 +119,7 @@ export default function HowItWorks() {
             <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
               How{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-purple to-brand-purple-light">
-                CampusMarket
+                CampusBazaar
               </span>{" "}
               Works
             </h1>
@@ -309,7 +309,7 @@ export default function HowItWorks() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-              Why Choose CampusMarket?
+              Why Choose CampusBazaar?
             </h2>
           </div>
 
