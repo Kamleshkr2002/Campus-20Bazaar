@@ -12,7 +12,7 @@ export function Footer() {
               <div className="w-8 h-8 bg-gradient-to-br from-brand-purple to-brand-purple-light rounded-lg flex items-center justify-center">
                 <ShoppingBag className="w-5 h-5 text-white" />
               </div>
-              <span className="text-xl font-bold text-foreground">CampusMarket</span>
+              <span className="text-xl font-bold text-foreground">CampusBazaar</span>
             </Link>
             <p className="text-muted-foreground mb-4 max-w-md">
               The trusted marketplace for college students to buy and sell second-hand goods. 
@@ -25,7 +25,7 @@ export function Footer() {
               </div>
               <div className="flex items-center space-x-1">
                 <Mail className="w-4 h-4" />
-                <span>support@campusmarket.edu</span>
+                <span>support@campusbazaar.edu</span>
               </div>
             </div>
           </div>
@@ -68,7 +68,7 @@ export function Footer() {
 
         <div className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-muted-foreground text-sm">
-            © 2024 CampusMarket. Made with ���️ for students.
+            © 2024 CampusBazaar. Made with ���️ for students.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <Link to="/privacy" className="text-muted-foreground hover:text-primary text-sm transition-colors">
