@@ -96,21 +96,21 @@ export default function Terms() {
       title: "Acceptance of Terms",
       icon: FileText,
       content:
-        "By creating an account and using CampusMarket, you agree to be bound by these Terms of Service. These terms constitute a legally binding agreement between you and CampusMarket. If you do not agree to these terms, you may not use our service.",
+        "By creating an account and using CampusBazaar, you agree to be bound by these Terms of Service. These terms constitute a legally binding agreement between you and CampusBazaar. If you do not agree to these terms, you may not use our service.",
     },
     {
       id: "eligibility",
       title: "Eligibility",
       icon: Users,
       content:
-        "CampusMarket is exclusively for verified college and university students. You must be currently enrolled as a student at a participating institution and provide valid student credentials for verification. Graduated students, faculty, and staff are not eligible to use the marketplace.",
+        "CampusBazaar is exclusively for verified college and university students. You must be currently enrolled as a student at a participating institution and provide valid student credentials for verification. Graduated students, faculty, and staff are not eligible to use the marketplace.",
     },
     {
       id: "platform-role",
       title: "Platform Role",
       icon: Shield,
       content:
-        "CampusMarket serves as a platform connecting student buyers and sellers. We do not take possession of items, process payments, or guarantee transactions. All transactions occur directly between users. We are not responsible for the quality, safety, legality, or accuracy of listings.",
+        "CampusBazaar serves as a platform connecting student buyers and sellers. We do not take possession of items, process payments, or guarantee transactions. All transactions occur directly between users. We are not responsible for the quality, safety, legality, or accuracy of listings.",
     },
     {
       id: "account-responsibilities",
@@ -138,7 +138,7 @@ export default function Terms() {
       title: "Limitation of Liability",
       icon: Scale,
       content:
-        "CampusMarket is provided 'as is' without warranties. We are not liable for any damages arising from your use of the platform, transactions between users, or any content posted by users. Our liability is limited to the maximum extent permitted by law.",
+        "CampusBazaar is provided 'as is' without warranties. We are not liable for any damages arising from your use of the platform, transactions between users, or any content posted by users. Our liability is limited to the maximum extent permitted by law.",
     },
     {
       id: "governing-law",
@@ -161,7 +161,7 @@ export default function Terms() {
             Terms of Service
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-4">
-            These terms govern your use of CampusMarket and establish the rules
+            These terms govern your use of CampusBazaar and establish the rules
             for our student marketplace community.
           </p>
           <Badge variant="outline" className="px-3 py-1">
@@ -257,7 +257,7 @@ export default function Terms() {
                 <span>User Guidelines</span>
               </CardTitle>
               <CardDescription>
-                Essential do's and don'ts for CampusMarket users
+                Essential do's and don'ts for CampusBazaar users
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -329,7 +329,7 @@ export default function Terms() {
                 <span>Prohibited Items</span>
               </CardTitle>
               <CardDescription className="text-red-700">
-                These items may not be listed on CampusMarket under any
+                These items may not be listed on CampusBazaar under any
                 circumstances
               </CardDescription>
             </CardHeader>
@@ -418,7 +418,7 @@ export default function Terms() {
                     error, you may appeal by:
                   </p>
                   <ul className="space-y-1 text-sm text-muted-foreground">
-                    <li>• Emailing support@campusmarket.edu within 30 days</li>
+                    <li>• Emailing support@campusbazaar.edu within 30 days</li>
                     <li>
                       • Providing detailed explanation of the circumstances
                     </li>
@@ -448,7 +448,7 @@ export default function Terms() {
                   </p>
                   <div className="space-y-2">
                     <p className="text-primary font-medium">
-                      legal@campusmarket.edu
+                      legal@campusbazaar.edu
                     </p>
                     <p className="text-xs text-muted-foreground">
                       Response time: 3-5 business days for legal inquiries

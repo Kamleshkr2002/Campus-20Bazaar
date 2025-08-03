@@ -151,7 +151,7 @@ export default function Report() {
             Report an Issue
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Help us keep CampusMarket safe and secure by reporting any issues,
+            Help us keep CampusBazaar safe and secure by reporting any issues,
             violations, or concerns you encounter.
           </p>
         </div>

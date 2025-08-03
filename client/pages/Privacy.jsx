@@ -186,7 +186,7 @@ export default function Privacy() {
   ];
 
   const contactInfo = {
-    email: "privacy@campusmarket.edu",
+    email: "privacy@campusbazaar.edu",
     address: "Student Technology Center, Building A, Room 201",
     phone: "(555) 987-6543",
   };

@@ -31,7 +31,7 @@ export function ShareDialog({ isOpen, onClose, item }) {
 
   const shareUrl = `${window.location.origin}/item/${item.id}`;
   const shareTitle = `Check out this ${item.title} for $${item.price}`;
-  const shareText = `Found this great deal on CampusMarket: ${item.title} for only $${item.price}! ${item.condition} condition. Check it out:`;
+  const shareText = `Found this great deal on CampusBazaar: ${item.title} for only $${item.price}! ${item.condition} condition. Check it out:`;
 
   const copyToClipboard = async () => {
     try {
@@ -64,7 +64,7 @@ export function ShareDialog({ isOpen, onClose, item }) {
   };
 
   const shareViaTwitter = () => {
-    const text = encodeURIComponent(`${shareText} ${shareUrl} #CampusMarket #StudentDeals`);
+    const text = encodeURIComponent(`${shareText} ${shareUrl} #CampusBazaar #StudentDeals`);
     window.open(`https://twitter.com/intent/tweet?text=${text}`, "_blank");
   };
 

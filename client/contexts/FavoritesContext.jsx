@@ -13,13 +13,13 @@ export const useFavorites = () => {
 export const FavoritesProvider = ({ children }) => {
   const [favorites, setFavorites] = useState(() => {
     // Load favorites from localStorage on initialization
-    const savedFavorites = localStorage.getItem("campusmarket-favorites");
+    const savedFavorites = localStorage.getItem("campusbazaar-favorites");
     return savedFavorites ? JSON.parse(savedFavorites) : [];
   });
 
   // Save favorites to localStorage whenever favorites change
   useEffect(() => {
-    localStorage.setItem("campusmarket-favorites", JSON.stringify(favorites));
+    localStorage.setItem("campusbazaar-favorites", JSON.stringify(favorites));
   }, [favorites]);
 
   const addToFavorites = (itemId) => {

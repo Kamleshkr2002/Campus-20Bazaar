@@ -33,7 +33,7 @@ export default function Help() {
       id: "getting-started",
       title: "Getting Started",
       icon: BookOpen,
-      description: "Learn the basics of using CampusMarket",
+      description: "Learn the basics of using CampusBazaar",
       articles: [
         "How to create your first listing",
         "Setting up your student profile",
@@ -110,9 +110,9 @@ export default function Help() {
         "You can verify your student status by uploading a valid student ID or providing your .edu email address. Verification typically takes 24-48 hours.",
     },
     {
-      question: "Is CampusMarket free to use?",
+      question: "Is CampusBazaar free to use?",
       answer:
-        "Yes! CampusMarket is completely free for all students. We don't charge listing fees or transaction fees.",
+        "Yes! CampusBazaar is completely free for all students. We don't charge listing fees or transaction fees.",
     },
     {
       question: "How do I arrange payment with other students?",
@@ -127,7 +127,7 @@ export default function Help() {
     {
       question: "Can I sell items to students from other universities?",
       answer:
-        "CampusMarket is designed for campus-specific communities. You can only buy and sell within your own university's marketplace.",
+        "CampusBazaar is designed for campus-specific communities. You can only buy and sell within your own university's marketplace.",
     },
     {
       question: "How do I delete my account?",
@@ -155,7 +155,7 @@ export default function Help() {
           </h1>
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
             Find answers to common questions and learn how to make the most of
-            CampusMarket
+            CampusBazaar
           </p>
 
           {/* Search */}
@@ -293,7 +293,7 @@ export default function Help() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Badge variant="outline" className="px-4 py-2">
-                📧 support@campusmarket.edu
+                📧 support@campusbazaar.edu
               </Badge>
               <Badge variant="outline" className="px-4 py-2">
                 💬 Live chat: Mon-Fri 9AM-5PM
