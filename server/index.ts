@@ -1,6 +1,7 @@
 import express from "express";
 import { createServer } from "http";
 import cors from "cors";
+import path from "path";
 import compression from "compression";
 import morgan from "morgan";
 import session from "express-session";
@@ -39,6 +40,10 @@ import ChatSocket from "./socket/chatSocket.js";
 import { handleDemo } from "./routes/demo.js";
 
 class Server {
+  app;
+  server;
+  chatSocket;
+
   constructor() {
     this.app = express();
     this.server = createServer(this.app);

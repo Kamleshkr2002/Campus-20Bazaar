@@ -2,6 +2,18 @@ import jwt from "jsonwebtoken";
 import { User } from "../models/index.js";
 import { config } from "../config/config.js";
 import logger from "../utils/logger.js";
+import rateLimit from "express-rate-limit";
+
+
+export const messageRateLimit = rateLimit({
+  windowMs: 10 * 1000, // 10 seconds
+  max: 5, // limit each IP to 5 requests per `window` (per 10 sec)
+  message: {
+    success: false,
+    message: "Too many messages sent, please try again later",
+  },
+});
+
 
 // Middleware to verify JWT token
 export const authenticate = async (req, res, next) => {
